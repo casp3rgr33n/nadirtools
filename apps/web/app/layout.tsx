@@ -1,4 +1,5 @@
 import React from "react";
+import FeedbackWidget from "../components/FeedbackWidget";
 
 export const metadata = {
   title: "NadirTools | Solitude Dark Labs Product Suite",
@@ -48,6 +49,7 @@ export default function RootLayout({
               </div>
             </div>
           </footer>
+          <FeedbackWidget />
         </div>
       </body>
     </html>
