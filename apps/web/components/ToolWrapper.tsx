@@ -626,36 +626,36 @@ function FreelanceTax({ calculatorConfig }: { calculatorConfig: any }) {
             <div
               style={{
                 width: `${(takeHome / gross) * 100}%`,
-                background: "#10b981",
-                title: "Take Home"
+                background: "#10b981"
               }}
+              title="Take Home"
             />
           )}
           {taxOwed > 0 && (
             <div
               style={{
                 width: `${(taxOwed / gross) * 100}%`,
-                background: "#f43f5e",
-                title: "Income Tax"
+                background: "#f43f5e"
               }}
+              title="Income Tax"
             />
           )}
           {socialTax > 0 && (
             <div
               style={{
                 width: `${(socialTax / gross) * 100}%`,
-                background: "#e11d48",
-                title: "Social Tax"
+                background: "#e11d48"
               }}
+              title="Social Tax"
             />
           )}
           {expenses > 0 && (
             <div
               style={{
                 width: `${(expenses / gross) * 100}%`,
-                background: "#a3a3a3",
-                title: "Expenses"
+                background: "#a3a3a3"
               }}
+              title="Expenses"
             />
           )}
         </div>
