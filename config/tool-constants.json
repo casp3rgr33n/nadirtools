@@ -1,0 +1,416 @@
+{
+  "tools": {
+    "subnet-calculator": {
+      "name": "Visual Subnet & CIDR Partition Engine",
+      "category": "networking",
+      "slug": "subnet-calculator",
+      "description": "Calculate subnets, CIDR ranges, subnet masks, and host details with a visual layout map.",
+      "disclaimer": "This utility is for network planning and estimation. Validate configuration parameters against active network hardware and policies.",
+      "math": {
+        "max_cidr": 32,
+        "min_cidr": 0
+      },
+      "guides": {
+        "cidr-notation-guide": {
+          "title": "Classless Inter-Domain Routing (CIDR) Notation Guide",
+          "summary": "Understand the math, binary representation, and prefix masking used in modern CIDR notation.",
+          "content": [
+            "### What is CIDR?",
+            "Classless Inter-Domain Routing (CIDR) replaced the older class-based (Class A, B, C) routing system in 1993. Instead of rigid structures, CIDR uses a flexible syntax to represent IP address ranges using a suffix like `/24`.",
+            "### The Suffix Math",
+            "The suffix represents the number of leading bits set to 1 in the subnet mask. For example, a `/24` prefix means the first 24 bits of a 32-bit IPv4 address are the network bits, and the remaining 8 bits are for host addresses.",
+            "#### Binary Mask Breakdown for /24:",
+            "`11111111 . 11111111 . 11111111 . 00000000` (Decimal equivalent: `255.255.255.0`)",
+            "### Number of Hosts Calculation",
+            "To calculate the total number of usable host addresses for a CIDR suffix `N`:",
+            "\\[ \\text{Usable Hosts} = 2^{(32 - N)} - 2 \\]",
+            "We subtract 2 because the first address is reserved as the **Network Address** (all host bits are 0) and the last address is reserved as the **Broadcast Address** (all host bits are 1)."
+          ]
+        },
+        "ipv4-subnetting-proofs": {
+          "title": "IPv4 Subnetting Logic and Mathematical Proofs",
+          "summary": "A deep dive into the Boolean logic, AND operations, and mathematical proofs behind subnetting.",
+          "content": [
+            "### Subnetting via Boolean Algebra",
+            "Subnetting relies on the bitwise Logical AND operation. When a host wants to determine if another host is on its local subnet, it performs a bitwise AND between its own IP address and its subnet mask.",
+            "#### The AND Rule:",
+            "- `1 AND 1 = 1`",
+            "- `1 AND 0 = 0`",
+            "- `0 AND 1 = 0`",
+            "- `0 AND 0 = 0`",
+            "### Mathematical Proof of Subnet Counts",
+            "If you borrow `b` bits from the host portion of an IP address to create subnets:",
+            "\\[ \\text{Created Subnets} = 2^b \\]",
+            "\\[ \\text{Hosts per Subnet} = 2^{(h - b)} - 2 \\]",
+            "where `h` is the original number of host bits. For example, dividing a `/24` network into `/26` subnets borrows `b = 2` bits, creating `2^2 = 4` subnets, each containing `2^{(8-2)} - 2 = 62` usable hosts."
+          ]
+        },
+        "subnet-mask-reference-table": {
+          "title": "Subnet Mask Reference and Host Capacity Matrix",
+          "summary": "Complete lookup table for CIDR prefixes from /16 to /32, listing subnet masks, wildcards, and host capacities.",
+          "content": [
+            "### CIDR to Subnet Mask Reference Table",
+            "Use this lookup table to quickly reference common subnet divisions:",
+            "| CIDR Prefix | Subnet Mask | Wildcard Mask | Total Hosts | Usable Hosts |",
+            "|---|---|---|---|---|",
+            "| `/32` | `255.255.255.255` | `0.0.0.0` | 1 | 1 (Host Route) |",
+            "| `/30` | `255.255.255.252` | `0.0.0.3` | 4 | 2 (Point-to-Point) |",
+            "| `/29` | `255.255.255.248` | `0.0.0.7` | 8 | 6 |",
+            "| `/28` | `255.255.255.240` | `0.0.0.15` | 16 | 14 |",
+            "| `/27` | `255.255.255.224` | `0.0.0.31` | 32 | 30 |",
+            "| `/24` | `255.255.255.0` | `0.0.0.255` | 256 | 254 |",
+            "| `/22` | `255.255.252.0` | `0.0.3.255` | 1024 | 1022 |",
+            "| `/16` | `255.255.0.0` | `0.0.255.255` | 65536 | 65534 |"
+          ]
+        },
+        "supernetting-vs-subnetting": {
+          "title": "Supernetting vs Subnetting: Routing Aggregation Guide",
+          "summary": "Understand the differences between breaking networks apart (subnetting) and combining them (supernetting).",
+          "content": [
+            "### Subnetting (Dividing)",
+            "Subnetting is the process of splitting a single large network into multiple smaller, logically isolated subnets. This is primarily done to reduce broadcast domains, segment traffic for security, and manage IP exhaustion locally.",
+            "### Supernetting (Aggregating)",
+            "Supernetting (also known as Route Aggregation or CIDR Blocks) is the reverse process. It aggregates multiple contiguous smaller networks into a single larger routing entry with a shorter prefix (e.g., combining four `/24` networks into a `/22` network).",
+            "### Requirements for Supernetting",
+            "For multiple networks to be combined into a supernet, they must meet two conditions:",
+            "1. **Contiguous**: The networks must be next to each other in address space.",
+            "2. **Power of Two**: The count of networks must be a power of two (e.g., 2, 4, 8, 16).",
+            "3. **Boundary Aligned**: The first subnet must start on a boundary address divisible by the total block size."
+          ]
+        }
+      }
+    },
+    "firewall-validator": {
+      "name": "OPNsense & Cisco Firewall Rule Validator",
+      "category": "security",
+      "slug": "firewall-validator",
+      "description": "Parse and validate firewall access control rules (ACLs) to detect configuration syntax, shadowing, and security risks.",
+      "disclaimer": "This utility runs entirely in your browser and does not transmit rules. Results are for validation and syntax auditing. Verify configurations in a secure staging environment.",
+      "math": {},
+      "guides": {
+        "firewall-rule-order-proofs": {
+          "title": "Firewall Rule Ordering and Shadowing Analysis",
+          "summary": "Mathematical and logical proofs on how rule ordering impacts network security and packet filtering.",
+          "content": [
+            "### The Principle of First-Match",
+            "Firewalls parse Access Control Lists (ACLs) sequentially from top to bottom. The first rule that matches a packet's properties (source, destination, protocol, port) determines the action (Pass or Block). Once a match is made, parsing stops.",
+            "### What is Rule Shadowing?",
+            "Rule shadowing occurs when a rule higher in the ACL completely matches all traffic that a lower rule would match. As a result, the lower rule is never evaluated.",
+            "#### Example of Shadowing:",
+            "- **Rule 1 (Top):** Pass Protocol `TCP` Source `Any` Destination `Any` Port `80`",
+            "- **Rule 2 (Bottom):** Block Protocol `TCP` Source `192.168.1.50` Destination `Any` Port `80`",
+            "Here, **Rule 2** is shadowed by **Rule 1** because any TCP packet on port 80 from `192.168.1.50` will be passed by Rule 1 and never reach Rule 2. This creates a security vulnerability.",
+            "### Redundancy vs. Shadowing",
+            "- **Shadowing:** A broader rule is above a narrower rule, neutralizing the narrower one.",
+            "- **Redundancy:** A rule is identical to or narrower than a rule above it, meaning it does not alter the security policy but adds unnecessary parsing overhead."
+          ]
+        },
+        "common-port-vulnerabilities": {
+          "title": "Common Network Port Vulnerabilities and Risk Mitigation",
+          "summary": "An auditing reference matrix for service ports frequently targeted by malicious network traffic.",
+          "content": [
+            "### High-Risk Ports Reference",
+            "When validating firewall rules, ensure that the following ports are tightly restricted and never exposed to the public internet without explicit security layers (VPNs, MFA, IP white-lists):",
+            "| Port | Protocol | Common Service | Primary Risk / Attack Vector |",
+            "|---|---|---|---|",
+            "| `21` | TCP | FTP | Cleartext credentials transmission, directory traversal. |",
+            "| `22` | TCP | SSH | Brute-force credentials guessing, host compromise. |",
+            "| `23` | TCP | Telnet | Unencrypted traffic, eavesdropping. |",
+            "| `3389` | TCP | RDP | Remote Desktop exploits, brute-force entry. |",
+            "| `445` | TCP | SMB | Ransomware spread (e.g., WannaCry), file share exposure. |",
+            "| `1433` | TCP | MSSQL | Database injection, unauthorized access. |",
+            "### Hardening Recommendations",
+            "Implement a default-deny inbound posture. Only permit explicitly defined source IPs to access administrative ports (22, 3389) or tunnel administrative traffic through an encrypted WireGuard or IPsec VPN tunnel."
+          ]
+        },
+        "cisco-acl-syntax-guide": {
+          "title": "Cisco Access Control List (ACL) Syntax and Wildcard Masks",
+          "summary": "Mastering the syntax structure of Cisco IOS ACLs and wildcard mask calculation logic.",
+          "content": [
+            "### Cisco Standard vs. Extended ACLs",
+            "- **Standard ACLs (1-99):** Filters traffic based on **source IP address** only.",
+            "- **Extended ACLs (100-199):** Filters traffic based on **source/destination IP**, **protocol**, and **source/destination port**.",
+            "### The Logic of Wildcard Masks",
+            "Unlike subnet masks (where 1s indicate network bits), Cisco wildcard masks use **0s to match** and **1s to ignore**. A wildcard mask is computed by subtracting the subnet mask from `255.255.255.255`.",
+            "#### Wildcard Mask Calculation Proof:",
+            "  255.255.255.255 (All binary 1s)\\n- 255.255.255.192 (Subnet Mask for /26)\\n-----------------\\n  0.0.0.63        (Wildcard Mask)",
+            "Hence, to match all IPs in the range `192.168.1.0/26`, the Cisco statement is:",
+            "`access-list 101 permit ip 192.168.1.0 0.0.0.63 any`"
+          ]
+        },
+        "opnsense-alias-best-practices": {
+          "title": "OPNsense Firewall Aliases and Performance Optimization",
+          "summary": "Optimize firewall rule parsing latency and maintainability using OPNsense alias architectures.",
+          "content": [
+            "### What are Aliases?",
+            "Aliases in OPNsense are named groups of IP addresses, subnets, ports, or hostnames. Instead of writing separate rules for 20 servers, you write one rule referencing an alias containing all 20 IP addresses.",
+            "### Performance Benefits",
+            "Modern firewalls compile rules into lookup tables (like `pf` tables in BSD). Using aliases:",
+            "1. **Reduces CPU Overhead**: Single rules matching against dynamic tables are significantly faster than hundreds of individual rules.",
+            "2. **Prevents Memory Bloat**: Aliases allow the firewall engine to reuse table structures efficiently.",
+            "### Types of Aliases in OPNsense",
+            "- **Host(s)**: Group of single IPs.",
+            "- **Network(s)**: Group of CIDR subnets.",
+            "- **Port(s)**: Group of TCP/UDP port numbers.",
+            "- **URL Table (IPs)**: Automatically fetches IP lists from a remote server (ideal for threat feeds)."
+          ]
+        }
+      }
+    },
+    "freelance-tax": {
+      "name": "Multi-Regime Tech Freelance Tax & GST Matrix",
+      "category": "finance",
+      "slug": "freelance-tax",
+      "description": "Estimate net tech freelance income, local income taxes, and self-employment or GST/VAT liability across key jurisdictions.",
+      "disclaimer": "This tool is for educational and estimation purposes. It does not constitute formal tax or legal advice. Cross-verify results with a qualified CPA or local tax authority.",
+      "math": {
+        "regimes": {
+          "US": {
+            "currency": "USD",
+            "brackets": [
+              {"limit": 11600, "rate": 0.10},
+              {"limit": 47150, "rate": 0.12},
+              {"limit": 100525, "rate": 0.22},
+              {"limit": 191950, "rate": 0.24},
+              {"limit": 243725, "rate": 0.32},
+              {"limit": 609350, "rate": 0.35},
+              {"limit": 99999999, "rate": 0.37}
+            ],
+            "self_employment_rate": 0.153,
+            "se_deduction_factor": 0.9235
+          },
+          "UK": {
+            "currency": "GBP",
+            "brackets": [
+              {"limit": 12570, "rate": 0.00},
+              {"limit": 50270, "rate": 0.20},
+              {"limit": 125140, "rate": 0.40},
+              {"limit": 99999999, "rate": 0.45}
+            ],
+            "vat_threshold": 90000,
+            "vat_rate": 0.20
+          },
+          "AU": {
+            "currency": "AUD",
+            "brackets": [
+              {"limit": 18200, "rate": 0.00},
+              {"limit": 45000, "rate": 0.19},
+              {"limit": 135000, "rate": 0.30},
+              {"limit": 190000, "rate": 0.37},
+              {"limit": 99999999, "rate": 0.45}
+            ],
+            "gst_threshold": 75000,
+            "gst_rate": 0.10
+          }
+        }
+      },
+      "guides": {
+        "freelance-deduction-tax-proofs": {
+          "title": "Maximizing Tech Freelancer Tax Deductions & Math Proofs",
+          "summary": "A guide on calculating deductible business expenses, depreciable assets, and self-employment tax offsets.",
+          "content": [
+            "### The Net Income Equation",
+            "Freelancers pay income tax on net profit, not gross revenue. The fundamental equation is:",
+            "\\[ \\text{Net Profit} = \\text{Gross Revenue} - \\text{Allowable Deductions} \\]",
+            "Reducing your net profit reduces both your income tax liability and self-employment/social tax obligations.",
+            "### Common Allowable Deductions for Tech Freelancers",
+            "1. **Software & Subscriptions**: IDEs, hosting, domain registration, SaaS tools (Sentry, GitHub, Figma).",
+            "2. **Hardware & Gear**: Computers, monitors, desks, chairs (deducted immediately or depreciated).",
+            "3. **Home Office**: Calculated proportionally by square footage or via a simplified flat-rate method.",
+            "4. **Professional Services**: CPA fees, subcontractor costs, legal fees.",
+            "### The Self-Employment Tax Deduction Proof (US)",
+            "In the United States, you can deduct the employer-equivalent portion of your self-employment tax (7.65%) in calculating your adjusted gross income (AGI):",
+            "\\[ \\text{Net Earnings from Self-Employment} = \\text{Net Profit} \\times 0.9235 \\]",
+            "\\[ \\text{SE Tax} = \\text{Net Earnings} \\times 0.153 \\]",
+            "You then deduct 50% of the calculated SE Tax on Form 1040 before calculating your federal income tax bracket."
+          ]
+        },
+        "gst-vat-thresholds-matrix": {
+          "title": "International GST/VAT Thresholds and Compliance Matrix",
+          "summary": "Registration limits, tax rates, and filing guidelines for self-employed developers in the US, UK, and Australia.",
+          "content": [
+            "### Global GST and VAT Registration Thresholds",
+            "Tech freelancers selling services internationally must track local registration thresholds. Once your gross turnover exceeds these limits over a 12-month period, you must register and charge sales tax/GST/VAT:",
+            "| Jurisdiction | Sales Tax Name | Registration Threshold | Standard Rate |",
+            "|---|---|---|---|",
+            "| **United States** | Sales Tax (State-level) | Dynamic ($100k-$500k depending on state nexus) | 0% - 10% |",
+            "| **United Kingdom** | VAT | £90,000 | 20% |",
+            "| **Australia** | GST | $75,000 AUD | 10% |",
+            "### Exporting Services & Zero-Rating",
+            "For Australian and UK freelancers exporting software development services to overseas clients (e.g., a UK developer contracting for a US company), the service is generally **zero-rated** (exempt from VAT/GST). However, you must still track the gross revenue toward the registration threshold."
+          ]
+        },
+        "quarterly-estimated-tax-guide": {
+          "title": "Quarterly Estimated Taxes: Calendars and Calculation Mechanics",
+          "summary": "Avoid underpayment penalties by understanding the timing and math behind quarterly tax filings.",
+          "content": [
+            "### What are Estimated Taxes?",
+            "Unlike employees who have taxes withheld from every paycheck, self-employed individuals must pay taxes in four quarterly installments. This covers both income tax and self-employment/national insurance contributions.",
+            "### US Quarterly Due Dates",
+            "- **Q1 (Jan 1 - Mar 31):** Due April 15",
+            "- **Q2 (Apr 1 - May 31):** Due June 15",
+            "- **Q3 (Jun 1 - Aug 31):** Due September 15",
+            "- **Q4 (Sep 1 - Dec 31):** Due January 15 (following year)",
+            "### Calculating the Safe Harbor Rule",
+            "To avoid underpayment penalties in the US, you must pay at least:",
+            "1. **90%** of the tax you owe for the current tax year, or",
+            "2. **100%** of the tax shown on your return for the prior year (110% if prior AGI was over $150,000)."
+          ]
+        },
+        "us-corp-vs-sole-proprietorship": {
+          "title": "US LLC / S-Corp vs Sole Proprietorship Tax Comparison",
+          "summary": "Understand the structural differences, tax savings, and compliance costs of incorporating your tech business.",
+          "content": [
+            "### Sole Proprietorship (Default)",
+            "A sole proprietorship is unincorporated. Business income and expenses are reported on Schedule C of your personal tax return. All net profits are subject to self-employment tax (15.3%) plus ordinary federal and state income tax.",
+            "### Single-Member LLC",
+            "By default, a single-member LLC is treated as a 'disregarded entity' for tax purposes, meaning it is taxed exactly like a sole proprietorship. However, it provides vital personal liability protection.",
+            "### S-Corporation Election",
+            "Once net freelance earnings exceed roughly $80,000 - $100,000, electing S-Corp status can provide substantial tax savings.",
+            "#### S-Corp Tax Saving Mechanism:",
+            "1. You divide income into **Salary** (W-2) and **Distributions** (Shareholder dividends).",
+            "2. You pay self-employment/payroll taxes *only* on the Salary portion.",
+            "3. The Distributions portion is exempt from self-employment taxes (saving 15.3% on that segment)."
+          ]
+        }
+      }
+    },
+    "cron-visualizer": {
+      "name": "Advanced Cron Expression Visualizer & Simulator",
+      "category": "dev",
+      "slug": "cron-visualizer",
+      "description": "Parse cron expressions, generate human-readable schedules, and simulate upcoming execution time triggers.",
+      "disclaimer": "This tool executes parsing client-side. Cron engines vary by operating system scheduler (e.g. systemd vs Vixie cron). Double-check schedule outputs against your target system environment.",
+      "math": {},
+      "guides": {
+        "cron-syntax-ref-matrix": {
+          "title": "Cron Syntax Reference & Operator Guide",
+          "summary": "Master the five-field cron system, special characters, and syntax formatting rules.",
+          "content": [
+            "### The Five Fields of Cron",
+            "A standard cron expression consists of five space-separated fields representing the time interval of execution:",
+            "```",
+            "*   *   *   *   *\n|   |   |   |   |\n|   |   |   |   +----- Day of week (0 - 6) (Sunday=0)\n|   |   |   +--------- Month (1 - 12)\n|   |   +------------- Day of month (1 - 31)\n|   +----------------- Hour (0 - 23)\n+--------------------- Minute (0 - 59)\n```",
+            "### Special Operators",
+            "- `*` (Asterisk): Matches any value in the field (e.g., every minute).",
+            "- `,` (Comma): Separates a list of values (e.g., `1,5` in the hour field means 1:00 AM and 5:00 AM).",
+            "- `-` (Hyphen): Defines a range of values (e.g., `1-5` in the day of week field means Monday through Friday).",
+            "- `/` (Slash): Specifies increments/steps (e.g., `*/15` in the minute field means every 15 minutes)."
+          ]
+        },
+        "non-standard-cron-implementations": {
+          "title": "Non-Standard Cron Implementations: Unix, AWS, and systemd",
+          "summary": "Compare scheduling variations across classic Unix, AWS EventBridge, and systemd timers.",
+          "content": [
+            "### Linux Vixie Cron vs. AWS Cron",
+            "Standard Unix cron uses 5 fields. However, other systems like AWS CloudWatch/EventBridge and Spring framework use 6 fields (adding seconds or years).",
+            "#### AWS Cron Syntax Difference:",
+            "AWS cron uses 6 fields: `cron(Minutes Hours Day-of-month Month Day-of-week Year)`. Additionally, you cannot specify `*` in both the Day-of-month and Day-of-week fields. One must be a question mark `?`.",
+            "### systemd Timers: The Modern Alternative",
+            "On modern Linux systems, systemd timers are replacing standard cron jobs. They offer several advantages:",
+            "1. **Monotonic Timers**: Can run tasks relative to boot time or service activation rather than just calendar time.",
+            "2. **Detailed Logging**: Console output from triggered services is captured automatically in journald.",
+            "3. **Resource Control**: Jobs can be throttled using cgroups to prevent system resource starvation."
+          ]
+        },
+        "cron-edge-cases-simulations": {
+          "title": "Cron Scheduling Edge Cases and DST Simulations",
+          "summary": "Understand how system clock drift, month lengths, and Daylight Saving Time (DST) impact scheduled cron execution.",
+          "content": [
+            "### The February and Leap Year Edge Case",
+            "If a cron job is scheduled with `0 0 29 2 *`, it will execute exactly at midnight on February 29th. This means the job will run only once every four years.",
+            "### Daylight Saving Time (DST) Shifts",
+            "DST transitions are the source of major scheduler bugs:",
+            "1. **Spring Forward (Lost Hour)**: When the clock skips from 2:00 AM to 3:00 AM, any job scheduled during that lost hour (e.g., `30 2 * * *`) **may not run at all** depending on your scheduler engine.",
+            "2. **Fall Back (Duplicate Hour)**: When the clock repeats the hour from 1:00 AM to 2:00 AM, any job scheduled during that repeated period **may run twice**.",
+            "### Mitigation Strategy",
+            "For mission-critical production jobs, always configure your server system clocks and application cron schedulers to run on **Coordinated Universal Time (UTC)**, which has no daylight saving shifts."
+          ]
+        },
+        "optimizing-cron-load-distribution": {
+          "title": "Sysadmin Guide to Optimizing Cron Load Distribution",
+          "summary": "Avoid CPU spikes and database locks by staggering cron execution times.",
+          "content": [
+            "### The Midnight CPU Spike Problem",
+            "Many developers default to scheduling daily cron tasks at midnight: `0 0 * * *`. If a server hosts 50 distinct cron tasks, triggering all of them at exactly `00:00:00` causes massive resource spikes, database locking, and potential API rate-limiting failures.",
+            "### The Staggering Principle",
+            "Distribute your cron executions across off-peak minutes. Instead of running everything at midnight, shift the minutes and hours:",
+            "- Backup Job: `12 2 * * *` (2:12 AM)",
+            "- Log Cleanup: `37 3 * * *` (3:37 AM)",
+            "- Analytics Compilation: `43 4 * * *` (4:43 AM)",
+            "### Adding Random Jitter",
+            "For clustered services running identical cron schedules, add a random start delay (jitter) within the script itself to prevent all nodes hitting database endpoints simultaneously:",
+            "```bash\\n#!/bin/bash\\n# Sleep for a random number of seconds between 1 and 60\\nsleep $(( RANDOM % 60 + 1 ))\\n# Run the actual task\\npython3 backup.py\\n```"
+          ]
+        }
+      }
+    },
+    "coc-yield": {
+      "name": "Commercial Property Cash-on-Cash Yield Simulator",
+      "category": "finance",
+      "slug": "coc-yield",
+      "description": "Calculate commercial real estate cash-on-cash yield, cap rate, annual net cash flow, and debt service coverage ratio (DSCR).",
+      "disclaimer": "This simulator is an initial underwriting aid. It does not replace professional commercial appraisal or financial analysis. Verify assumptions with an licensed broker or financial advisor.",
+      "math": {},
+      "guides": {
+        "cash-on-cash-yield-proofs": {
+          "title": "Cash-on-Cash Yield Calculations & Financial Proofs",
+          "summary": "Analyze the formulas, parameters, and mathematical proofs used to calculate commercial real estate cash yields.",
+          "content": [
+            "### Cash-on-Cash (CoC) Yield Defined",
+            "Cash-on-Cash yield measures the cash return on the actual cash invested in a property. It ignores future appreciation, principal paydown, and tax benefits, focusing purely on annual cash-flow velocity.",
+            "### The Mathematical Formula",
+            "\\[ \\text{Cash-on-Cash Yield} = \\frac{\\text{Annual Net Cash Flow}}{\\text{Total Cash Invested}} \\times 100 \\]",
+            "### Component Breakdown",
+            "1. **Annual Net Cash Flow**: Net Operating Income (NOI) minus annual debt service payments (mortgage principal + interest).",
+            "2. **Total Cash Invested**: Down payment + closing costs + immediate repair/renovation capital."
+          ]
+        },
+        "dscr-guidelines-banks": {
+          "title": "Debt Service Coverage Ratio (DSCR) Bank Underwriting Standards",
+          "summary": "Understand how banks use DSCR to evaluate property risk and determine maximum commercial loan amounts.",
+          "content": [
+            "### What is DSCR?",
+            "The Debt Service Coverage Ratio (DSCR) measures a commercial property's ability to cover its debt payments using its operating income. It is the primary metric lenders use to assess loan default risk.",
+            "### The Formula",
+            "\\[ \\text{DSCR} = \\frac{\\text{Net Operating Income (NOI)}}{\\text{Annual Debt Service}} \\]",
+            "### Lenders' Threshold Tiers",
+            "- **DSCR < 1.0**: Cash flow negative. The property does not generate enough income to cover the mortgage. Rejected immediately.",
+            "- **DSCR = 1.15 - 1.20**: Minimum bank threshold for low-risk properties (e.g., multi-family housing).",
+            "- **DSCR = 1.25 - 1.35**: Standard threshold for retail, office spaces, or mixed-use properties.",
+            "- **DSCR > 1.40**: Highly conservative, indicating strong cash flow buffers and favorable interest rates."
+          ]
+        },
+        "cap-rate-vs-coc-yield": {
+          "title": "Capitalization Rate vs Cash-on-Cash Yield Comparison",
+          "summary": "Differentiate between Capitalization Rate and Cash-on-Cash Yield to underwrite property value and investor returns.",
+          "content": [
+            "### Capitalization (Cap) Rate",
+            "Cap rate evaluates a property's unleveraged return on investment. It assumes the asset is purchased entirely in cash. It is used to compare property values across different markets:",
+            "\\[ \\text{Cap Rate} = \\frac{\\text{Net Operating Income (NOI)}}{\\text{Purchase Price}} \\times 100 \\]",
+            "### Cash-on-Cash Yield",
+            "CoC yield evaluates a leveraged return. It changes based on the loan interest rate, loan-to-value (LTV) ratio, and closing costs. CoC yield tells an investor their actual cash flow velocity relative to their cash outlay.",
+            "### Leveraged Arbitrage",
+            "When the Cap Rate is higher than the borrowing interest rate, adding debt increases the CoC yield. This is called **positive leverage** or leveraged arbitrage."
+          ]
+        },
+        "commercial-lease-structures-guide": {
+          "title": "Commercial Lease Structures: Triple Net (NNN) vs Gross",
+          "summary": "Understand how lease structures impact Net Operating Income (NOI) and property maintenance liability.",
+          "content": [
+            "### Types of Commercial Leases",
+            "Lease structures dictate which expenses are paid by the landlord and which are passed through to the tenant. This directly determines the predictability of the Net Operating Income (NOI).",
+            "### 1. Triple Net (NNN) Lease",
+            "In a Triple Net lease, the tenant is responsible for virtually all property operating expenses in addition to base rent. The three 'Nets' are:",
+            "- **N1**: Property Taxes",
+            "- **N2**: Building Insurance",
+            "- **N3**: Common Area Maintenance (CAM) / Repairs",
+            "NNN leases are highly favored by passive investors because the landlord has minimal expense fluctuation, yielding a highly stable Cap Rate.",
+            "### 2. Gross Lease (Full Service)",
+            "The tenant pays a single flat rent. The landlord is responsible for paying all taxes, insurance, utilities, and maintenance. If maintenance costs spike, the landlord's NOI decreases directly."
+          ]
+        }
+      }
+    }
+  }
+}
