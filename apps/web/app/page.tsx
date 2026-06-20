@@ -21,7 +21,7 @@ export default function HomePage() {
       {/* Hero Section */}
       <div style={heroContainerStyle}>
         <h1 style={heroTitleStyle}>
-          Mathematical Precision. <span style={{ color: "#60a5fa" }}>Zero Latency.</span>
+          Mathematical Precision. <span style={{ color: "#dfba6b" }}>Zero Latency.</span>
         </h1>
         <p style={heroSubStyle}>
           NadirTools is a suite of foundational, client-side utility engines built for engineers, sysadmins, and financial analysts. 100% of calculations execute in your browser with zero data transmission.
@@ -101,7 +101,7 @@ export default function HomePage() {
               height="24"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="#34d399"
+              stroke="#22c55e"
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -164,8 +164,8 @@ const searchIconStyle: React.CSSProperties = {
 
 const searchInputStyle: React.CSSProperties = {
   width: "100%",
-  background: "rgba(30, 41, 59, 0.4)",
-  border: "1px solid rgba(255, 255, 255, 0.08)",
+  background: "rgba(20, 32, 22, 0.4)",
+  border: "1px solid rgba(223, 186, 107, 0.15)",
   borderRadius: "9999px",
   padding: "1rem 1.5rem 1rem 3.25rem",
   color: "#f8fafc",
@@ -195,8 +195,8 @@ const cardLinkStyle: React.CSSProperties = {
 };
 
 const cardStyle: React.CSSProperties = {
-  background: "rgba(30, 41, 59, 0.25)",
-  border: "1px solid rgba(255, 255, 255, 0.05)",
+  background: "rgba(20, 32, 22, 0.2)",
+  border: "1px solid rgba(223, 186, 107, 0.1)",
   borderRadius: "16px",
   padding: "1.75rem",
   height: "100%",
@@ -211,9 +211,9 @@ const cardHeaderStyle: React.CSSProperties = {
 };
 
 const categoryBadgeStyle: React.CSSProperties = {
-  background: "rgba(96, 165, 250, 0.1)",
-  border: "1px solid rgba(96, 165, 250, 0.15)",
-  color: "#60a5fa",
+  background: "rgba(34, 197, 94, 0.08)",
+  border: "1px solid rgba(34, 197, 94, 0.2)",
+  color: "#22c55e",
   fontSize: "0.7rem",
   fontWeight: 700,
   padding: "0.25rem 0.6rem",
@@ -240,7 +240,7 @@ const cardFooterStyle: React.CSSProperties = {
   display: "flex",
   alignItems: "center",
   gap: "0.5rem",
-  color: "#60a5fa",
+  color: "#22c55e",
   fontSize: "0.88rem",
   fontWeight: 600
 };
@@ -254,16 +254,16 @@ const noResultsStyle: React.CSSProperties = {
 };
 
 const moatBannerStyle: React.CSSProperties = {
-  background: "rgba(16, 185, 129, 0.03)",
-  border: "1px solid rgba(16, 185, 129, 0.1)",
+  background: "rgba(34, 197, 94, 0.03)",
+  border: "1px solid rgba(223, 186, 107, 0.15)",
   borderRadius: "16px",
   padding: "1.5rem 2rem",
   marginTop: "4rem"
 };
 
 const shieldIconContainerStyle: React.CSSProperties = {
-  background: "rgba(16, 185, 129, 0.08)",
-  border: "1px solid rgba(16, 185, 129, 0.15)",
+  background: "rgba(34, 197, 94, 0.08)",
+  border: "1px solid rgba(34, 197, 94, 0.2)",
   borderRadius: "12px",
   padding: "0.75rem",
   display: "flex",

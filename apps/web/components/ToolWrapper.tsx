@@ -18,9 +18,9 @@ export default function ToolWrapper({ toolSlug, toolConfig }: ToolWrapperProps) 
         gap: "0.5rem",
         padding: "0.4rem 0.8rem",
         borderRadius: "20px",
-        background: "rgba(16, 185, 129, 0.08)",
-        border: "1px solid rgba(16, 185, 129, 0.2)",
-        color: "#34d399",
+        background: "rgba(34, 197, 94, 0.08)",
+        border: "1px solid rgba(34, 197, 94, 0.2)",
+        color: "#22c55e",
         fontSize: "0.75rem",
         fontWeight: 500,
         marginBottom: "1.5rem"
@@ -31,8 +31,8 @@ export default function ToolWrapper({ toolSlug, toolConfig }: ToolWrapperProps) 
           width: "6px",
           height: "6px",
           borderRadius: "50%",
-          background: "#10b981",
-          boxShadow: "0 0 8px #10b981"
+          background: "#22c55e",
+          boxShadow: "0 0 8px #22c55e"
         }}
       />
       Processed completely client-side. No data is saved or transmitted.
@@ -42,13 +42,13 @@ export default function ToolWrapper({ toolSlug, toolConfig }: ToolWrapperProps) 
   return (
     <div
       style={{
-        background: "rgba(23, 23, 23, 0.6)",
+        background: "rgba(5, 7, 5, 0.6)",
         backdropFilter: "blur(12px)",
-        border: "1px solid rgba(255, 255, 255, 0.05)",
+        border: "1px solid rgba(223, 186, 107, 0.15)",
         borderRadius: "16px",
         padding: "2rem",
         color: "#e5e5e5",
-        boxShadow: "0 8px 32px 0 rgba(0, 0, 0, 0.37)"
+        boxShadow: "0 8px 32px 0 rgba(0, 0, 0, 0.5)"
       }}
     >
       {privacyBadge}
@@ -156,8 +156,8 @@ function SubnetCalculator() {
   }, [ip, cidr, splitCidr]);
 
   return (
-    <div>
-      <div style={formRowStyle}>
+    <div style={toolSplitterStyle}>
+      <div style={toolLeftColStyle}>
         <div style={formFieldStyle}>
           <label style={labelStyle}>Base Network IP</label>
           <input
@@ -189,39 +189,40 @@ function SubnetCalculator() {
             style={inputStyle}
           />
         </div>
+        {error && <div style={errorStyle}>{error}</div>}
       </div>
 
-      {error && <div style={errorStyle}>{error}</div>}
+      <div style={toolRightColStyle}>
+        <div>
+          <h3 style={sectionHeadingStyle}>Calculated Partition Table</h3>
+          <p style={{ color: "#737373", fontSize: "0.85rem", marginBottom: "1rem" }}>
+            Showing up to 128 subnets. Split size yields {Math.pow(2, Math.max(0, splitCidr - cidr))} total networks.
+          </p>
 
-      <div style={{ marginTop: "2rem" }}>
-        <h3 style={sectionHeadingStyle}>Calculated Partition Table</h3>
-        <p style={{ color: "#737373", fontSize: "0.85rem", marginBottom: "1rem" }}>
-          Showing up to 128 subnets. Split size yields {Math.pow(2, Math.max(0, splitCidr - cidr))} total networks.
-        </p>
-
-        <div style={{ overflowX: "auto" }}>
-          <table style={tableStyle}>
-            <thead>
-              <tr style={tableHeaderRowStyle}>
-                <th style={tableHeaderStyle}>Subnet #</th>
-                <th style={tableHeaderStyle}>Network Address</th>
-                <th style={tableHeaderStyle}>Usable IP Range</th>
-                <th style={tableHeaderStyle}>Broadcast IP</th>
-                <th style={tableHeaderStyle}>Usable Hosts</th>
-              </tr>
-            </thead>
-            <tbody>
-              {subnets.map((sub) => (
-                <tr key={sub.id} style={tableRowStyle}>
-                  <td style={tableColStyle}>Subnet {sub.id}</td>
-                  <td style={{ ...tableColStyle, color: "#60a5fa", fontFamily: "monospace" }}>{sub.network}/{splitCidr}</td>
-                  <td style={{ ...tableColStyle, fontFamily: "monospace" }}>{sub.range}</td>
-                  <td style={{ ...tableColStyle, fontFamily: "monospace" }}>{sub.broadcast}</td>
-                  <td style={{ ...tableColStyle, fontWeight: "bold" }}>{sub.usableHosts.toLocaleString()}</td>
+          <div style={{ overflowX: "auto" }}>
+            <table style={tableStyle}>
+              <thead>
+                <tr style={tableHeaderRowStyle}>
+                  <th style={tableHeaderStyle}>Subnet #</th>
+                  <th style={tableHeaderStyle}>Network Address</th>
+                  <th style={tableHeaderStyle}>Usable IP Range</th>
+                  <th style={tableHeaderStyle}>Broadcast IP</th>
+                  <th style={tableHeaderStyle}>Usable Hosts</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {subnets.map((sub) => (
+                  <tr key={sub.id} style={tableRowStyle}>
+                    <td style={tableColStyle}>Subnet {sub.id}</td>
+                    <td style={{ ...tableColStyle, color: "#22c55e", fontFamily: "monospace" }}>{sub.network}/{splitCidr}</td>
+                    <td style={{ ...tableColStyle, fontFamily: "monospace" }}>{sub.range}</td>
+                    <td style={{ ...tableColStyle, fontFamily: "monospace" }}>{sub.broadcast}</td>
+                    <td style={{ ...tableColStyle, fontWeight: "bold" }}>{sub.usableHosts.toLocaleString()}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
@@ -363,76 +364,80 @@ access-list 101 deny tcp 192.168.1.0 0.0.0.255 any eq 80`;
   }, [rulesText]);
 
   return (
-    <div>
-      <div style={formFieldStyle}>
-        <label style={labelStyle}>Raw Firewall Rule Payload (OPNsense or Cisco Format)</label>
-        <textarea
-          value={rulesText}
-          onChange={(e) => setRulesText(e.target.value)}
-          style={{
-            ...inputStyle,
-            fontFamily: "monospace",
-            height: "150px",
-            resize: "vertical"
-          }}
-        />
+    <div style={toolSplitterStyle}>
+      <div style={toolLeftColStyle}>
+        <div style={formFieldStyle}>
+          <label style={labelStyle}>Raw Firewall Rule Payload (OPNsense or Cisco Format)</label>
+          <textarea
+            value={rulesText}
+            onChange={(e) => setRulesText(e.target.value)}
+            style={{
+              ...inputStyle,
+              fontFamily: "monospace",
+              height: "280px",
+              resize: "vertical"
+            }}
+          />
+        </div>
       </div>
 
-      <div style={{ marginTop: "2rem" }}>
-        <h3 style={sectionHeadingStyle}>Rule Validation Report</h3>
+      <div style={toolRightColStyle}>
+        <div>
+          <h3 style={sectionHeadingStyle}>Rule Shadowing Validation Report</h3>
 
-        <div style={{ overflowX: "auto" }}>
-          <table style={tableStyle}>
-            <thead>
-              <tr style={tableHeaderRowStyle}>
-                <th style={tableHeaderStyle}>Line</th>
-                <th style={tableHeaderStyle}>Format</th>
-                <th style={tableHeaderStyle}>Parsed Action</th>
-                <th style={tableHeaderStyle}>Match Metrics</th>
-                <th style={tableHeaderStyle}>Audit Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {reports.map((rep, idx) => (
-                <tr
-                  key={idx}
-                  style={{
-                    ...tableRowStyle,
-                    background: rep.shadowed ? "rgba(239, 68, 68, 0.05)" : "transparent"
-                  }}
-                >
-                  <td style={tableColStyle}>{rep.lineNum}</td>
-                  <td style={tableColStyle}>{rep.format}</td>
-                  <td style={tableColStyle}>
-                    <span
-                      style={{
-                        padding: "0.2rem 0.5rem",
-                        borderRadius: "4px",
-                        fontSize: "0.8rem",
-                        fontWeight: "bold",
-                        background: rep.action === "pass" ? "rgba(16, 185, 129, 0.15)" : "rgba(239, 68, 68, 0.15)",
-                        color: rep.action === "pass" ? "#34d399" : "#f87171"
-                      }}
-                    >
-                      {rep.action.toUpperCase()}
-                    </span>
-                  </td>
-                  <td style={{ ...tableColStyle, fontFamily: "monospace", fontSize: "0.85rem" }}>
-                    Proto: {rep.proto} | Src: {rep.src} | Dst: {rep.dst} | Port: {rep.port}
-                  </td>
-                  <td style={tableColStyle}>
-                    {rep.shadowed ? (
-                      <span style={{ color: "#f87171", fontWeight: 600 }}>
-                        ⚠️ Shadowed by Line {rep.shadowedBy} (Rule Ineffective)
-                      </span>
-                    ) : (
-                      <span style={{ color: "#34d399" }}>✓ Valid</span>
-                    )}
-                  </td>
+          <div style={{ overflowX: "auto" }}>
+            <table style={tableStyle}>
+              <thead>
+                <tr style={tableHeaderRowStyle}>
+                  <th style={tableHeaderStyle}>Line</th>
+                  <th style={tableHeaderStyle}>Format</th>
+                  <th style={tableHeaderStyle}>Parsed Action</th>
+                  <th style={tableHeaderStyle}>Match Metrics</th>
+                  <th style={tableHeaderStyle}>Audit Status</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {reports.map((rep, idx) => (
+                  <tr
+                    key={idx}
+                    style={{
+                      ...tableRowStyle,
+                      background: rep.shadowed ? "rgba(239, 68, 68, 0.05)" : "transparent"
+                    }}
+                  >
+                    <td style={tableColStyle}>{rep.lineNum}</td>
+                    <td style={tableColStyle}>{rep.format}</td>
+                    <td style={tableColStyle}>
+                      <span
+                        style={{
+                          padding: "0.2rem 0.5rem",
+                          borderRadius: "4px",
+                          fontSize: "0.8rem",
+                          fontWeight: "bold",
+                          background: rep.action === "pass" ? "rgba(34, 197, 94, 0.15)" : "rgba(239, 68, 68, 0.15)",
+                          color: rep.action === "pass" ? "#22c55e" : "#f87171"
+                        }}
+                      >
+                        {rep.action.toUpperCase()}
+                      </span>
+                    </td>
+                    <td style={{ ...tableColStyle, fontFamily: "monospace", fontSize: "0.85rem" }}>
+                      Proto: {rep.proto} | Src: {rep.src} | Dst: {rep.dst} | Port: {rep.port}
+                    </td>
+                    <td style={tableColStyle}>
+                      {rep.shadowed ? (
+                        <span style={{ color: "#f87171", fontWeight: 600 }}>
+                          ⚠️ Shadowed by Line {rep.shadowedBy} (Rule Ineffective)
+                        </span>
+                      ) : (
+                        <span style={{ color: "#22c55e" }}>✓ Valid</span>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
@@ -517,8 +522,8 @@ function FreelanceTax({ calculatorConfig }: { calculatorConfig: any }) {
   const currencySymbol = regime === "US" ? "$" : regime === "UK" ? "£" : "$";
 
   return (
-    <div>
-      <div style={formRowStyle}>
+    <div style={toolSplitterStyle}>
+      <div style={toolLeftColStyle}>
         <div style={formFieldStyle}>
           <label style={labelStyle}>Tax Regime / Region</label>
           <select
@@ -553,124 +558,124 @@ function FreelanceTax({ calculatorConfig }: { calculatorConfig: any }) {
         </div>
       </div>
 
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
-          gap: "1rem",
-          margin: "2rem 0"
-        }}
-      >
-        <div style={metricCardStyle}>
-          <div style={metricTitleStyle}>Net Operating Profit</div>
-          <div style={metricValueStyle}>
-            {currencySymbol}
-            {netIncome.toLocaleString(undefined, { maximumFractionDigits: 0 })}
-          </div>
-        </div>
-        <div style={metricCardStyle}>
-          <div style={metricTitleStyle}>Income Tax Estimate</div>
-          <div style={metricValueStyle}>
-            {currencySymbol}
-            {taxOwed.toLocaleString(undefined, { maximumFractionDigits: 0 })}
-          </div>
-        </div>
-        <div style={metricCardStyle}>
-          <div style={metricTitleStyle}>Social / Medicare Tax</div>
-          <div style={metricValueStyle}>
-            {currencySymbol}
-            {socialTax.toLocaleString(undefined, { maximumFractionDigits: 0 })}
-          </div>
-        </div>
-        <div style={{ ...metricCardStyle, background: "rgba(52, 211, 153, 0.08)" }}>
-          <div style={{ ...metricTitleStyle, color: "#34d399" }}>Net Take-Home</div>
-          <div style={{ ...metricValueStyle, color: "#34d399" }}>
-            {currencySymbol}
-            {takeHome.toLocaleString(undefined, { maximumFractionDigits: 0 })}
-          </div>
-        </div>
-      </div>
-
-      {indirectTax > 0 && (
+      <div style={toolRightColStyle}>
         <div
           style={{
-            padding: "1rem",
-            background: "rgba(245, 158, 11, 0.08)",
-            border: "1px solid rgba(245, 158, 11, 0.2)",
-            borderRadius: "8px",
-            color: "#fbbf24",
-            fontSize: "0.9rem",
-            marginBottom: "1.5rem"
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
+            gap: "1rem"
           }}
         >
-          ⚠️ **VAT/GST Alert:** Your gross income ({currencySymbol}
-          {gross.toLocaleString()}) exceeds the registration threshold. You may need to charge/register for sales taxes. Projected annual sales tax obligation is {currencySymbol}
-          {indirectTax.toLocaleString(undefined, { maximumFractionDigits: 0 })}.
+          <div style={metricCardStyle}>
+            <div style={metricTitleStyle}>Net Operating Profit</div>
+            <div style={metricValueStyle}>
+              {currencySymbol}
+              {netIncome.toLocaleString(undefined, { maximumFractionDigits: 0 })}
+            </div>
+          </div>
+          <div style={metricCardStyle}>
+            <div style={metricTitleStyle}>Income Tax Estimate</div>
+            <div style={metricValueStyle}>
+              {currencySymbol}
+              {taxOwed.toLocaleString(undefined, { maximumFractionDigits: 0 })}
+            </div>
+          </div>
+          <div style={metricCardStyle}>
+            <div style={metricTitleStyle}>Social / Medicare Tax</div>
+            <div style={metricValueStyle}>
+              {currencySymbol}
+              {socialTax.toLocaleString(undefined, { maximumFractionDigits: 0 })}
+            </div>
+          </div>
+          <div style={{ ...metricCardStyle, background: "rgba(34, 197, 94, 0.08)" }}>
+            <div style={{ ...metricTitleStyle, color: "#22c55e" }}>Net Take-Home</div>
+            <div style={{ ...metricValueStyle, color: "#22c55e" }}>
+              {currencySymbol}
+              {takeHome.toLocaleString(undefined, { maximumFractionDigits: 0 })}
+            </div>
+          </div>
         </div>
-      )}
 
-      {/* Visual Income Breakdown Bar */}
-      <div>
-        <h4 style={{ fontSize: "1rem", fontWeight: "bold", marginBottom: "0.75rem" }}>Income Distribution</h4>
-        <div
-          style={{
-            height: "24px",
-            borderRadius: "12px",
-            display: "flex",
-            overflow: "hidden",
-            width: "100%",
-            background: "#262626"
-          }}
-        >
-          {takeHome > 0 && (
-            <div
-              style={{
-                width: `${(takeHome / gross) * 100}%`,
-                background: "#10b981"
-              }}
-              title="Take Home"
-            />
-          )}
-          {taxOwed > 0 && (
-            <div
-              style={{
-                width: `${(taxOwed / gross) * 100}%`,
-                background: "#f43f5e"
-              }}
-              title="Income Tax"
-            />
-          )}
-          {socialTax > 0 && (
-            <div
-              style={{
-                width: `${(socialTax / gross) * 100}%`,
-                background: "#e11d48"
-              }}
-              title="Social Tax"
-            />
-          )}
-          {expenses > 0 && (
-            <div
-              style={{
-                width: `${(expenses / gross) * 100}%`,
-                background: "#a3a3a3"
-              }}
-              title="Expenses"
-            />
-          )}
-        </div>
-        <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginTop: "0.75rem", fontSize: "0.8rem" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "0.3rem" }}>
-            <span style={{ width: "8px", height: "8px", background: "#10b981", borderRadius: "50%" }} /> Take Home
+        {indirectTax > 0 && (
+          <div
+            style={{
+              padding: "1rem",
+              background: "rgba(223, 186, 107, 0.08)",
+              border: "1px solid rgba(223, 186, 107, 0.2)",
+              borderRadius: "8px",
+              color: "#dfba6b",
+              fontSize: "0.9rem"
+            }}
+          >
+            ⚠️ **VAT/GST Alert:** Your gross income ({currencySymbol}
+            {gross.toLocaleString()}) exceeds the registration threshold. You may need to charge/register for sales taxes. Projected annual sales tax obligation is {currencySymbol}
+            {indirectTax.toLocaleString(undefined, { maximumFractionDigits: 0 })}.
           </div>
-          <div style={{ display: "flex", alignItems: "center", gap: "0.3rem" }}>
-            <span style={{ width: "8px", height: "8px", background: "#f43f5e", borderRadius: "50%" }} /> Income Tax
+        )}
+
+        {/* Visual Income Breakdown Bar */}
+        <div>
+          <h4 style={{ fontSize: "1rem", fontWeight: "bold", marginBottom: "0.75rem" }}>Income Distribution</h4>
+          <div
+            style={{
+              height: "24px",
+              borderRadius: "12px",
+              display: "flex",
+              overflow: "hidden",
+              width: "100%",
+              background: "#262626"
+            }}
+          >
+            {takeHome > 0 && (
+              <div
+                style={{
+                  width: `${(takeHome / gross) * 100}%`,
+                  background: "#22c55e"
+                }}
+                title="Take Home"
+              />
+            )}
+            {taxOwed > 0 && (
+              <div
+                style={{
+                  width: `${(taxOwed / gross) * 100}%`,
+                  background: "#f43f5e"
+                }}
+                title="Income Tax"
+              />
+            )}
+            {socialTax > 0 && (
+              <div
+                style={{
+                  width: `${(socialTax / gross) * 100}%`,
+                  background: "#e11d48"
+                }}
+                title="Social Tax"
+              />
+            )}
+            {expenses > 0 && (
+              <div
+                style={{
+                  width: `${(expenses / gross) * 100}%`,
+                  background: "#a3a3a3"
+                }}
+                title="Expenses"
+              />
+            )}
           </div>
-          <div style={{ display: "flex", alignItems: "center", gap: "0.3rem" }}>
-            <span style={{ width: "8px", height: "8px", background: "#e11d48", borderRadius: "50%" }} /> Social Tax
-          </div>
-          <div style={{ display: "flex", alignItems: "center", gap: "0.3rem" }}>
-            <span style={{ width: "8px", height: "8px", background: "#a3a3a3", borderRadius: "50%" }} /> Expenses
+          <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginTop: "0.75rem", fontSize: "0.8rem" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "0.3rem" }}>
+              <span style={{ width: "8px", height: "8px", background: "#22c55e", borderRadius: "50%" }} /> Take Home
+            </div>
+            <div style={{ display: "flex", alignItems: "center", gap: "0.3rem" }}>
+              <span style={{ width: "8px", height: "8px", background: "#f43f5e", borderRadius: "50%" }} /> Income Tax
+            </div>
+            <div style={{ display: "flex", alignItems: "center", gap: "0.3rem" }}>
+              <span style={{ width: "8px", height: "8px", background: "#e11d48", borderRadius: "50%" }} /> Social Tax
+            </div>
+            <div style={{ display: "flex", alignItems: "center", gap: "0.3rem" }}>
+              <span style={{ width: "8px", height: "8px", background: "#a3a3a3", borderRadius: "50%" }} /> Expenses
+            </div>
           </div>
         </div>
       </div>
@@ -743,44 +748,47 @@ function CronVisualizer() {
   }, [expression]);
 
   return (
-    <div>
-      <div style={formFieldStyle}>
-        <label style={labelStyle}>Cron Expression</label>
-        <input
-          type="text"
-          value={expression}
-          onChange={(e) => setExpression(e.target.value)}
-          style={{ ...inputStyle, fontFamily: "monospace", fontSize: "1.2rem", letterSpacing: "1px" }}
-        />
+    <div style={toolSplitterStyle}>
+      <div style={toolLeftColStyle}>
+        <div style={formFieldStyle}>
+          <label style={labelStyle}>Cron Expression</label>
+          <input
+            type="text"
+            value={expression}
+            onChange={(e) => setExpression(e.target.value)}
+            style={{ ...inputStyle, fontFamily: "monospace", fontSize: "1.2rem", letterSpacing: "1px" }}
+          />
+        </div>
+        {error && <div style={errorStyle}>{error}</div>}
       </div>
 
-      {error ? (
-        <div style={errorStyle}>{error}</div>
-      ) : (
-        <div style={{ margin: "1.5rem 0" }}>
-          <h4 style={{ fontSize: "1.1rem", fontWeight: "bold", color: "#60a5fa", marginBottom: "0.5rem" }}>
-            Decoded Schedule Description:
-          </h4>
-          <p style={{ fontSize: "1.05rem", background: "rgba(255,255,255,0.03)", padding: "1rem", borderRadius: "8px" }}>
-            {description}
-          </p>
-        </div>
-      )}
+      <div style={toolRightColStyle}>
+        {!error && (
+          <div>
+            <div style={{ marginBottom: "1.5rem" }}>
+              <h4 style={{ fontSize: "1.1rem", fontWeight: "bold", color: "#22c55e", marginBottom: "0.5rem" }}>
+                Decoded Schedule Description:
+              </h4>
+              <p style={{ fontSize: "1.05rem", background: "rgba(255,255,255,0.03)", padding: "1rem", borderRadius: "8px" }}>
+                {description}
+              </p>
+            </div>
 
-      {!error && (
-        <div style={{ marginTop: "1.5rem" }}>
-          <h4 style={{ fontSize: "1rem", fontWeight: "bold", marginBottom: "0.5rem" }}>
-            Next 5 Projected Execution Triggers:
-          </h4>
-          <ul style={{ paddingLeft: "1.5rem", color: "#a3a3a3", fontFamily: "monospace" }}>
-            {nextRuns.map((run, index) => (
-              <li key={index} style={{ marginBottom: "0.4rem" }}>
-                {run}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+            <div style={{ marginTop: "1.5rem" }}>
+              <h4 style={{ fontSize: "1rem", fontWeight: "bold", marginBottom: "0.5rem" }}>
+                Next 5 Projected Execution Triggers:
+              </h4>
+              <ul style={{ paddingLeft: "1.5rem", color: "#a3a3a3", fontFamily: "monospace" }}>
+                {nextRuns.map((run, index) => (
+                  <li key={index} style={{ marginBottom: "0.4rem" }}>
+                    {run}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
@@ -848,8 +856,8 @@ function CashOnCashYield() {
   }, [purchasePrice, downPaymentPct, interestRate, loanTermYears, grossRent, opexPct]);
 
   return (
-    <div>
-      <div style={formRowStyle}>
+    <div style={toolSplitterStyle}>
+      <div style={toolLeftColStyle}>
         <div style={formFieldStyle}>
           <label style={labelStyle}>Purchase Price ($)</label>
           <input
@@ -878,8 +886,6 @@ function CashOnCashYield() {
             style={inputStyle}
           />
         </div>
-      </div>
-      <div style={formRowStyle}>
         <div style={formFieldStyle}>
           <label style={labelStyle}>Loan Term (Years)</label>
           <input
@@ -890,7 +896,7 @@ function CashOnCashYield() {
           />
         </div>
         <div style={formFieldStyle}>
-          <label style={labelStyle}>Annual Gross rent ($)</label>
+          <label style={labelStyle}>Annual Gross Rent ($)</label>
           <input
             type="number"
             value={grossRent}
@@ -909,56 +915,57 @@ function CashOnCashYield() {
         </div>
       </div>
 
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
-          gap: "1rem",
-          margin: "2rem 0"
-        }}
-      >
-        <div style={metricCardStyle}>
-          <div style={metricTitleStyle}>Cash-on-Cash Yield</div>
-          <div style={{ ...metricValueStyle, color: "#10b981" }}>
-            {cocYield.toFixed(2)}%
+      <div style={toolRightColStyle}>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
+            gap: "1rem"
+          }}
+        >
+          <div style={metricCardStyle}>
+            <div style={metricTitleStyle}>Cash-on-Cash Yield</div>
+            <div style={{ ...metricValueStyle, color: "#22c55e" }}>
+              {cocYield.toFixed(2)}%
+            </div>
+          </div>
+          <div style={metricCardStyle}>
+            <div style={metricTitleStyle}>Cap Rate</div>
+            <div style={metricValueStyle}>{capRate.toFixed(2)}%</div>
+          </div>
+          <div style={metricCardStyle}>
+            <div style={metricTitleStyle}>Annual Net Cash Flow</div>
+            <div style={{ ...metricValueStyle, color: cashFlow >= 0 ? "#22c55e" : "#f43f5e" }}>
+              ${cashFlow.toLocaleString(undefined, { maximumFractionDigits: 0 })}
+            </div>
+          </div>
+          <div style={metricCardStyle}>
+            <div style={metricTitleStyle}>DSCR</div>
+            <div style={{ ...metricValueStyle, color: dscr >= 1.25 ? "#22c55e" : dscr >= 1.0 ? "#dfba6b" : "#f43f5e" }}>
+              {dscr.toFixed(2)}x
+            </div>
           </div>
         </div>
-        <div style={metricCardStyle}>
-          <div style={metricTitleStyle}>Cap Rate</div>
-          <div style={metricValueStyle}>{capRate.toFixed(2)}%</div>
-        </div>
-        <div style={metricCardStyle}>
-          <div style={metricTitleStyle}>Annual Net Cash Flow</div>
-          <div style={{ ...metricValueStyle, color: cashFlow >= 0 ? "#10b981" : "#f43f5e" }}>
-            ${cashFlow.toLocaleString(undefined, { maximumFractionDigits: 0 })}
-          </div>
-        </div>
-        <div style={metricCardStyle}>
-          <div style={metricTitleStyle}>DSCR</div>
-          <div style={{ ...metricValueStyle, color: dscr >= 1.25 ? "#10b981" : dscr >= 1.0 ? "#f59e0b" : "#f43f5e" }}>
-            {dscr.toFixed(2)}x
-          </div>
-        </div>
-      </div>
 
-      <div style={{ marginTop: "2rem" }}>
-        <h3 style={sectionHeadingStyle}>Underwriting Calculations Matrix</h3>
-        <table style={tableStyle}>
-          <tbody>
-            <tr style={tableRowStyle}>
-              <td style={tableColStyle}>Net Operating Income (NOI)</td>
-              <td style={tableColStyle}>${noi.toLocaleString(undefined, { maximumFractionDigits: 0 })}</td>
-            </tr>
-            <tr style={tableRowStyle}>
-              <td style={tableColStyle}>Annual Debt Service (P&I)</td>
-              <td style={tableColStyle}>${debtService.toLocaleString(undefined, { maximumFractionDigits: 0 })}</td>
-            </tr>
-            <tr style={tableRowStyle}>
-              <td style={tableColStyle}>Total Cash Invested (Inc. 2.5% Closing Costs)</td>
-              <td style={tableColStyle}>${totalInvested.toLocaleString(undefined, { maximumFractionDigits: 0 })}</td>
-            </tr>
-          </tbody>
-        </table>
+        <div style={{ marginTop: "1rem" }}>
+          <h3 style={sectionHeadingStyle}>Underwriting Calculations Matrix</h3>
+          <table style={tableStyle}>
+            <tbody>
+              <tr style={tableRowStyle}>
+                <td style={tableColStyle}>Net Operating Income (NOI)</td>
+                <td style={tableColStyle}>${noi.toLocaleString(undefined, { maximumFractionDigits: 0 })}</td>
+              </tr>
+              <tr style={tableRowStyle}>
+                <td style={tableColStyle}>Annual Debt Service (P&I)</td>
+                <td style={tableColStyle}>${debtService.toLocaleString(undefined, { maximumFractionDigits: 0 })}</td>
+              </tr>
+              <tr style={tableRowStyle}>
+                <td style={tableColStyle}>Total Cash Invested (Inc. 2.5% Closing Costs)</td>
+                <td style={tableColStyle}>${totalInvested.toLocaleString(undefined, { maximumFractionDigits: 0 })}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
@@ -967,6 +974,28 @@ function CashOnCashYield() {
 /* ==========================================================================
    CSS Styles
    ========================================================================== */
+const toolSplitterStyle: React.CSSProperties = {
+  display: "flex",
+  gap: "2.5rem",
+  flexWrap: "wrap",
+  alignItems: "flex-start"
+};
+
+const toolLeftColStyle: React.CSSProperties = {
+  flex: "1 1 320px",
+  display: "flex",
+  flexDirection: "column",
+  gap: "1.25rem"
+};
+
+const toolRightColStyle: React.CSSProperties = {
+  flex: "1.5 1 450px",
+  minWidth: 0,
+  display: "flex",
+  flexDirection: "column",
+  gap: "1.5rem"
+};
+
 const formRowStyle: React.CSSProperties = {
   display: "flex",
   gap: "1.5rem",
@@ -988,8 +1017,8 @@ const labelStyle: React.CSSProperties = {
 };
 
 const inputStyle: React.CSSProperties = {
-  background: "#171717",
-  border: "1px solid rgba(255, 255, 255, 0.1)",
+  background: "#0b0f0b",
+  border: "1px solid rgba(223, 186, 107, 0.15)",
   borderRadius: "8px",
   padding: "0.75rem 1rem",
   color: "#f5f5f5",
@@ -1002,7 +1031,7 @@ const inputStyle: React.CSSProperties = {
 const selectStyle: React.CSSProperties = {
   ...inputStyle,
   appearance: "none",
-  backgroundImage: "url(\"data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>\")",
+  backgroundImage: "url(\"data:image/svg+xml;utf8,<svg fill='%23dfba6b' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>\")",
   backgroundRepeat: "no-repeat",
   backgroundPosition: "right 10px center"
 };
@@ -1018,8 +1047,8 @@ const errorStyle: React.CSSProperties = {
 };
 
 const metricCardStyle: React.CSSProperties = {
-  background: "rgba(255, 255, 255, 0.02)",
-  border: "1px solid rgba(255, 255, 255, 0.05)",
+  background: "rgba(223, 186, 107, 0.02)",
+  border: "1px solid rgba(223, 186, 107, 0.1)",
   borderRadius: "12px",
   padding: "1.25rem",
   textAlign: "center"
@@ -1056,7 +1085,7 @@ const tableStyle: React.CSSProperties = {
 };
 
 const tableHeaderRowStyle: React.CSSProperties = {
-  borderBottom: "2px solid rgba(255, 255, 255, 0.1)"
+  borderBottom: "2px solid rgba(223, 186, 107, 0.15)"
 };
 
 const tableHeaderStyle: React.CSSProperties = {
@@ -1066,7 +1095,7 @@ const tableHeaderStyle: React.CSSProperties = {
 };
 
 const tableRowStyle: React.CSSProperties = {
-  borderBottom: "1px solid rgba(255, 255, 255, 0.05)"
+  borderBottom: "1px solid rgba(223, 186, 107, 0.08)"
 };
 
 const tableColStyle: React.CSSProperties = {

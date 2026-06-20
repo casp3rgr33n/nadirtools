@@ -29,7 +29,7 @@ export default function RootLayout({
           <header style={headerStyle}>
             <div style={headerContainerStyle}>
               <a href="/" style={logoStyle}>
-                Nadir<span style={{ color: "#60a5fa" }}>Tools</span>
+                Nadir<span style={{ color: "#22c55e" }}>Tools</span>
               </a>
               <div style={badgeStyle}>Solitude Dark Labs</div>
             </div>
@@ -63,7 +63,7 @@ const globalStyles = `
   }
 
   body {
-    background-color: #0b0f19;
+    background-color: #050705;
     color: #e2e8f0;
     font-family: 'Outfit', sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -79,17 +79,17 @@ const globalStyles = `
   }
 
   ::-webkit-scrollbar-track {
-    background: #0f172a;
+    background: #050705;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #1e293b;
+    background: #141c15;
     border-radius: 5px;
-    border: 2px solid #0f172a;
+    border: 2px solid #050705;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #3b82f6;
+    background: #22c55e;
   }
 
   /* Table styling enhancements */
@@ -110,13 +110,14 @@ const globalStyles = `
 
   /* Links & typography rules */
   a {
-    color: #60a5fa;
+    color: #22c55e;
     text-decoration: none;
-    transition: color 0.2s ease;
+    transition: all 0.2s ease;
   }
 
   a:hover {
-    color: #93c5fd;
+    color: #4ade80;
+    text-shadow: 0 0 8px rgba(34, 197, 94, 0.4);
   }
 
   code, pre {
@@ -128,16 +129,16 @@ const containerStyle: React.CSSProperties = {
   display: "flex",
   flexDirection: "column",
   minHeight: "100vh",
-  backgroundImage: "radial-gradient(circle at 50% -20%, #1e293b 0%, #0b0f19 70%)"
+  backgroundImage: "radial-gradient(circle at 50% -20%, #112214 0%, #050705 70%)"
 };
 
 const headerStyle: React.CSSProperties = {
-  borderBottom: "1px solid rgba(255, 255, 255, 0.05)",
+  borderBottom: "1px solid rgba(223, 186, 107, 0.15)",
   backdropFilter: "blur(12px)",
   position: "sticky",
   top: 0,
   zIndex: 100,
-  background: "rgba(11, 15, 25, 0.7)"
+  background: "rgba(5, 7, 5, 0.7)"
 };
 
 const headerContainerStyle: React.CSSProperties = {
@@ -159,13 +160,14 @@ const logoStyle: React.CSSProperties = {
 };
 
 const badgeStyle: React.CSSProperties = {
-  background: "rgba(255, 255, 255, 0.05)",
-  border: "1px solid rgba(255, 255, 255, 0.1)",
+  background: "rgba(223, 186, 107, 0.05)",
+  border: "1px solid rgba(223, 186, 107, 0.2)",
   borderRadius: "12px",
   padding: "0.25rem 0.75rem",
   fontSize: "0.8rem",
   fontWeight: 600,
-  color: "#94a3b8"
+  color: "#dfba6b",
+  letterSpacing: "0.5px"
 };
 
 const mainStyle: React.CSSProperties = {
@@ -177,8 +179,8 @@ const mainStyle: React.CSSProperties = {
 };
 
 const footerStyle: React.CSSProperties = {
-  borderTop: "1px solid rgba(255, 255, 255, 0.05)",
-  background: "#070a13",
+  borderTop: "1px solid rgba(223, 186, 107, 0.12)",
+  background: "#030403",
   color: "#64748b",
   fontSize: "0.85rem",
   padding: "2rem 0"

@@ -163,9 +163,9 @@ export default async function ToolCatchAllPage({ params }: PageProps) {
                       href={`/tools/${toolSlug}/${gKey}`}
                       style={{
                         ...sidebarLinkStyle,
-                        color: isActive ? "#60a5fa" : "#94a3b8",
-                        background: isActive ? "rgba(96, 165, 250, 0.08)" : "transparent",
-                        borderLeft: isActive ? "2px solid #60a5fa" : "2px solid transparent"
+                        color: isActive ? "#22c55e" : "#94a3b8",
+                        background: isActive ? "rgba(34, 197, 94, 0.08)" : "transparent",
+                        borderLeft: isActive ? "2px solid #22c55e" : "2px solid transparent"
                       }}
                     >
                       {g.title}
@@ -293,8 +293,8 @@ const contentSplitterStyle: React.CSSProperties = {
 const articleStyle: React.CSSProperties = {
   flex: "2 1 600px",
   minWidth: 0,
-  background: "rgba(30, 41, 59, 0.15)",
-  border: "1px solid rgba(255, 255, 255, 0.03)",
+  background: "rgba(20, 32, 22, 0.15)",
+  border: "1px solid rgba(223, 186, 107, 0.08)",
   borderRadius: "16px",
   padding: "2.5rem",
   boxShadow: "0 4px 30px rgba(0,0,0,0.15)"
@@ -307,8 +307,8 @@ const sidebarStyle: React.CSSProperties = {
 };
 
 const sidebarStickyWrapperStyle: React.CSSProperties = {
-  background: "rgba(15, 23, 42, 0.3)",
-  border: "1px solid rgba(255, 255, 255, 0.05)",
+  background: "rgba(10, 20, 12, 0.3)",
+  border: "1px solid rgba(223, 186, 107, 0.1)",
   borderRadius: "16px",
   padding: "1.5rem"
 };
@@ -416,8 +416,8 @@ const codeStyle: React.CSSProperties = {
 const backToToolBtnStyle: React.CSSProperties = {
   display: "inline-flex",
   alignItems: "center",
-  background: "#1e293b",
-  border: "1px solid rgba(255, 255, 255, 0.1)",
+  background: "#141c15",
+  border: "1px solid rgba(223, 186, 107, 0.2)",
   borderRadius: "8px",
   padding: "0.75rem 1.25rem",
   color: "#f8fafc",
