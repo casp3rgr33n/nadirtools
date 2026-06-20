@@ -1,7 +1,8 @@
-const config = {
-  default: {
-    runtime: "edge",
-  },
-};
+import { defineCloudflareConfig } from "@opennextjs/cloudflare";
 
-export default config;
+const cfConfig = defineCloudflareConfig({});
+
+export default {
+  ...cfConfig,
+  buildCommand: "npx next build",
+};

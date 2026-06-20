@@ -9,6 +9,6 @@
     "nodejs_compat"
   ],
   "build": {
-    "command": "npx opennextjs-cloudflare build --dangerouslyUseUnsupportedNextVersion"
+    "command": "npx opennextjs-cloudflare build"
   }
 }

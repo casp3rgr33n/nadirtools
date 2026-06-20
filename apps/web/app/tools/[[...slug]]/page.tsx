@@ -4,9 +4,9 @@ import ToolWrapper from "../../../components/ToolWrapper";
 import SchemaRenderer from "../../../components/SchemaRenderer";
 
 interface PageProps {
-  params: {
+  params: Promise<{
     slug?: string[];
-  };
+  }>;
 }
 
 // Pre-render all paths for static export
@@ -28,8 +28,9 @@ export function generateStaticParams() {
   return paths;
 }
 
-export default function ToolCatchAllPage({ params }: PageProps) {
-  const slug = params.slug || [];
+export default async function ToolCatchAllPage({ params }: PageProps) {
+  const resolvedParams = await params;
+  const slug = resolvedParams.slug || [];
   const tools = (toolConstants as any).tools;
 
   if (slug.length === 0) {
