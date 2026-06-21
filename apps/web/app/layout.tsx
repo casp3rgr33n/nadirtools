@@ -1,5 +1,4 @@
 import React from "react";
-import Script from "next/script";
 import FeedbackWidget from "../components/FeedbackWidget";
 import CookieConsent from "../components/CookieConsent";
 
@@ -26,11 +25,10 @@ export default function RootLayout({
         />
         <style dangerouslySetInnerHTML={{ __html: globalStyles }} />
         {/* Google AdSense Code Snippet */}
-        <Script
+        <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6928785219078585"
           crossOrigin="anonymous"
-          strategy="afterInteractive"
         />
       </head>
 
