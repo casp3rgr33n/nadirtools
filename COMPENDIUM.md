@@ -111,3 +111,18 @@ wsl bash -i -c "cd /mnt/c/Users/Casp3r/AI/nadirtools/apps/web && npm run build"
 Always use the `github-mcp-server` `push_files` tool to bypass local credential issues. 
 
 If the size of your modified files is large (e.g. >100KB), **never push all files in a single tool call** as it will exceed the LLM output token limits (typically 8,192 tokens) and get truncated. Instead, group your files and commit them in batches of 2-3 files.
+
+---
+
+## 🎨 Responsive UI & Widget Integration Guidelines
+
+### 1. Viewport Constraints & Scroll Behavior
+All modals, dialogs, and flyout overlays must include bounds checking to ensure they never clip off the screen on small/mobile devices:
+- **Restrict height**: Apply `maxHeight: "calc(100vh - 2rem)"` (or similar viewport margins).
+- **Enable scrolling**: Add `overflowY: "auto"` to allow the contents of the modal to scroll vertically if the screen height is too small or if an on-screen keyboard is active.
+- **Compact grids**: Use flexible wrapping (`flexWrap: "wrap"` with a responsive flex-basis like `flex: "1 1 200px"`) and keep gaps/paddings tighter (`0.5rem` to `1rem`) to fit small viewports.
+
+### 2. Guarding Optional External Integrations
+External elements (such as Cloudflare Turnstile, captcha widgets, or external third-party embeds) must only load and render if their respective site credentials/keys are defined in environment variables:
+- **Frontend check**: Do not load the external `<Script>` or mount the widget target container if the environment variable (e.g., `NEXT_PUBLIC_TURNSTILE_SITE_KEY`) is falsy or missing.
+- **Server check**: Write server-side handlers to conditionally skip/bypass checking validation tokens if matching secret keys are not configured locally or in staging environments.

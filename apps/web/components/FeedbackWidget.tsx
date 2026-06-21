@@ -14,14 +14,16 @@ export default function FeedbackWidget() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
+  const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+
   // Initialize Turnstile widget when modal opens
   useEffect(() => {
-    if (isOpen) {
+    if (isOpen && siteKey) {
       const renderWidget = () => {
         if ((window as any).turnstile) {
           try {
             (window as any).turnstile.render("#turnstile-container", {
-              sitekey: process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "1x00000000000000000000AA", // Cloudflare testing always-pass sitekey
+              sitekey: siteKey,
               callback: (token: string) => {
                 setTurnstileToken(token);
               },
@@ -41,7 +43,7 @@ export default function FeedbackWidget() {
       setStatus("idle");
       setErrorMessage("");
     }
-  }, [isOpen]);
+  }, [isOpen, siteKey]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -82,7 +84,7 @@ export default function FeedbackWidget() {
         setErrorMessage(data.error || "Failed to submit feedback.");
         setStatus("error");
         // Reset turnstile widget on failure
-        if ((window as any).turnstile) {
+        if (siteKey && (window as any).turnstile) {
           (window as any).turnstile.reset("#turnstile-container");
         }
       }
@@ -96,10 +98,12 @@ export default function FeedbackWidget() {
   return (
     <>
       {/* Cloudflare Turnstile Script Loader */}
-      <Script
-        src="https://challenges.cloudflare.com/turnstile/v0/api.js"
-        strategy="lazyOnload"
-      />
+      {siteKey && (
+        <Script
+          src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+          strategy="lazyOnload"
+        />
+      )}
 
       {/* Floating Toggle Button */}
       <button
@@ -227,9 +231,11 @@ export default function FeedbackWidget() {
                 </div>
 
                 {/* Turnstile Captcha Container */}
-                <div style={turnstileContainerStyle}>
-                  <div id="turnstile-container" />
-                </div>
+                {siteKey && (
+                  <div style={turnstileContainerStyle}>
+                    <div id="turnstile-container" />
+                  </div>
+                )}
 
                 {status === "error" && <div style={errorStyle}>{errorMessage}</div>}
 
@@ -299,19 +305,20 @@ const overlayStyle: React.CSSProperties = {
 const modalStyle: React.CSSProperties = {
   width: "100%",
   maxWidth: "520px",
+  maxHeight: "calc(100vh - 2rem)",
   background: "rgba(5, 7, 5, 0.95)",
   border: "1px solid rgba(223, 186, 107, 0.2)",
   borderRadius: "16px",
   boxShadow: "0 10px 40px rgba(0, 0, 0, 0.8)",
   display: "flex",
   flexDirection: "column",
-  overflow: "hidden",
+  overflowY: "auto",
   color: "#e5e5e5",
   animation: "fadeIn 0.2s ease-out",
 };
 
 const headerStyle: React.CSSProperties = {
-  padding: "1.25rem 1.5rem",
+  padding: "1rem 1.25rem",
   borderBottom: "1px solid rgba(223, 186, 107, 0.12)",
   display: "flex",
   justifyContent: "space-between",
@@ -336,15 +343,15 @@ const closeBtnStyle: React.CSSProperties = {
 };
 
 const formStyle: React.CSSProperties = {
-  padding: "1.5rem",
+  padding: "1.25rem",
   display: "flex",
   flexDirection: "column",
-  gap: "1rem",
+  gap: "0.75rem",
 };
 
 const rowStyle: React.CSSProperties = {
   display: "flex",
-  gap: "1rem",
+  gap: "0.75rem",
   flexWrap: "wrap",
 };
 
@@ -352,7 +359,7 @@ const fieldStyle: React.CSSProperties = {
   flex: "1 1 200px",
   display: "flex",
   flexDirection: "column",
-  gap: "0.4rem",
+  gap: "0.35rem",
 };
 
 const labelStyle: React.CSSProperties = {
@@ -383,7 +390,7 @@ const selectStyle: React.CSSProperties = {
 
 const textareaStyle: React.CSSProperties = {
   ...inputStyle,
-  height: "100px",
+  height: "80px",
   resize: "vertical",
   fontFamily: "inherit",
 };
@@ -397,8 +404,8 @@ const turnstileContainerStyle: React.CSSProperties = {
 const footerStyle: React.CSSProperties = {
   display: "flex",
   justifyContent: "flex-end",
-  gap: "1rem",
-  marginTop: "0.5rem",
+  gap: "0.75rem",
+  marginTop: "0.25rem",
 };
 
 const cancelBtnStyle: React.CSSProperties = {

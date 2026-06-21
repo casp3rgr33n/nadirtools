@@ -108,7 +108,7 @@ export default async function ToolCatchAllPage({ params }: PageProps) {
   if (slug.length === 0) {
     // If someone visits /tools directly, redirect or show message
     return (
-      <div style={{ textAlign: "center\", padding: \"4rem 0" }}>
+      <div style={{ textAlign: "center", padding: "4rem 0" }}>
         <h1 style={{ fontSize: "2rem" }}>Utility Tools Directory</h1>
         <p style={{ marginTop: "1rem" }}><a href="/">Return to Search Portal</a></p>
       </div>
@@ -120,8 +120,8 @@ export default async function ToolCatchAllPage({ params }: PageProps) {
 
   if (!tool) {
     return (
-      <div style={{ textAlign: "center\", padding: \"4rem 0" }}>
-        <h1 style={{ fontSize: "2rem\", color: \"#f43f5e" }}>Tool Not Found</h1>
+      <div style={{ textAlign: "center", padding: "4rem 0" }}>
+        <h1 style={{ fontSize: "2rem", color: "#f43f5e" }}>Tool Not Found</h1>
         <p style={{ marginTop: "1rem" }}><a href="/">Return to Search Portal</a></p>
       </div>
     );
@@ -135,12 +135,13 @@ export default async function ToolCatchAllPage({ params }: PageProps) {
 
     if (!guide) {
       return (
-        <div style={{ textAlign: "center\", padding: \"4rem 0" }}>
-          <h1 style={{ fontSize: "2rem\", color: \"#f43f5e" }}>Guide Not Found</h1>
+        <div style={{ textAlign: "center", padding: "4rem 0" }}>
+          <h1 style={{ fontSize: "2rem", color: "#f43f5e" }}>Guide Not Found</h1>
           <p style={{ marginTop: "1rem" }}><a href={`/tools/${toolSlug}`}>Back to {tool.name}</a></p>
         </div>
       );
     }
+
 
     // FAQs for schema (drawn from headings or math definitions)
     const faqs = [
@@ -208,13 +209,13 @@ export default async function ToolCatchAllPage({ params }: PageProps) {
                 const blockId = `p-${idx}`;
                 return (
                   <p key={idx} id={blockId} style={pStyle}>
-                    {block
+                    {block}
                   </p>
                 );
               })}
             </div>
 
-            <div style={{ marginTop: "3rem\", borderTop: \"1px solid rgba(255,255,255,0.05)\", paddingTop: \"1.5rem" }}>
+            <div style={{ marginTop: "3rem", borderTop: "1px solid rgba(255,255,255,0.05)", paddingTop: "1.5rem" }}>
               <a href={`/tools/${toolSlug}`} style={backToToolBtnStyle}>
                 ← Launch Interactive Calculator
               </a>
@@ -225,9 +226,10 @@ export default async function ToolCatchAllPage({ params }: PageProps) {
           <aside id="sibling-sidebar" style={sidebarStyle}>
             <div style={sidebarStickyWrapperStyle}>
               <h4 style={sidebarHeaderStyle}>Related Guides</h4>
-              <nav style={{ display: "flex\", flexDirection: \"column\", gap: \"0.75rem" }}>
+              <nav style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
                 {Object.keys(tool.guides).map((gKey) => {
                   const g = tool.guides[gKey];
+
                   const isActive = gKey === guideSlug;
                   return (
                     <a
@@ -276,7 +278,7 @@ export default async function ToolCatchAllPage({ params }: PageProps) {
         <aside id="guides-sidebar" style={sidebarStyle}>
           <div style={sidebarStickyWrapperStyle}>
             <h4 style={sidebarHeaderStyle}>Technical & Math Guides</h4>
-            <div style={{ display: "flex\", flexDirection: \"column\", gap: \"1rem" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
               {Object.keys(tool.guides || {}).map((gKey) => {
                 const g = tool.guides[gKey];
                 return (
@@ -313,13 +315,13 @@ function RenderGuideTable({ rawTable }: { rawTable: string }) {
   const bodyRows = tableData.slice(1);
 
   return (
-    <div style={{ overflowX: \"auto\", margin: \"1.5rem 0" }}>
+    <div style={{ overflowX: "auto", margin: "1.5rem 0" }}>
       <table style={guideTableStyle}>
         <thead>
           <tr style={{ borderBottom: "2px solid rgba(255,255,255,0.1)" }}>
             {headers.map((h, i) => (
               <th key={i} style={guideThStyle}>
-                {h
+                {h}
               </th>
             ))}
           </tr>
@@ -327,6 +329,7 @@ function RenderGuideTable({ rawTable }: { rawTable: string }) {
         <tbody>
           {bodyRows.map((row, rIdx) => (
             <tr key={rIdx} style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+
               {row.map((cell, cIdx) => (
                 <td key={cIdx} style={guideTdStyle}>
                   {cell}
