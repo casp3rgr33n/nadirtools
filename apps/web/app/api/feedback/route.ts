@@ -81,13 +81,19 @@ async function verifyTurnstile(token: string, ip?: string): Promise<boolean> {
       method: "POST",
       body: formData,
     });
-    const outcome = (await res.json()) as { success: boolean };
+    const outcome = (await res.json()) as { success: boolean; "error-codes"?: string[] };
+    
+    if (!outcome.success) {
+      console.error("Turnstile verification failed. Details:", outcome);
+    }
+    
     return outcome.success;
   } catch (e) {
     console.error("Error verifying Turnstile token:", e);
     return false;
   }
 }
+
 
 async function sendDiscordWebhook(payload: {
   name: string;
