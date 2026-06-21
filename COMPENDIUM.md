@@ -90,13 +90,13 @@ Always verify code correctness before proposing commits or deployments.
 ### 1. Run Unit Tests (WSL Node environment)
 Since Node/NPM environments reside in WSL, execute tests via interactive bash:
 ```bash
-wsl bash -i -c "cd /mnt/c/Users/Casp3r/AI/nadirtools/apps/web && npx tsx utils/test-runner.ts"
+wsl bash -i -c "cd /home/casp3r/nadirtools/apps/web && npx tsx utils/test-runner.ts"
 ```
 
 ### 2. Verify Next.js Build
 Compile and bundle the production assets for Cloudflare using OpenNext:
 ```bash
-wsl bash -i -c "cd /mnt/c/Users/Casp3r/AI/nadirtools/apps/web && npm run build"
+wsl bash -i -c "cd /home/casp3r/nadirtools/apps/web && npm run build"
 ```
 
 ---
