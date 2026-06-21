@@ -9,6 +9,9 @@
   "compatibility_flags": [
     "nodejs_compat"
   ],
+  "vars": {
+    "NEXT_PUBLIC_TURNSTILE_SITE_KEY": "0x4AAAAAADoc3I3G8TzzVIgO"
+  },
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS"
