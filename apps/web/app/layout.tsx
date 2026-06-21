@@ -1,5 +1,6 @@
 import React from "react";
 import FeedbackWidget from "../components/FeedbackWidget";
+import CookieConsent from "../components/CookieConsent";
 
 export const metadata = {
   title: "NadirTools | Solitude Dark Labs Product Suite",
@@ -45,11 +46,13 @@ export default function RootLayout({
               <div>© 2026 NadirTools. A product of Solitude Dark Labs. All rights reserved.</div>
               <div style={{ display: "flex", gap: "1.5rem" }}>
                 <a href="/" style={footerLinkStyle}>Home</a>
+                <a href="/privacy" style={footerLinkStyle}>Privacy Policy</a>
                 <a href="https://github.com/casp3rgr33n/nadirtools" target="_blank" rel="noreferrer" style={footerLinkStyle}>GitHub</a>
               </div>
             </div>
           </footer>
           <FeedbackWidget />
+          <CookieConsent />
         </div>
       </body>
     </html>
