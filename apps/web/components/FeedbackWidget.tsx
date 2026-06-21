@@ -120,7 +120,7 @@ export default function FeedbackWidget() {
         >
           <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
         </svg>
-        <span>Feedback &amp; Bugs</span>
+        <span>Feedback & Bugs</span>
       </button>
 
       {/* Modal Overlay / Form */}
@@ -129,7 +129,7 @@ export default function FeedbackWidget() {
           <div style={modalStyle} onClick={(e) => e.stopPropagation()}>
             {/* Modal Header */}
             <div style={headerStyle}>
-              <h3 style={titleStyle}>Submit Feedback &amp; Bugs</h3>
+              <h3 style={titleStyle}>Submit Feedback & Bugs</h3>
               <button onClick={() => setIsOpen(false)} style={closeBtnStyle}>
                 ✕
               </button>

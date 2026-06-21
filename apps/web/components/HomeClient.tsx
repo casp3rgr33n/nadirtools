@@ -55,7 +55,7 @@ export default function HomeClient() {
 
       {/* Grid of Tools */}
       <div>
-        <h2 style={sectionTitleStyle}>Foundational Tools &amp; Calculators</h2>
+        <h2 style={sectionTitleStyle}>Foundational Tools & Calculators</h2>
         <div style={gridStyle}>
           {filteredTools.map((tool: any) => (
             <a key={tool.slug} href={`/tools/${tool.slug}`} style={cardLinkStyle}>
