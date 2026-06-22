@@ -173,7 +173,7 @@ const globalStyles = `
       transform: translateY(0);
     }
   }
-\`;
+`;
 
 const containerStyle: React.CSSProperties = {
   display: "flex",
