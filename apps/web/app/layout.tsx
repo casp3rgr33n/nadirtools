@@ -32,6 +32,7 @@ export default function RootLayout({
         />
       </head>
 
+
       <body>
         <div style={containerStyle}>
           {/* Header */}
@@ -65,6 +66,7 @@ export default function RootLayout({
     </html>
   );
 }
+
 
 const globalStyles = `
   /* Reset and Base Styles */
@@ -149,7 +151,7 @@ const globalStyles = `
       flex-direction: column; /* Articles first on desktop */
     }
   }
-`;
+\`;
 
 const containerStyle: React.CSSProperties = {
   display: "flex",

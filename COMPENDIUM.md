@@ -130,3 +130,4 @@ All modals, dialogs, and flyout overlays must include bounds checking to ensure 
 External elements (such as Cloudflare Turnstile, captcha widgets, or external third-party embeds) must only load and render if their respective site credentials/keys are defined in environment variables:
 - **Frontend check**: Do not load the external `<Script>` or mount the widget target container if the environment variable (e.g., `NEXT_PUBLIC_TURNSTILE_SITE_KEY`) is falsy or missing.
 - **Server check**: Write server-side handlers to conditionally skip/bypass checking validation tokens if matching secret keys are not configured locally or in staging environments.
+
