@@ -39,7 +39,18 @@ export default function RootLayout({
           <header style={headerStyle}>
             <div style={headerContainerStyle}>
               <a href="/" style={logoStyle}>
-                Nadir<span style={{ color: "#22c55e" }}>Tools</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style={{ marginRight: '10px', filter: 'drop-shadow(0 0 4px rgba(0,255,208,0.4))' }}>
+                  <path d="M12 21L3 12h4V3h10v9h4L12 21z" fill="url(#grad)" opacity="0.8" />
+                  <path d="M12 21L3 12h4V3h10v9h4L12 21z" stroke="#00ffd0" strokeWidth="1.5" />
+                  <circle cx="12" cy="15" r="2.5" fill="#dfba6b" />
+                  <defs>
+                    <linearGradient id="grad" x1="0" y1="0" x2="0" y2="24" gradientUnits="userSpaceOnUse">
+                      <stop stopColor="#00ffd0" stopOpacity="0.1" />
+                      <stop offset="1" stopColor="#dfba6b" stopOpacity="0.4" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+                <span style={{ color: "#dfba6b" }}>Nadir</span><span style={{ color: "#00ffd0", textShadow: "0 0 8px rgba(0,255,208,0.4)" }}>Tools</span>
               </a>
               <div style={badgeStyle}>Solitude Dark Labs</div>
             </div>
@@ -151,7 +162,18 @@ const globalStyles = `
       flex-direction: column; /* Articles first on desktop */
     }
   }
-`;
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+\`;
 
 const containerStyle: React.CSSProperties = {
   display: "flex",
@@ -188,13 +210,13 @@ const logoStyle: React.CSSProperties = {
 };
 
 const badgeStyle: React.CSSProperties = {
-  background: "rgba(223, 186, 107, 0.05)",
-  border: "1px solid rgba(223, 186, 107, 0.2)",
+  background: "rgba(0, 255, 208, 0.05)",
+  border: "1px solid rgba(0, 255, 208, 0.2)",
   borderRadius: "12px",
   padding: "0.25rem 0.75rem",
   fontSize: "0.8rem",
   fontWeight: 600,
-  color: "#dfba6b",
+  color: "#00ffd0",
   letterSpacing: "0.5px"
 };
 
