@@ -2,6 +2,8 @@ import React from "react";
 import "./globals.css";
 import FeedbackWidget from "../components/FeedbackWidget";
 import CookieConsent from "../components/CookieConsent";
+import HeaderNav from "../components/HeaderNav";
+import { Suspense } from "react";
 
 export const metadata = {
   title: "NadirTools | Solitude Dark Labs Product Suite",
@@ -46,6 +48,9 @@ export default function RootLayout({
                   style={{ height: '68px', width: 'auto', objectFit: 'contain' }} 
                 />
               </a>
+              <Suspense fallback={null}>
+                <HeaderNav />
+              </Suspense>
             </div>
           </header>
 

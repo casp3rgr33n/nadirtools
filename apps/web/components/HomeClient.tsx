@@ -1,10 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import toolConstants from "../../../config/tool-constants.json";
 
-export default function HomeClient() {
-  const [search, setSearch] = useState("");
+function ToolGrid() {
+  const searchParams = useSearchParams();
+  const search = searchParams.get('q') || '';
   const toolsList = Object.values(toolConstants.tools);
 
   const filteredTools = toolsList.filter((tool: any) => {
@@ -17,60 +19,7 @@ export default function HomeClient() {
   });
 
   return (
-    <div style={{ padding: "2rem 0" }}>
-      {/* Hero Section */}
-      <div style={heroContainerStyle}>
-        <h1 style={heroTitleStyle}>
-          Mathematical Precision. <span style={{ color: "#ffd75e" }}>Zero Latency.</span>
-        </h1>
-        <p style={heroSubStyle}>
-          NadirTools is a suite of foundational, client-side utility engines built for engineers, sysadmins, and financial analysts. 100% of calculations execute in your browser with zero data transmission.
-        </p>
-
-        {/* Search Input */}
-        <div style={searchContainerStyle}>
-          <svg
-            style={searchIconStyle}
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <circle cx="11" cy="11" r="8" />
-            <path d="m21 21-4.3-4.3" />
-          </svg>
-          <input
-            type="text"
-            placeholder="Search utility engines, CIDR formulas, tax matrices, or cron schedulers..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            style={searchInputStyle}
-          />
-        </div>
-
-        {/* Quick Access Categories */}
-        <div style={quickAccessStyle}>
-          {["Networking", "Security", "Finance", "Developer"].map(cat => (
-            <button key={cat} onClick={() => setSearch(cat)} style={{
-              ...categoryPillStyle,
-              background: search.toLowerCase() === cat.toLowerCase() ? "rgba(0, 255, 179, 0.15)" : "rgba(0, 255, 179, 0.05)",
-              border: search.toLowerCase() === cat.toLowerCase() ? "1px solid rgba(0, 255, 179, 0.4)" : "1px solid rgba(0, 255, 179, 0.1)"
-            }}>
-              {cat}
-            </button>
-          ))}
-          {search && (
-            <button onClick={() => setSearch("")} style={{ ...categoryPillStyle, background: 'rgba(255,255,255,0.05)', color: '#94a3b8', border: '1px solid rgba(255,255,255,0.1)' }}>
-              Clear
-            </button>
-          )}
-        </div>
-      </div>
-
+    <div style={{ padding: "0 0 2rem 0" }}>
       {/* Grid of Tools */}
       <div>
         <h2 style={sectionTitleStyle}>Foundational Tools & Calculators</h2>
@@ -141,76 +90,13 @@ export default function HomeClient() {
   );
 }
 
-const heroContainerStyle: React.CSSProperties = {
-  textAlign: "center",
-  padding: "4rem 0 2.5rem 0",
-  maxWidth: "800px",
-  margin: "0 auto"
-};
-
-const heroTitleStyle: React.CSSProperties = {
-  fontSize: "3rem",
-  fontWeight: 800,
-  letterSpacing: "-1px",
-  lineHeight: "1.1",
-  color: "#f8fafc",
-  marginBottom: "1.5rem"
-};
-
-const heroSubStyle: React.CSSProperties = {
-  fontSize: "1.15rem",
-  color: "#94a3b8",
-  lineHeight: "1.6",
-  marginBottom: "2.5rem"
-};
-
-const searchContainerStyle: React.CSSProperties = {
-  position: "relative",
-  maxWidth: "600px",
-  margin: "0 auto",
-  width: "100%"
-};
-
-const searchIconStyle: React.CSSProperties = {
-  position: "absolute",
-  left: "1.25rem",
-  top: "50%",
-  transform: "translateY(-50%)",
-  color: "#64748b",
-  pointerEvents: "none"
-};
-
-const searchInputStyle: React.CSSProperties = {
-  width: "100%",
-  background: "rgba(20, 32, 22, 0.4)",
-  border: "1px solid rgba(223, 186, 107, 0.15)",
-  borderRadius: "9999px",
-  padding: "1rem 1.5rem 1rem 3.25rem",
-  color: "#f8fafc",
-  fontSize: "1rem",
-  outline: "none",
-  transition: "all 0.2s ease",
-  boxShadow: "0 4px 20px rgba(0,0,0,0.15)"
-};
-
-const quickAccessStyle: React.CSSProperties = {
-  display: "flex",
-  gap: "0.75rem",
-  justifyContent: "center",
-  marginTop: "1.5rem",
-  flexWrap: "wrap"
-};
-
-const categoryPillStyle: React.CSSProperties = {
-  color: "#00ffb3",
-  fontSize: "0.85rem",
-  fontWeight: 600,
-  padding: "0.5rem 1rem",
-  borderRadius: "9999px",
-  cursor: "pointer",
-  transition: "all 0.2s ease",
-  outline: "none"
-};
+export default function HomeClient() {
+  return (
+    <Suspense fallback={<div>Loading tools...</div>}>
+      <ToolGrid />
+    </Suspense>
+  );
+}
 
 const sectionTitleStyle: React.CSSProperties = {
   fontSize: "1.5rem",
