@@ -1,0 +1,93 @@
+/* Reset and Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #050705;
+  color: #e2e8f0;
+  font-family: 'Outfit', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Custom Premium Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050705;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #141c15;
+  border-radius: 5px;
+  border: 2px solid #050705;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #22c55e;
+}
+
+/* Table styling enhancements */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+th {
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+/* Links & typography rules */
+a {
+  color: #22c55e;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+a:hover {
+  color: #4ade80;
+  text-shadow: 0 0 8px rgba(34, 197, 94, 0.4);
+}
+
+code, pre {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Responsive Catch-All Tools Layout */
+.tools-container {
+  display: flex;
+  flex-direction: column-reverse; /* Tool first on mobile */
+  gap: 2rem;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .tools-container {
+    flex-direction: column; /* Articles first on desktop */
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
