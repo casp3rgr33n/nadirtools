@@ -40,27 +40,11 @@ export default function RootLayout({
           <header style={headerStyle}>
             <div style={headerContainerStyle}>
               <a href="/" style={logoStyle}>
-                <svg width="28" height="28" viewBox="0 0 32 32" fill="none" style={{ marginRight: '12px' }}>
-                  {/* Green bracket accents */}
-                  <path d="M4 10V4h6" stroke="#00ffd0" strokeWidth="2" fill="none" strokeLinecap="square" />
-                  <circle cx="10" cy="4" r="1.5" fill="#00ffd0" />
-                  <path d="M28 22v6h-6" stroke="#00ffd0" strokeWidth="2" fill="none" strokeLinecap="square" />
-                  <circle cx="22" cy="28" r="1.5" fill="#00ffd0" />
-                  
-                  {/* Gold NV Shape */}
-                  <path d="M10 24V8l8 10V8h4v16l-8-10v10h-4z" fill="url(#goldGrad)" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.5))" />
-                  <path d="M8 26l8 6 8-6" stroke="url(#goldGrad)" strokeWidth="2" fill="none" strokeLinejoin="miter" />
-                  
-                  <defs>
-                    <linearGradient id="goldGrad" x1="10" y1="8" x2="22" y2="32" gradientUnits="userSpaceOnUse">
-                      <stop stopColor="#fef0aa" />
-                      <stop offset="0.5" stopColor="#dfba6b" />
-                      <stop offset="1" stopColor="#a37922" />
-                    </linearGradient>
-                  </defs>
-                </svg>
-                <span style={{ color: "#dfba6b", fontWeight: 800, letterSpacing: "1px", textTransform: "uppercase" }}>Nadir</span>
-                <span style={{ color: "#00ffd0", fontWeight: 700, letterSpacing: "1px", textTransform: "uppercase", textShadow: "0 0 10px rgba(0,255,208,0.4)" }}>Tools</span>
+                <img 
+                  src="/logo.jpg" 
+                  alt="NadirTools" 
+                  style={{ height: '56px', width: 'auto', borderRadius: '8px', objectFit: 'contain' }} 
+                />
               </a>
               
             </div>
