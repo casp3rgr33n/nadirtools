@@ -43,7 +43,7 @@ export default function RootLayout({
                 <img 
                   src="/logo.jpg" 
                   alt="NadirTools" 
-                  style={{ height: '56px', width: 'auto', borderRadius: '8px', objectFit: 'contain', mixBlendMode: 'lighten' }} 
+                  style={{ height: '140px', width: 'auto', borderRadius: '16px', objectFit: 'contain', mixBlendMode: 'lighten' }} 
                 />
               </a>
               
@@ -79,7 +79,12 @@ const containerStyle: React.CSSProperties = {
   display: "flex",
   flexDirection: "column",
   minHeight: "100vh",
-  backgroundImage: "radial-gradient(circle at 50% -20%, #17202a 0%, #050705 70%)"
+  backgroundColor: "#050705",
+  backgroundImage: `
+    radial-gradient(circle at 50% 0%, rgba(0, 255, 208, 0.05) 0%, transparent 60%),
+    url("data:image/svg+xml,%3Csvg width='40' height='69' viewBox='0 0 40 69' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 34.54l10-5.77v-11.54L0 11.46v23.08zm20-11.54l10-5.77v-11.54L20 0 10 5.77v11.54l10 5.77zm0 23.08l10-5.77v-11.54L20 23.08l-10 5.77v11.54l10 5.77zm0 23.08l10-5.77v-11.54L20 46.16l-10 5.77v11.54l10 5.77zM40 11.46l-10-5.77v-11.54L40-11.54v23.08zm0 23.08l-10-5.77v-11.54L40 11.54v23.08zm0 23.08l-10-5.77v-11.54L40 34.62v23.08z' fill='%2300ffd0' fill-opacity='0.04' fill-rule='evenodd'/%3E%3C/svg%3E"),
+    radial-gradient(circle at 50% -20%, #17202a 0%, #050705 70%)
+  `
 };
 
 const headerStyle: React.CSSProperties = {
