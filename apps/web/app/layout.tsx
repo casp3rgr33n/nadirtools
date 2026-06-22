@@ -43,7 +43,7 @@ export default function RootLayout({
                 <img 
                   src="/logo.png" 
                   alt="NadirTools" 
-                  style={{ height: '48px', width: 'auto', objectFit: 'contain' }} 
+                  style={{ height: '68px', width: 'auto', objectFit: 'contain' }} 
                 />
               </a>
             </div>
