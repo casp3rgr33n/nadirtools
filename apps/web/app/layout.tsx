@@ -43,7 +43,7 @@ export default function RootLayout({
                 <img 
                   src="/logo.jpg" 
                   alt="NadirTools" 
-                  style={{ height: '56px', width: 'auto', borderRadius: '8px', objectFit: 'contain' }} 
+                  style={{ height: '56px', width: 'auto', borderRadius: '8px', objectFit: 'contain', mixBlendMode: 'lighten' }} 
                 />
               </a>
               
@@ -79,7 +79,7 @@ const containerStyle: React.CSSProperties = {
   display: "flex",
   flexDirection: "column",
   minHeight: "100vh",
-  backgroundImage: "radial-gradient(circle at 50% -20%, #112214 0%, #050705 70%)"
+  backgroundImage: "radial-gradient(circle at 50% -20%, #17202a 0%, #050705 70%)"
 };
 
 const headerStyle: React.CSSProperties = {
@@ -88,7 +88,7 @@ const headerStyle: React.CSSProperties = {
   position: "sticky",
   top: 0,
   zIndex: 100,
-  background: "rgba(5, 7, 5, 0.7)"
+  background: "rgba(15, 21, 28, 0.85)"
 };
 
 const headerContainerStyle: React.CSSProperties = {

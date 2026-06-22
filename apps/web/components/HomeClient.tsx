@@ -101,7 +101,7 @@ export default function HomeClient() {
               height="24"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="#22c55e"
+              stroke="#00ffd0"
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -211,9 +211,9 @@ const cardHeaderStyle: React.CSSProperties = {
 };
 
 const categoryBadgeStyle: React.CSSProperties = {
-  background: "rgba(34, 197, 94, 0.08)",
-  border: "1px solid rgba(34, 197, 94, 0.2)",
-  color: "#22c55e",
+  background: "rgba(0, 255, 208, 0.08)",
+  border: "1px solid rgba(0, 255, 208, 0.2)",
+  color: "#00ffd0",
   fontSize: "0.7rem",
   fontWeight: 700,
   padding: "0.25rem 0.6rem",
@@ -240,7 +240,7 @@ const cardFooterStyle: React.CSSProperties = {
   display: "flex",
   alignItems: "center",
   gap: "0.5rem",
-  color: "#22c55e",
+  color: "#00ffd0",
   fontSize: "0.88rem",
   fontWeight: 600
 };
@@ -254,7 +254,7 @@ const noResultsStyle: React.CSSProperties = {
 };
 
 const moatBannerStyle: React.CSSProperties = {
-  background: "rgba(34, 197, 94, 0.03)",
+  background: "rgba(0, 255, 208, 0.03)",
   border: "1px solid rgba(223, 186, 107, 0.15)",
   borderRadius: "16px",
   padding: "1.5rem 2rem",
@@ -262,8 +262,8 @@ const moatBannerStyle: React.CSSProperties = {
 };
 
 const shieldIconContainerStyle: React.CSSProperties = {
-  background: "rgba(34, 197, 94, 0.08)",
-  border: "1px solid rgba(34, 197, 94, 0.2)",
+  background: "rgba(0, 255, 208, 0.08)",
+  border: "1px solid rgba(0, 255, 208, 0.2)",
   borderRadius: "12px",
   padding: "0.75rem",
   display: "flex",
