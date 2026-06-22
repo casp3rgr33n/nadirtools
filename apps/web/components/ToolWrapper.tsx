@@ -9,6 +9,7 @@ import {
   parseCronExpression,
   calculateRealEstateYields
 } from "../utils/calculations";
+import CopyButton from "./CopyButton";
 
 interface ToolWrapperProps {
   toolSlug: string;
@@ -90,9 +91,23 @@ function SubnetCalculator() {
   const [error, setError] = useState("");
 
   useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.has('ip')) setIp(params.get('ip')!);
+    if (params.has('cidr')) setCidr(Number(params.get('cidr')));
+    if (params.has('splitCidr')) setSplitCidr(Number(params.get('splitCidr')));
+  }, []);
+
+  useEffect(() => {
     const { error: calcError, subnets: calcSubnets } = calculateSubnets(ip, cidr, splitCidr);
     setError(calcError);
     setSubnets(calcSubnets);
+    
+    // Sync to URL
+    const params = new URLSearchParams(window.location.search);
+    params.set('ip', ip);
+    params.set('cidr', cidr.toString());
+    params.set('splitCidr', splitCidr.toString());
+    window.history.replaceState({}, '', `${window.location.pathname}?${params.toString()}`);
   }, [ip, cidr, splitCidr]);
 
   return (
@@ -139,7 +154,7 @@ function SubnetCalculator() {
             Showing up to 128 subnets. Split size yields {Math.pow(2, Math.max(0, splitCidr - cidr))} total networks.
           </p>
 
-          <div style={{ overflowX: "auto" }}>
+          <div style={{ overflowX: "auto", animation: "fadeUp 0.4s ease-out forwards" }}>
             <table style={tableStyle}>
               <thead>
                 <tr style={tableHeaderRowStyle}>
@@ -154,7 +169,10 @@ function SubnetCalculator() {
                 {subnets.map((sub) => (
                   <tr key={sub.id} style={tableRowStyle}>
                     <td style={tableColStyle}>Subnet {sub.id}</td>
-                    <td style={{ ...tableColStyle, color: "#22c55e", fontFamily: "monospace" }}>{sub.network}/{splitCidr}</td>
+                    <td style={{ ...tableColStyle, color: "#22c55e", fontFamily: "monospace" }}>
+                      {sub.network}/{splitCidr}
+                      <CopyButton text={`${sub.network}/${splitCidr}`} />
+                    </td>
                     <td style={{ ...tableColStyle, fontFamily: "monospace" }}>{sub.range}</td>
                     <td style={{ ...tableColStyle, fontFamily: "monospace" }}>{sub.broadcast}</td>
                     <td style={{ ...tableColStyle, fontWeight: "bold" }}>{sub.usableHosts.toLocaleString()}</td>
@@ -211,7 +229,7 @@ access-list 101 deny tcp 192.168.1.0 0.0.0.255 any eq 80`;
         <div>
           <h3 style={sectionHeadingStyle}>Rule Shadowing Validation Report</h3>
 
-          <div style={{ overflowX: "auto" }}>
+          <div style={{ overflowX: "auto", animation: "fadeUp 0.4s ease-out forwards" }}>
             <table style={tableStyle}>
               <thead>
                 <tr style={tableHeaderRowStyle}>
@@ -467,10 +485,19 @@ function CronVisualizer() {
   const [error, setError] = useState("");
 
   useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.has('cron')) setExpression(params.get('cron')!);
+  }, []);
+
+  useEffect(() => {
     const { error: calcError, description: calcDesc, nextRuns: calcRuns } = parseCronExpression(expression);
     setError(calcError);
     setDescription(calcDesc);
     setNextRuns(calcRuns.map((run) => new Date(run).toLocaleString()));
+
+    const params = new URLSearchParams(window.location.search);
+    params.set('cron', expression);
+    window.history.replaceState({}, '', `${window.location.pathname}?${params.toString()}`);
   }, [expression]);
 
   return (
@@ -490,10 +517,11 @@ function CronVisualizer() {
 
       <div style={toolRightColStyle}>
         {!error && (
-          <div>
+          <div style={{ animation: "fadeUp 0.4s ease-out forwards" }}>
             <div style={{ marginBottom: "1.5rem" }}>
               <h4 style={{ fontSize: "1.1rem", fontWeight: "bold", color: "#22c55e", marginBottom: "0.5rem" }}>
                 Decoded Schedule Description:
+                <CopyButton text={description} style={{ float: 'right' }} />
               </h4>
               <p style={{ fontSize: "1.05rem", background: "rgba(255,255,255,0.03)", padding: "1rem", borderRadius: "8px" }}>
                 {description}
@@ -732,7 +760,7 @@ const inputStyle: React.CSSProperties = {
 const selectStyle: React.CSSProperties = {
   ...inputStyle,
   appearance: "none",
-  backgroundImage: "url(\"data:image/svg+xml;utf8,<svg fill='%23dfba6b' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>\")",
+  backgroundImage: "url(\\"data:image/svg+xml;utf8,<svg fill='%23dfba6b' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>\\")",
   backgroundRepeat: "no-repeat",
   backgroundPosition: "right 10px center"
 };
