@@ -293,7 +293,7 @@
     "cron-visualizer": {
       "publishedAt": "2026-06-19T18:30:00Z",
       "name": "Advanced Cron Expression Visualizer & Simulator",
-      "category": "dev",
+      "category": "Developer",
       "slug": "cron-visualizer",
       "description": "Parse cron expressions, generate human-readable schedules, and simulate upcoming execution time triggers.",
       "disclaimer": "This tool executes parsing client-side. Cron engines vary by operating system scheduler (e.g. systemd vs Vixie cron). Double-check schedule outputs against your target system environment.",
@@ -439,3 +439,4 @@
     }
   }
 }
+

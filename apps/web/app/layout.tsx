@@ -43,9 +43,9 @@ export default function RootLayout({
             <div style={headerContainerStyle}>
               <a href="/" style={logoStyle}>
                 <img 
-                  src="/logo.png" 
+                  src="/logo.jpg" 
                   alt="NadirTools" 
-                  style={{ height: '68px', width: 'auto', objectFit: 'contain' }} 
+                  style={{ height: '68px', width: 'auto', objectFit: 'contain', mixBlendMode: 'screen', filter: 'contrast(1.1)' }} 
                 />
               </a>
               <Suspense fallback={null}>

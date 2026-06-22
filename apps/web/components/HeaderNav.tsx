@@ -18,10 +18,8 @@ export default function HeaderNav() {
   };
 
   const setCategory = (cat: string) => {
-    // Treat the "Dev" category uniquely because it maps to "Developer" in the UI
-    const query = cat === "Developer" ? "Dev" : cat;
-    setSearch(query);
-    router.replace(`/?q=${encodeURIComponent(query)}`);
+    setSearch(cat);
+    router.replace(`/?q=${encodeURIComponent(cat)}`);
   };
 
   return (
@@ -33,9 +31,9 @@ export default function HeaderNav() {
             key={cat} 
             onClick={() => setCategory(cat)} 
             style={{
-              background: search.toLowerCase() === cat.toLowerCase() || (cat === "Developer" && search.toLowerCase() === "dev") ? "rgba(0, 255, 179, 0.15)" : "transparent",
-              border: "1px solid rgba(0, 255, 179, 0.1)",
-              color: search.toLowerCase() === cat.toLowerCase() || (cat === "Developer" && search.toLowerCase() === "dev") ? "#00ffb3" : "#94a3b8",
+              background: search.toLowerCase() === cat.toLowerCase() ? "rgba(255, 215, 94, 0.15)" : "transparent",
+              border: search.toLowerCase() === cat.toLowerCase() ? "1px solid rgba(255, 215, 94, 0.4)" : "1px solid rgba(0, 255, 179, 0.2)",
+              color: search.toLowerCase() === cat.toLowerCase() ? "#ffd75e" : "#00ffb3",
               fontSize: "0.8rem",
               fontWeight: 600,
               padding: "0.4rem 0.8rem",
@@ -66,7 +64,7 @@ export default function HeaderNav() {
 
       {/* Search Input */}
       <div style={{ position: 'relative', width: '300px' }}>
-        <svg style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: '#64748b', pointerEvents: 'none' }} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: '#00ffb3', pointerEvents: 'none' }} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="11" cy="11" r="8" />
           <path d="m21 21-4.3-4.3" />
         </svg>
@@ -78,7 +76,7 @@ export default function HeaderNav() {
           style={{
             width: '100%',
             background: 'rgba(20, 32, 22, 0.4)',
-            border: '1px solid rgba(223, 186, 107, 0.15)',
+            border: '1px solid rgba(255, 215, 94, 0.4)',
             borderRadius: '9999px',
             padding: '0.5rem 1rem 0.5rem 2.5rem',
             color: '#f8fafc',
