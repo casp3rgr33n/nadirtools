@@ -102,7 +102,9 @@ const headerContainerStyle: React.CSSProperties = {
   padding: "0.75rem 2rem",
   display: "flex",
   justifyContent: "space-between",
-  alignItems: "center"
+  alignItems: "center",
+  flexWrap: "wrap",
+  gap: "1rem"
 };
 
 const logoStyle: React.CSSProperties = {

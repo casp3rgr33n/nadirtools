@@ -281,6 +281,11 @@ export default async function ToolCatchAllPage({ params }: PageProps) {
       </nav>
 
       <div className="tools-container">
+        {/* Main Interactive Tool */}
+        <div id="main-tool-container" style={{ width: "100%", minWidth: 0, marginBottom: "2rem" }}>
+          <ToolWrapper toolSlug={toolSlug} toolConfig={tool} />
+        </div>
+
         {/* Guides Grid */}
         {tool.guides && Object.keys(tool.guides).length > 0 && (
           <div style={guidesTopSectionStyle}>
@@ -301,11 +306,6 @@ export default async function ToolCatchAllPage({ params }: PageProps) {
             </div>
           </div>
         )}
-
-        {/* Main Interactive Tool */}
-        <div id="main-tool-container" style={{ width: "100%", minWidth: 0 }}>
-          <ToolWrapper toolSlug={toolSlug} toolConfig={tool} />
-        </div>
       </div>
     </div>
   );

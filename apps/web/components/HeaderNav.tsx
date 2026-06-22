@@ -23,9 +23,9 @@ export default function HeaderNav() {
   };
 
   return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: '2rem', flex: 1, justifyContent: 'flex-end' }}>
+    <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', flex: 1, justifyContent: 'flex-end', flexWrap: 'wrap' }}>
       {/* Quick Access Categories */}
-      <div style={{ display: 'flex', gap: '0.5rem' }}>
+      <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
         {["Networking", "Security", "Finance", "Developer"].map(cat => (
           <button 
             key={cat} 
@@ -63,7 +63,7 @@ export default function HeaderNav() {
       </div>
 
       {/* Search Input */}
-      <div style={{ position: 'relative', width: '300px' }}>
+      <div style={{ position: 'relative', flex: '1 1 200px', maxWidth: '300px' }}>
         <svg style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: '#00ffb3', pointerEvents: 'none' }} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="11" cy="11" r="8" />
           <path d="m21 21-4.3-4.3" />
