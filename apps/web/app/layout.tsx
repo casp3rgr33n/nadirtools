@@ -151,7 +151,7 @@ const globalStyles = `
       flex-direction: column; /* Articles first on desktop */
     }
   }
-\`;
+`;
 
 const containerStyle: React.CSSProperties = {
   display: "flex",
