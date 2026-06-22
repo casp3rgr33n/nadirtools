@@ -51,6 +51,24 @@ export default function HomeClient() {
             style={searchInputStyle}
           />
         </div>
+
+        {/* Quick Access Categories */}
+        <div style={quickAccessStyle}>
+          {["Networking", "Security", "Finance", "Developer"].map(cat => (
+            <button key={cat} onClick={() => setSearch(cat)} style={{
+              ...categoryPillStyle,
+              background: search.toLowerCase() === cat.toLowerCase() ? "rgba(0, 255, 179, 0.15)" : "rgba(0, 255, 179, 0.05)",
+              border: search.toLowerCase() === cat.toLowerCase() ? "1px solid rgba(0, 255, 179, 0.4)" : "1px solid rgba(0, 255, 179, 0.1)"
+            }}>
+              {cat}
+            </button>
+          ))}
+          {search && (
+            <button onClick={() => setSearch("")} style={{ ...categoryPillStyle, background: 'rgba(255,255,255,0.05)', color: '#94a3b8', border: '1px solid rgba(255,255,255,0.1)' }}>
+              Clear
+            </button>
+          )}
+        </div>
       </div>
 
       {/* Grid of Tools */}
@@ -173,6 +191,25 @@ const searchInputStyle: React.CSSProperties = {
   outline: "none",
   transition: "all 0.2s ease",
   boxShadow: "0 4px 20px rgba(0,0,0,0.15)"
+};
+
+const quickAccessStyle: React.CSSProperties = {
+  display: "flex",
+  gap: "0.75rem",
+  justifyContent: "center",
+  marginTop: "1.5rem",
+  flexWrap: "wrap"
+};
+
+const categoryPillStyle: React.CSSProperties = {
+  color: "#00ffb3",
+  fontSize: "0.85rem",
+  fontWeight: 600,
+  padding: "0.5rem 1rem",
+  borderRadius: "9999px",
+  cursor: "pointer",
+  transition: "all 0.2s ease",
+  outline: "none"
 };
 
 const sectionTitleStyle: React.CSSProperties = {

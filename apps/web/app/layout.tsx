@@ -37,9 +37,17 @@ export default function RootLayout({
       <body>
         <div style={containerStyle}>
           {/* Header */}
-          <a href="/" style={{ display: 'block', textDecoration: 'none' }}>
-            <header style={headerStyle}></header>
-          </a>
+          <header style={headerStyle}>
+            <div style={headerContainerStyle}>
+              <a href="/" style={logoStyle}>
+                <img 
+                  src="/logo.jpg" 
+                  alt="NadirTools" 
+                  style={{ height: '48px', width: 'auto', borderRadius: '6px', objectFit: 'contain', mixBlendMode: 'screen', filter: 'contrast(1.1)' }} 
+                />
+              </a>
+            </div>
+          </header>
 
           {/* Main Content */}
           <main style={mainStyle}>{children}</main>
@@ -75,13 +83,27 @@ const containerStyle: React.CSSProperties = {
 };
 
 const headerStyle: React.CSSProperties = {
-  height: "350px",
-  backgroundImage: "url('/logo.jpg')",
-  backgroundSize: "contain",
-  backgroundPosition: "center",
-  backgroundRepeat: "no-repeat",
-  maskImage: "radial-gradient(ellipse at center, black 40%, transparent 75%)",
-  WebkitMaskImage: "radial-gradient(ellipse at center, black 40%, transparent 75%)"
+  borderBottom: "1px solid rgba(0, 255, 179, 0.1)",
+  backdropFilter: "blur(12px)",
+  position: "sticky",
+  top: 0,
+  zIndex: 100,
+  background: "rgba(5, 7, 5, 0.85)"
+};
+
+const headerContainerStyle: React.CSSProperties = {
+  maxWidth: "1200px",
+  margin: "0 auto",
+  padding: "0.75rem 2rem",
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center"
+};
+
+const logoStyle: React.CSSProperties = {
+  display: "flex",
+  alignItems: "center",
+  textDecoration: "none"
 };
 
 
