@@ -733,7 +733,7 @@ const formRowStyle: React.CSSProperties = {
 };
 
 const formFieldStyle: React.CSSProperties = {
-  flex: "1 1 200px",
+  width: "100%",
   display: "flex",
   flexDirection: "column",
   gap: "0.5rem"
