@@ -18,6 +18,10 @@ The long-term roadmap for this repository is to scale to **1,000 distinct, clien
 
 ## 📂 Codebase & Architecture Overview
 
+The active codebase is located in the native Linux filesystem:
+- **WSL Path**: `/home/casp3r/nadirtools`
+- **Windows Host Network Path**: `\\wsl.localhost\Ubuntu\home\casp3r\nadirtools\` (used by AI coding assistants running on Windows)
+
 The workspace is a monorepo consisting of:
 - `apps/web/app/` — Next.js App Router endpoints.
 - `apps/web/components/` — UI components and interactive forms.
