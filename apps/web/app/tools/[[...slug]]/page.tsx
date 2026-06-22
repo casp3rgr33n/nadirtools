@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import toolConstants from "../../../../../config/tool-constants.json";
 import ToolWrapper from "../../../components/ToolWrapper";
 import SchemaRenderer from "../../../components/SchemaRenderer";
+import CopyButton from "../../../components/CopyButton";
 
 interface PageProps {
   params: Promise<{
@@ -151,6 +152,9 @@ export default async function ToolCatchAllPage({ params }: PageProps) {
       }
     ];
 
+    const words = guide.content.join(" ").split(/\\s+/).length;
+    const readingTime = Math.max(1, Math.ceil(words / 200));
+
     return (
       <div id="guide-root" style={layoutContainerStyle}>
         <SchemaRenderer
@@ -170,7 +174,12 @@ export default async function ToolCatchAllPage({ params }: PageProps) {
           {/* Main Article Content */}
           <article id="main-article" style={articleStyle}>
             <header id="article-header">
-              <h1 id="article-title" style={articleTitleStyle}>{guide.title}</h1>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "1rem" }}>
+                <h1 id="article-title" style={{ ...articleTitleStyle, marginBottom: 0 }}>{guide.title}</h1>
+                <span style={{ background: "rgba(223, 186, 107, 0.1)", color: "#dfba6b", padding: "0.4rem 0.8rem", borderRadius: "20px", fontSize: "0.85rem", fontWeight: 600 }}>
+                  ⏳ {readingTime} min read
+                </span>
+              </div>
               <p id="article-summary" style={articleSummaryStyle}>{guide.summary}</p>
             </header>
 
@@ -198,12 +207,15 @@ export default async function ToolCatchAllPage({ params }: PageProps) {
                   // Render static table
                   return <RenderGuideTable key={idx} rawTable={block} />;
                 }
-                if (block.startsWith("`") && block.endsWith("`")) {
-                  const code = block.replace(/`/g, "");
+                if (block.startsWith("\`") && block.endsWith("\`")) {
+                  const code = block.replace(/\`/g, "");
                   return (
-                    <pre key={idx} style={preStyle}>
-                      <code style={codeStyle}>{code}</code>
-                    </pre>
+                    <div key={idx} style={{ position: "relative" }}>
+                      <CopyButton text={code} style={{ position: "absolute", top: "0.5rem", right: "0.5rem", background: "rgba(255,255,255,0.1)", border: "none", color: "#f8fafc" }} />
+                      <pre style={preStyle}>
+                        <code style={codeStyle}>{code}</code>
+                      </pre>
+                    </div>
                   );
                 }
                 const blockId = `p-${idx}`;
