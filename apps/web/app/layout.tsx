@@ -135,6 +135,20 @@ const globalStyles = `
   code, pre {
     font-family: 'JetBrains Mono', monospace;
   }
+
+  /* Responsive Catch-All Tools Layout */
+  .tools-container {
+    display: flex;
+    flex-direction: column-reverse; /* Tool first on mobile */
+    gap: 2rem;
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    .tools-container {
+      flex-direction: column; /* Articles first on desktop */
+    }
+  }
 `;
 
 const containerStyle: React.CSSProperties = {

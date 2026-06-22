@@ -256,7 +256,7 @@ export default async function ToolCatchAllPage({ params }: PageProps) {
 
   // Otherwise, it is the parent tool page
   return (
-    <div id="tool-root">
+    <div id="tool-root" style={{ maxWidth: "900px", margin: "0 auto" }}>
       <SchemaRenderer
         toolName={tool.name}
         description={tool.description}
@@ -268,29 +268,32 @@ export default async function ToolCatchAllPage({ params }: PageProps) {
         <a href="/">Home</a> / <span style={{ color: "#94a3b8" }}>{tool.name}</span>
       </nav>
 
-      <div style={contentSplitterStyle}>
-        {/* Main Interactive Tool */}
-        <div style={{ flex: 1, minWidth: 0 }}>
-          <ToolWrapper toolSlug={toolSlug} toolConfig={tool} />
-        </div>
-
-        {/* Side Panel linking to Guides */}
-        <aside id="guides-sidebar" style={sidebarStyle}>
-          <div style={sidebarStickyWrapperStyle}>
-            <h4 style={sidebarHeaderStyle}>Technical & Math Guides</h4>
-            <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-              {Object.keys(tool.guides || {}).map((gKey) => {
+      <div className="tools-container">
+        {/* Guides Grid */}
+        {tool.guides && Object.keys(tool.guides).length > 0 && (
+          <div style={guidesTopSectionStyle}>
+            <h4 style={guidesTopHeaderStyle}>📚 Technical & Math Guides</h4>
+            <div style={guidesGridStyle}>
+              {Object.keys(tool.guides).map((gKey) => {
                 const g = tool.guides[gKey];
                 return (
-                  <a key={gKey} href={`/tools/${toolSlug}/${gKey}`} style={guideCardStyle}>
-                    <h5 style={guideCardTitleStyle}>{g.title}</h5>
-                    <p style={guideCardDescStyle}>{g.summary}</p>
+                  <a key={gKey} href={`/tools/${toolSlug}/${gKey}`} style={guideCardTopStyle}>
+                    <span style={{ fontSize: "1.25rem", marginTop: "0.1rem" }}>📖</span>
+                    <div>
+                      <h5 style={guideCardTitleStyle}>{g.title}</h5>
+                      <p style={guideCardDescStyle}>{g.summary}</p>
+                    </div>
                   </a>
                 );
               })}
             </div>
           </div>
-        </aside>
+        )}
+
+        {/* Main Interactive Tool */}
+        <div id="main-tool-container" style={{ width: "100%", minWidth: 0 }}>
+          <ToolWrapper toolSlug={toolSlug} toolConfig={tool} />
+        </div>
       </div>
     </div>
   );
@@ -517,4 +520,38 @@ const guideThStyle: React.CSSProperties = {
 const guideTdStyle: React.CSSProperties = {
   padding: "0.75rem 1rem",
   color: "#cbd5e1"
+};
+
+const guidesTopSectionStyle: React.CSSProperties = {
+  marginBottom: "2rem",
+  background: "rgba(10, 20, 12, 0.3)",
+  border: "1px solid rgba(223, 186, 107, 0.1)",
+  borderRadius: "16px",
+  padding: "1.5rem",
+};
+
+const guidesTopHeaderStyle: React.CSSProperties = {
+  fontSize: "1.1rem",
+  fontWeight: 700,
+  color: "#f8fafc",
+  marginBottom: "1rem",
+  margin: 0,
+};
+
+const guidesGridStyle: React.CSSProperties = {
+  display: "grid",
+  gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+  gap: "1rem",
+};
+
+const guideCardTopStyle: React.CSSProperties = {
+  display: "flex",
+  gap: "0.75rem",
+  background: "rgba(255, 255, 255, 0.02)",
+  border: "1px solid rgba(255, 255, 255, 0.05)",
+  borderRadius: "12px",
+  padding: "1rem 1.25rem",
+  textDecoration: "none",
+  transition: "all 0.2s ease",
+  alignItems: "flex-start",
 };
