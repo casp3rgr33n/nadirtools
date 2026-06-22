@@ -37,18 +37,9 @@ export default function RootLayout({
       <body>
         <div style={containerStyle}>
           {/* Header */}
-          <header style={headerStyle}>
-            <div style={headerContainerStyle}>
-              <a href="/" style={logoStyle}>
-                <img 
-                  src="/logo.jpg" 
-                  alt="NadirTools" 
-                  style={{ height: '140px', width: 'auto', borderRadius: '16px', objectFit: 'contain', mixBlendMode: 'lighten' }} 
-                />
-              </a>
-              
-            </div>
-          </header>
+          <a href="/" style={{ display: 'block', textDecoration: 'none' }}>
+            <header style={headerStyle}></header>
+          </a>
 
           {/* Main Content */}
           <main style={mainStyle}>{children}</main>
@@ -80,38 +71,16 @@ const containerStyle: React.CSSProperties = {
   flexDirection: "column",
   minHeight: "100vh",
   backgroundColor: "#050705",
-  backgroundImage: `
-    radial-gradient(circle at 50% 0%, rgba(0, 255, 208, 0.05) 0%, transparent 60%),
-    url("data:image/svg+xml,%3Csvg width='40' height='69' viewBox='0 0 40 69' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 34.54l10-5.77v-11.54L0 11.46v23.08zm20-11.54l10-5.77v-11.54L20 0 10 5.77v11.54l10 5.77zm0 23.08l10-5.77v-11.54L20 23.08l-10 5.77v11.54l10 5.77zm0 23.08l10-5.77v-11.54L20 46.16l-10 5.77v11.54l10 5.77zM40 11.46l-10-5.77v-11.54L40-11.54v23.08zm0 23.08l-10-5.77v-11.54L40 11.54v23.08zm0 23.08l-10-5.77v-11.54L40 34.62v23.08z' fill='%2300ffd0' fill-opacity='0.04' fill-rule='evenodd'/%3E%3C/svg%3E"),
-    radial-gradient(circle at 50% -20%, #17202a 0%, #050705 70%)
-  `
+  backgroundImage: "radial-gradient(circle at 50% -20%, #17202a 0%, #050705 70%)"
 };
 
 const headerStyle: React.CSSProperties = {
   borderBottom: "1px solid rgba(223, 186, 107, 0.15)",
-  backdropFilter: "blur(12px)",
-  position: "sticky",
-  top: 0,
-  zIndex: 100,
-  background: "rgba(15, 21, 28, 0.85)"
-};
-
-const headerContainerStyle: React.CSSProperties = {
-  maxWidth: "1200px",
-  margin: "0 auto",
-  padding: "1rem 2rem",
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center"
-};
-
-const logoStyle: React.CSSProperties = {
-  fontSize: "1.5rem",
-  fontWeight: 700,
-  letterSpacing: "-0.5px",
-  color: "#f8fafc",
-  display: "flex",
-  alignItems: "center"
+  height: "280px",
+  backgroundImage: "url('/logo.jpg')",
+  backgroundSize: "cover",
+  backgroundPosition: "center",
+  boxShadow: "inset 0 -60px 60px -20px #050705"
 };
 
 
