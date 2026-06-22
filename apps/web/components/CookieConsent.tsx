@@ -18,11 +18,13 @@ export default function CookieConsent() {
   const handleAccept = () => {
     localStorage.setItem("nadirtools-cookie-consent", "accepted");
     setIsVisible(false);
+    window.dispatchEvent(new Event("cookie-consent-changed"));
   };
 
   const handleDecline = () => {
     localStorage.setItem("nadirtools-cookie-consent", "declined");
     setIsVisible(false);
+    window.dispatchEvent(new Event("cookie-consent-changed"));
   };
 
   if (!isVisible) return null;

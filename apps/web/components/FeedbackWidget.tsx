@@ -13,6 +13,18 @@ export default function FeedbackWidget() {
   const [turnstileToken, setTurnstileToken] = useState("");
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const [hasConsentCookie, setHasConsentCookie] = useState(true);
+
+  // Listen to cookie consent change events to adjust button position
+  useEffect(() => {
+    const checkConsent = () => {
+      const consent = localStorage.getItem("nadirtools-cookie-consent");
+      setHasConsentCookie(!!consent);
+    };
+    checkConsent();
+    window.addEventListener("cookie-consent-changed", checkConsent);
+    return () => window.removeEventListener("cookie-consent-changed", checkConsent);
+  }, []);
 
   const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
@@ -108,7 +120,11 @@ export default function FeedbackWidget() {
       {/* Floating Toggle Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        style={floatingBtnStyle}
+        style={{
+          ...floatingBtnStyle,
+          bottom: hasConsentCookie ? "2rem" : "6.5rem",
+          transition: "bottom 0.3s cubic-bezier(0.4, 0, 0.2, 1), all 0.2s ease"
+        }}
         title="Report a bug or give feedback"
         id="feedback-trigger"
       >
