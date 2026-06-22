@@ -299,9 +299,11 @@ export default async function ToolCatchAllPage({ params }: PageProps) {
   );
 }
 
+
+
 // Component to render static markdown tables from JSON config strings
 function RenderGuideTable({ rawTable }: { rawTable: string }) {
-  const rows = rawTable.trim().split("\n");
+  const rows = rawTable.trim().split("\\n");
   const parsedRows = rows.map((row) =>
     row
       .split("|")
@@ -555,3 +557,4 @@ const guideCardTopStyle: React.CSSProperties = {
   transition: "all 0.2s ease",
   alignItems: "flex-start",
 };
+
