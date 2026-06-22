@@ -75,12 +75,13 @@ const containerStyle: React.CSSProperties = {
 };
 
 const headerStyle: React.CSSProperties = {
-  borderBottom: "1px solid rgba(223, 186, 107, 0.15)",
-  height: "280px",
+  height: "350px",
   backgroundImage: "url('/logo.jpg')",
-  backgroundSize: "cover",
+  backgroundSize: "contain",
   backgroundPosition: "center",
-  boxShadow: "inset 0 -60px 60px -20px #050705"
+  backgroundRepeat: "no-repeat",
+  maskImage: "radial-gradient(ellipse at center, black 40%, transparent 75%)",
+  WebkitMaskImage: "radial-gradient(ellipse at center, black 40%, transparent 75%)"
 };
 
 

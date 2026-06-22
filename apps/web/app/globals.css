@@ -32,7 +32,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #00ffd0;
+  background: #00ffb3;
 }
 
 /* Table styling enhancements */
@@ -53,14 +53,14 @@ th {
 
 /* Links & typography rules */
 a {
-  color: #00ffd0;
+  color: #00ffb3;
   text-decoration: none;
   transition: all 0.2s ease;
 }
 
 a:hover {
-  color: #50ffdb;
-  text-shadow: 0 0 8px rgba(0, 255, 208, 0.4);
+  color: #5effc9;
+  text-shadow: 0 0 8px rgba(0, 255, 179, 0.4);
 }
 
 code, pre {
