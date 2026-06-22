@@ -152,7 +152,7 @@ export default async function ToolCatchAllPage({ params }: PageProps) {
       }
     ];
 
-    const words = guide.content.join(" ").split(/\\s+/).length;
+    const words = guide.content.join(" ").split(/\s+/).length;
     const readingTime = Math.max(1, Math.ceil(words / 200));
 
     return (
@@ -207,8 +207,8 @@ export default async function ToolCatchAllPage({ params }: PageProps) {
                   // Render static table
                   return <RenderGuideTable key={idx} rawTable={block} />;
                 }
-                if (block.startsWith("\`") && block.endsWith("\`")) {
-                  const code = block.replace(/\`/g, "");
+                if (block.startsWith("`") && block.endsWith("`")) {
+                  const code = block.replace(/`/g, "");
                   return (
                     <div key={idx} style={{ position: "relative" }}>
                       <CopyButton text={code} style={{ position: "absolute", top: "0.5rem", right: "0.5rem", background: "rgba(255,255,255,0.1)", border: "none", color: "#f8fafc" }} />
@@ -569,4 +569,3 @@ const guideCardTopStyle: React.CSSProperties = {
   transition: "all 0.2s ease",
   alignItems: "flex-start",
 };
-
