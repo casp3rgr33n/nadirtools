@@ -472,6 +472,7 @@
             "### Minification for Edge Environments",
             "In high-performance edge environments, stripping whitespace from JSON payloads (minification) before network transit can further reduce size by 15-30% depending on the nesting depth."
           ]
+        }
       }
     }
   }
