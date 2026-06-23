@@ -436,7 +436,44 @@
           ]
         }
       }
-    }
+    },
+    "json-parser": {
+      "publishedAt": "2026-06-23T06:00:00Z",
+      "name": "Advanced JSON Parser & Schema Formatter",
+      "category": "Developer",
+      "slug": "json-parser",
+      "description": "Validate, pretty-print, minify, and debug JSON payloads with real-time error tracing.",
+      "disclaimer": "This tool executes parsing client-side via your browser's native JavaScript engine. Large JSON payloads may cause memory spikes depending on your hardware.",
+      "math": {},
+      "guides": {
+        "json-syntax-and-formatting-rules": {
+          "publishedAt": "2026-06-23T05:30:00Z",
+          "title": "Strict JSON Syntax and Formatting Rules",
+          "summary": "Understand the strict structural requirements of JSON to avoid common parsing errors.",
+          "content": [
+            "### The Rules of JSON",
+            "JavaScript Object Notation (JSON) is a lightweight data-interchange format. While it is easy for humans to read, strict rules apply to its syntax:",
+            "1. **Double Quotes Only**: All keys and string values must be enclosed in double quotes (`\"`). Single quotes (`'`) are invalid.",
+            "2. **No Trailing Commas**: Unlike standard JavaScript objects, JSON does not allow a comma after the final property in an object or array.",
+            "3. **Data Types**: Allowed data types are String, Number, Object (JSON object), Array, Boolean, and Null. Functions and undefined are not permitted.",
+            "### Example of Valid JSON",
+            "```json\n{\n  \"name\": \"NadirTools\",\n  \"active\": true,\n  \"metrics\": [1, 2, 3]\n}\n```"
+          ]
+        },
+        "json-vs-xml-performance": {
+          "publishedAt": "2026-06-23T05:15:00Z",
+          "title": "JSON vs XML: Payload Size and Performance Metrics",
+          "summary": "A comparison of network payload efficiency and parsing speed between JSON and XML.",
+          "content": [
+            "### Why JSON Won the API War",
+            "For decades, XML (eXtensible Markup Language) was the standard for APIs (SOAP). However, REST APIs overwhelmingly shifted to JSON for two primary reasons:",
+            "1. **Payload Size**: JSON's lack of closing tags drastically reduces the byte size of data transferred over the wire.",
+            "2. **Parsing Velocity**: Browsers parse JSON natively using Highly optimized `JSON.parse()` routines directly into memory arrays/objects.",
+            "### Minification for Edge Environments",
+            "In high-performance edge environments, stripping whitespace from JSON payloads (minification) before network transit can further reduce size by 15-30% depending on the nesting depth."
+          ]
+        }
+      }
   }
 }
 

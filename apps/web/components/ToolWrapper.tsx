@@ -70,6 +70,7 @@ export default function ToolWrapper({ toolSlug, toolConfig, prefillParams = {} }
       </p>
 
       {/* Render the specific tool interface */}
+      {toolSlug === "json-parser" && <JSONParser prefillParams={prefillParams} />}
       {toolSlug === "subnet-calculator" && <SubnetCalculator prefillParams={prefillParams} />}
       {toolSlug === "firewall-validator" && <FirewallValidator prefillParams={prefillParams} />}
       {toolSlug === "freelance-tax" && <FreelanceTax calculatorConfig={toolConfig.math} prefillParams={prefillParams} />}
@@ -77,6 +78,131 @@ export default function ToolWrapper({ toolSlug, toolConfig, prefillParams = {} }
       {toolSlug === "coc-yield" && <CashOnCashYield prefillParams={prefillParams} />}
 
       <LegalDisclaimer category={toolConfig.category} />
+    </div>
+  );
+}
+
+/* ==========================================================================
+   6. Advanced JSON Parser & Schema Formatter
+   ========================================================================== */
+function JSONParser({ prefillParams = {} }: { prefillParams?: Record<string, string> }) {
+  const defaultJson = `{\n  "status": "success",\n  "message": "Welcome to the JSON Parser",\n  "data": [\n    { "id": 1, "active": true }\n  ]\n}`;
+  const [inputJson, setInputJson] = useState(defaultJson);
+  const [outputJson, setOutputJson] = useState("");
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (prefillParams.json) {
+      try {
+        // Handle encoded JSON
+        const decoded = decodeURIComponent(prefillParams.json);
+        setInputJson(decoded);
+      } catch (e) {
+        setInputJson(prefillParams.json);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!inputJson.trim()) {
+      setOutputJson("");
+      setError(null);
+      return;
+    }
+    
+    try {
+      const parsed = JSON.parse(inputJson);
+      // Format with 2 spaces
+      const formatted = JSON.stringify(parsed, null, 2);
+      setOutputJson(formatted);
+      setError(null);
+    } catch (e: any) {
+      setError(e.message);
+      setOutputJson("");
+    }
+  }, [inputJson]);
+
+  const handleMinify = () => {
+    try {
+      const parsed = JSON.parse(inputJson);
+      const minified = JSON.stringify(parsed);
+      setInputJson(minified);
+    } catch (e) {
+      // Ignored: Cannot minify invalid JSON
+    }
+  };
+
+  const handleFormat = () => {
+    if (outputJson) {
+      setInputJson(outputJson);
+    }
+  };
+
+  return (
+    <div style={toolSplitterStyle}>
+      <div style={toolLeftColStyle}>
+        <div style={formFieldStyle}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <label style={labelStyle}>Raw JSON Input</label>
+            <div style={{ display: "flex", gap: "0.5rem" }}>
+              <button onClick={handleFormat} style={toolActionBtnStyle}>Format</button>
+              <button onClick={handleMinify} style={toolActionBtnStyle}>Minify</button>
+            </div>
+          </div>
+          <textarea
+            value={inputJson}
+            onChange={(e) => setInputJson(e.target.value)}
+            style={{
+              ...inputStyle,
+              fontFamily: "monospace",
+              height: "400px",
+              resize: "vertical",
+              fontSize: "0.9rem",
+              lineHeight: "1.5",
+              whiteSpace: "pre",
+              overflowWrap: "normal",
+              overflowX: "auto"
+            }}
+            placeholder="Paste raw JSON string here..."
+          />
+        </div>
+      </div>
+
+      <div style={toolRightColStyle}>
+        <div>
+          <h3 style={{ ...sectionHeadingStyle, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            Parsed Output
+            {outputJson && !error && <CopyButton text={outputJson} />}
+          </h3>
+          
+          {error ? (
+            <div style={{ ...errorStyle, fontFamily: "monospace" }}>
+              <strong>Syntax Error:</strong><br/>
+              {error}
+            </div>
+          ) : (
+            <div style={{ position: "relative", animation: "fadeUp 0.4s ease-out forwards" }}>
+              <pre
+                style={{
+                  background: "#0f172a",
+                  border: "1px solid rgba(34, 197, 94, 0.2)",
+                  borderRadius: "8px",
+                  padding: "1rem",
+                  overflowX: "auto",
+                  color: "#93c5fd",
+                  fontFamily: "monospace",
+                  fontSize: "0.9rem",
+                  lineHeight: "1.5",
+                  height: "400px",
+                  margin: 0
+                }}
+              >
+                <code>{outputJson || "Valid JSON will appear here..."}</code>
+              </pre>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 }
@@ -723,6 +849,18 @@ const toolSplitterStyle: React.CSSProperties = {
   gap: "2.5rem",
   flexWrap: "wrap",
   alignItems: "flex-start"
+};
+
+const toolActionBtnStyle: React.CSSProperties = {
+  background: "rgba(223, 186, 107, 0.1)",
+  border: "1px solid rgba(223, 186, 107, 0.2)",
+  borderRadius: "4px",
+  color: "#dfba6b",
+  fontSize: "0.75rem",
+  fontWeight: 600,
+  padding: "0.25rem 0.5rem",
+  cursor: "pointer",
+  transition: "all 0.2s ease"
 };
 
 const toolLeftColStyle: React.CSSProperties = {
