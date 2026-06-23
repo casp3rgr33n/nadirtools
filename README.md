@@ -1,7 +1,6 @@
 <div align="center">
   <a href="https://nadirtools.com">
-    <!-- Using the circular icon for a clean, modern GitHub presence -->
-    <img src="https://nadirtools.com/icon.png" alt="NadirTools Logo" width="120" style="border-radius: 50%;" />
+    <img src="apps/web/public/logo.png" alt="NadirTools Logo" width="400" />
   </a>
   
   <h1>NadirTools</h1>
@@ -40,11 +39,10 @@ NadirTools is a modern, privacy-first platform designed to replace ad-heavy, slo
 Engineered inside a Turborepo monorepo with **Next.js 15** and **React 19**, and deployed seamlessly to **Cloudflare Pages**.
 
 *   **Zero Latency**: No server API round-trips. Instant math via native JavaScript.
-*   **Programmatic SEO Architecture**: Includes a custom-built automated drip-feed engine generating thousands of static permutations for massive long-tail search dominance.
-*   **Continuous Automation**: Driven by GitHub Actions that automatically sync global tax brackets and trigger daily Spoke page deployments.
+*   **Privacy Absolute**: No tracking databases, no payload collection.
 
 ## 🤝 Contributing
-NadirTools is an open-source initiative aiming to clean up the developer utility ecosystem. Pull requests for new mathematical engines and programmatic spoke permutations are highly encouraged!
+NadirTools is an open-source initiative aiming to clean up the developer utility ecosystem. Pull requests for new mathematical engines are highly encouraged!
 
 ### Local Development
 ```bash
