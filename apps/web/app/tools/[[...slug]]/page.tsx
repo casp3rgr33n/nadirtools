@@ -1,9 +1,12 @@
 import React from "react";
 import { Metadata } from "next";
 import toolConstants from "../../../../../config/tool-constants.json";
+import spokesDbRaw from "../../../../../config/spokes.json";
 import ToolWrapper from "../../../components/ToolWrapper";
 import SchemaRenderer from "../../../components/SchemaRenderer";
 import CopyButton from "../../../components/CopyButton";
+
+const spokesDb = spokesDbRaw as Record<string, any>;
 
 interface PageProps {
   params: Promise<{
@@ -25,6 +28,16 @@ export function generateStaticParams() {
     Object.keys(guides).forEach((guideKey) => {
       paths.push({ slug: [toolKey, guideKey] });
     });
+  });
+
+  // Programmatic Spoke Routes
+  const now = new Date();
+  Object.keys(spokesDb).forEach((spokeSlug) => {
+    const spoke = spokesDb[spokeSlug];
+    // Throttle logic: Only pre-render spokes whose release date has passed
+    if (new Date(spoke.releaseDate) <= now) {
+      paths.push({ slug: [spoke.toolSlug, spokeSlug] });
+    }
   });
 
   return paths;
@@ -59,11 +72,33 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (isGuidePage) {
     const guideSlug = slug[1];
+    
+    // Check if it's a Programmatic Spoke
+    if (spokesDb[guideSlug] && spokesDb[guideSlug].toolSlug === toolSlug) {
+      const spoke = spokesDb[guideSlug];
+      const pageUrl = `${baseUrl}/tools/${toolSlug}/${guideSlug}`;
+      return {
+        title: `${spoke.title} - NadirTools`,
+        description: spoke.description,
+        alternates: {
+          canonical: pageUrl,
+        },
+        openGraph: {
+          title: spoke.title,
+          description: spoke.description,
+          url: pageUrl,
+          type: "website",
+          siteName: "NadirTools",
+        },
+      };
+    }
+
+    // Otherwise, check if it's a standard guide
     const guide = tool.guides?.[guideSlug];
 
     if (!guide) {
       return {
-        title: "Guide Not Found - NadirTools",
+        title: "Page Not Found - NadirTools",
       };
     }
 
@@ -132,12 +167,46 @@ export default async function ToolCatchAllPage({ params }: PageProps) {
 
   if (isGuidePage) {
     const guideSlug = slug[1];
+    
+    // Handle Programmatic Spoke Page Rendering
+    if (spokesDb[guideSlug] && spokesDb[guideSlug].toolSlug === toolSlug) {
+      const spoke = spokesDb[guideSlug];
+      
+      // We pass the presetParams to the ToolWrapper so the tool boots up in the exact state
+      // corresponding to the long-tail SEO keyword.
+      return (
+        <div id="spoke-root" style={{ maxWidth: "900px", margin: "0 auto" }}>
+          <SchemaRenderer
+            toolName={spoke.title}
+            description={spoke.description}
+            category={tool.category}
+            url={`/tools/${toolSlug}/${guideSlug}`}
+          />
+
+          <nav id="breadcrumbs" style={breadcrumbStyle}>
+            <a href="/">Home</a> / <a href={`/tools/${toolSlug}`}>{tool.name}</a> / <span style={{ color: "#94a3b8" }}>{spoke.title}</span>
+          </nav>
+          
+          <header style={{ marginBottom: "2rem", textAlign: "center" }}>
+            <h1 style={{ fontSize: "2rem", fontWeight: 800, color: "#f8fafc", marginBottom: "0.5rem" }}>{spoke.title}</h1>
+            <p style={{ color: "#94a3b8", fontSize: "1.1rem" }}>{spoke.description}</p>
+          </header>
+
+          <div className="tools-container">
+            <div id="main-tool-container" style={{ width: "100%", minWidth: 0, marginBottom: "2rem" }}>
+              <ToolWrapper toolSlug={toolSlug} toolConfig={tool} prefillParams={spoke.presetParams} />
+            </div>
+          </div>
+        </div>
+      );
+    }
+
     const guide = tool.guides?.[guideSlug];
 
     if (!guide) {
       return (
         <div style={{ textAlign: "center", padding: "4rem 0" }}>
-          <h1 style={{ fontSize: "2rem", color: "#f43f5e" }}>Guide Not Found</h1>
+          <h1 style={{ fontSize: "2rem", color: "#f43f5e" }}>Page Not Found</h1>
           <p style={{ marginTop: "1rem" }}><a href={`/tools/${toolSlug}`}>Back to {tool.name}</a></p>
         </div>
       );

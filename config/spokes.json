@@ -1,0 +1,485 @@
+{
+  "every-5-minutes": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every 5 minutes (*/5 * * * *)",
+    "description": "Generate, validate, and parse the exact cron expression for every 5 minutes. Use our visualizer to test the syntax */5 * * * *.",
+    "presetParams": {
+      "q": "*/5 * * * *"
+    },
+    "releaseDate": "2026-06-22T06:36:48.613Z"
+  },
+  "every-10-minutes": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every 10 minutes (*/10 * * * *)",
+    "description": "Generate, validate, and parse the exact cron expression for every 10 minutes. Use our visualizer to test the syntax */10 * * * *.",
+    "presetParams": {
+      "q": "*/10 * * * *"
+    },
+    "releaseDate": "2026-06-22T06:36:48.614Z"
+  },
+  "every-15-minutes": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every 15 minutes (*/15 * * * *)",
+    "description": "Generate, validate, and parse the exact cron expression for every 15 minutes. Use our visualizer to test the syntax */15 * * * *.",
+    "presetParams": {
+      "q": "*/15 * * * *"
+    },
+    "releaseDate": "2026-06-22T06:36:48.614Z"
+  },
+  "every-30-minutes": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every 30 minutes (*/30 * * * *)",
+    "description": "Generate, validate, and parse the exact cron expression for every 30 minutes. Use our visualizer to test the syntax */30 * * * *.",
+    "presetParams": {
+      "q": "*/30 * * * *"
+    },
+    "releaseDate": "2026-06-22T06:36:48.614Z"
+  },
+  "every-hour": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every hour at minute 0 (0 * * * *)",
+    "description": "Generate, validate, and parse the exact cron expression for every hour at minute 0. Use our visualizer to test the syntax 0 * * * *.",
+    "presetParams": {
+      "q": "0 * * * *"
+    },
+    "releaseDate": "2026-06-22T06:36:48.614Z"
+  },
+  "every-2-hours": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every 2 hours (0 */2 * * *)",
+    "description": "Generate, validate, and parse the exact cron expression for every 2 hours. Use our visualizer to test the syntax 0 */2 * * *.",
+    "presetParams": {
+      "q": "0 */2 * * *"
+    },
+    "releaseDate": "2026-06-24T00:00:00.000Z"
+  },
+  "at-midnight-every-day": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every day at midnight (0 0 * * *)",
+    "description": "Generate, validate, and parse the exact cron expression for every day at midnight. Use our visualizer to test the syntax 0 0 * * *.",
+    "presetParams": {
+      "q": "0 0 * * *"
+    },
+    "releaseDate": "2026-06-24T00:00:00.000Z"
+  },
+  "at-1am-every-day": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every day at 1:00 AM (0 1 * * *)",
+    "description": "Generate, validate, and parse the exact cron expression for every day at 1:00 am. Use our visualizer to test the syntax 0 1 * * *.",
+    "presetParams": {
+      "q": "0 1 * * *"
+    },
+    "releaseDate": "2026-06-24T00:00:00.000Z"
+  },
+  "at-2am-every-day": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every day at 2:00 AM (0 2 * * *)",
+    "description": "Generate, validate, and parse the exact cron expression for every day at 2:00 am. Use our visualizer to test the syntax 0 2 * * *.",
+    "presetParams": {
+      "q": "0 2 * * *"
+    },
+    "releaseDate": "2026-06-24T00:00:00.000Z"
+  },
+  "at-5am-on-sundays": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every Sunday at 5:00 AM (0 5 * * 0)",
+    "description": "Generate, validate, and parse the exact cron expression for every sunday at 5:00 am. Use our visualizer to test the syntax 0 5 * * 0.",
+    "presetParams": {
+      "q": "0 5 * * 0"
+    },
+    "releaseDate": "2026-06-24T00:00:00.000Z"
+  },
+  "every-first-of-month": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: First day of every month at midnight (0 0 1 * *)",
+    "description": "Generate, validate, and parse the exact cron expression for first day of every month at midnight. Use our visualizer to test the syntax 0 0 1 * *.",
+    "presetParams": {
+      "q": "0 0 1 * *"
+    },
+    "releaseDate": "2026-06-25T00:00:00.000Z"
+  },
+  "every-weekday-at-9am": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Monday through Friday at 9:00 AM (0 9 * * 1-5)",
+    "description": "Generate, validate, and parse the exact cron expression for monday through friday at 9:00 am. Use our visualizer to test the syntax 0 9 * * 1-5.",
+    "presetParams": {
+      "q": "0 9 * * 1-5"
+    },
+    "releaseDate": "2026-06-25T00:00:00.000Z"
+  },
+  "cidr-8-reference": {
+    "toolSlug": "subnet-calculator",
+    "title": "CIDR /8 Subnet Mask Reference & Calculator",
+    "description": "Calculate the usable hosts, broadcast address, and subnet mask for a /8 network block dynamically.",
+    "presetParams": {
+      "cidr": "8"
+    },
+    "releaseDate": "2026-06-25T00:00:00.000Z"
+  },
+  "cidr-9-reference": {
+    "toolSlug": "subnet-calculator",
+    "title": "CIDR /9 Subnet Mask Reference & Calculator",
+    "description": "Calculate the usable hosts, broadcast address, and subnet mask for a /9 network block dynamically.",
+    "presetParams": {
+      "cidr": "9"
+    },
+    "releaseDate": "2026-06-25T00:00:00.000Z"
+  },
+  "cidr-10-reference": {
+    "toolSlug": "subnet-calculator",
+    "title": "CIDR /10 Subnet Mask Reference & Calculator",
+    "description": "Calculate the usable hosts, broadcast address, and subnet mask for a /10 network block dynamically.",
+    "presetParams": {
+      "cidr": "10"
+    },
+    "releaseDate": "2026-06-25T00:00:00.000Z"
+  },
+  "cidr-11-reference": {
+    "toolSlug": "subnet-calculator",
+    "title": "CIDR /11 Subnet Mask Reference & Calculator",
+    "description": "Calculate the usable hosts, broadcast address, and subnet mask for a /11 network block dynamically.",
+    "presetParams": {
+      "cidr": "11"
+    },
+    "releaseDate": "2026-06-26T00:00:00.000Z"
+  },
+  "cidr-12-reference": {
+    "toolSlug": "subnet-calculator",
+    "title": "CIDR /12 Subnet Mask Reference & Calculator",
+    "description": "Calculate the usable hosts, broadcast address, and subnet mask for a /12 network block dynamically.",
+    "presetParams": {
+      "cidr": "12"
+    },
+    "releaseDate": "2026-06-26T00:00:00.000Z"
+  },
+  "cidr-13-reference": {
+    "toolSlug": "subnet-calculator",
+    "title": "CIDR /13 Subnet Mask Reference & Calculator",
+    "description": "Calculate the usable hosts, broadcast address, and subnet mask for a /13 network block dynamically.",
+    "presetParams": {
+      "cidr": "13"
+    },
+    "releaseDate": "2026-06-26T00:00:00.000Z"
+  },
+  "cidr-14-reference": {
+    "toolSlug": "subnet-calculator",
+    "title": "CIDR /14 Subnet Mask Reference & Calculator",
+    "description": "Calculate the usable hosts, broadcast address, and subnet mask for a /14 network block dynamically.",
+    "presetParams": {
+      "cidr": "14"
+    },
+    "releaseDate": "2026-06-26T00:00:00.000Z"
+  },
+  "cidr-15-reference": {
+    "toolSlug": "subnet-calculator",
+    "title": "CIDR /15 Subnet Mask Reference & Calculator",
+    "description": "Calculate the usable hosts, broadcast address, and subnet mask for a /15 network block dynamically.",
+    "presetParams": {
+      "cidr": "15"
+    },
+    "releaseDate": "2026-06-26T00:00:00.000Z"
+  },
+  "cidr-16-reference": {
+    "toolSlug": "subnet-calculator",
+    "title": "CIDR /16 Subnet Mask Reference & Calculator",
+    "description": "Calculate the usable hosts, broadcast address, and subnet mask for a /16 network block dynamically.",
+    "presetParams": {
+      "cidr": "16"
+    },
+    "releaseDate": "2026-06-27T00:00:00.000Z"
+  },
+  "cidr-17-reference": {
+    "toolSlug": "subnet-calculator",
+    "title": "CIDR /17 Subnet Mask Reference & Calculator",
+    "description": "Calculate the usable hosts, broadcast address, and subnet mask for a /17 network block dynamically.",
+    "presetParams": {
+      "cidr": "17"
+    },
+    "releaseDate": "2026-06-27T00:00:00.000Z"
+  },
+  "cidr-18-reference": {
+    "toolSlug": "subnet-calculator",
+    "title": "CIDR /18 Subnet Mask Reference & Calculator",
+    "description": "Calculate the usable hosts, broadcast address, and subnet mask for a /18 network block dynamically.",
+    "presetParams": {
+      "cidr": "18"
+    },
+    "releaseDate": "2026-06-27T00:00:00.000Z"
+  },
+  "cidr-19-reference": {
+    "toolSlug": "subnet-calculator",
+    "title": "CIDR /19 Subnet Mask Reference & Calculator",
+    "description": "Calculate the usable hosts, broadcast address, and subnet mask for a /19 network block dynamically.",
+    "presetParams": {
+      "cidr": "19"
+    },
+    "releaseDate": "2026-06-27T00:00:00.000Z"
+  },
+  "cidr-20-reference": {
+    "toolSlug": "subnet-calculator",
+    "title": "CIDR /20 Subnet Mask Reference & Calculator",
+    "description": "Calculate the usable hosts, broadcast address, and subnet mask for a /20 network block dynamically.",
+    "presetParams": {
+      "cidr": "20"
+    },
+    "releaseDate": "2026-06-27T00:00:00.000Z"
+  },
+  "cidr-21-reference": {
+    "toolSlug": "subnet-calculator",
+    "title": "CIDR /21 Subnet Mask Reference & Calculator",
+    "description": "Calculate the usable hosts, broadcast address, and subnet mask for a /21 network block dynamically.",
+    "presetParams": {
+      "cidr": "21"
+    },
+    "releaseDate": "2026-06-28T00:00:00.000Z"
+  },
+  "cidr-22-reference": {
+    "toolSlug": "subnet-calculator",
+    "title": "CIDR /22 Subnet Mask Reference & Calculator",
+    "description": "Calculate the usable hosts, broadcast address, and subnet mask for a /22 network block dynamically.",
+    "presetParams": {
+      "cidr": "22"
+    },
+    "releaseDate": "2026-06-28T00:00:00.000Z"
+  },
+  "cidr-23-reference": {
+    "toolSlug": "subnet-calculator",
+    "title": "CIDR /23 Subnet Mask Reference & Calculator",
+    "description": "Calculate the usable hosts, broadcast address, and subnet mask for a /23 network block dynamically.",
+    "presetParams": {
+      "cidr": "23"
+    },
+    "releaseDate": "2026-06-28T00:00:00.000Z"
+  },
+  "cidr-24-reference": {
+    "toolSlug": "subnet-calculator",
+    "title": "CIDR /24 Subnet Mask Reference & Calculator",
+    "description": "Calculate the usable hosts, broadcast address, and subnet mask for a /24 network block dynamically.",
+    "presetParams": {
+      "cidr": "24"
+    },
+    "releaseDate": "2026-06-28T00:00:00.000Z"
+  },
+  "cidr-25-reference": {
+    "toolSlug": "subnet-calculator",
+    "title": "CIDR /25 Subnet Mask Reference & Calculator",
+    "description": "Calculate the usable hosts, broadcast address, and subnet mask for a /25 network block dynamically.",
+    "presetParams": {
+      "cidr": "25"
+    },
+    "releaseDate": "2026-06-28T00:00:00.000Z"
+  },
+  "cidr-26-reference": {
+    "toolSlug": "subnet-calculator",
+    "title": "CIDR /26 Subnet Mask Reference & Calculator",
+    "description": "Calculate the usable hosts, broadcast address, and subnet mask for a /26 network block dynamically.",
+    "presetParams": {
+      "cidr": "26"
+    },
+    "releaseDate": "2026-06-29T00:00:00.000Z"
+  },
+  "cidr-27-reference": {
+    "toolSlug": "subnet-calculator",
+    "title": "CIDR /27 Subnet Mask Reference & Calculator",
+    "description": "Calculate the usable hosts, broadcast address, and subnet mask for a /27 network block dynamically.",
+    "presetParams": {
+      "cidr": "27"
+    },
+    "releaseDate": "2026-06-29T00:00:00.000Z"
+  },
+  "cidr-28-reference": {
+    "toolSlug": "subnet-calculator",
+    "title": "CIDR /28 Subnet Mask Reference & Calculator",
+    "description": "Calculate the usable hosts, broadcast address, and subnet mask for a /28 network block dynamically.",
+    "presetParams": {
+      "cidr": "28"
+    },
+    "releaseDate": "2026-06-29T00:00:00.000Z"
+  },
+  "cidr-29-reference": {
+    "toolSlug": "subnet-calculator",
+    "title": "CIDR /29 Subnet Mask Reference & Calculator",
+    "description": "Calculate the usable hosts, broadcast address, and subnet mask for a /29 network block dynamically.",
+    "presetParams": {
+      "cidr": "29"
+    },
+    "releaseDate": "2026-06-29T00:00:00.000Z"
+  },
+  "cidr-30-reference": {
+    "toolSlug": "subnet-calculator",
+    "title": "CIDR /30 Subnet Mask Reference & Calculator",
+    "description": "Calculate the usable hosts, broadcast address, and subnet mask for a /30 network block dynamically.",
+    "presetParams": {
+      "cidr": "30"
+    },
+    "releaseDate": "2026-06-29T00:00:00.000Z"
+  },
+  "cidr-31-reference": {
+    "toolSlug": "subnet-calculator",
+    "title": "CIDR /31 Subnet Mask Reference & Calculator",
+    "description": "Calculate the usable hosts, broadcast address, and subnet mask for a /31 network block dynamically.",
+    "presetParams": {
+      "cidr": "31"
+    },
+    "releaseDate": "2026-06-30T00:00:00.000Z"
+  },
+  "cidr-32-reference": {
+    "toolSlug": "subnet-calculator",
+    "title": "CIDR /32 Subnet Mask Reference & Calculator",
+    "description": "Calculate the usable hosts, broadcast address, and subnet mask for a /32 network block dynamically.",
+    "presetParams": {
+      "cidr": "32"
+    },
+    "releaseDate": "2026-06-30T00:00:00.000Z"
+  },
+  "california-sole-proprietor": {
+    "toolSlug": "freelance-tax",
+    "title": "California Sole Proprietorship & 1099 Freelance Tax Calculator",
+    "description": "Estimate your net income after federal, state, and self-employment taxes as an independent contractor or sole proprietor in California.",
+    "presetParams": {
+      "regime": "US",
+      "state": "California"
+    },
+    "releaseDate": "2026-06-30T00:00:00.000Z"
+  },
+  "texas-sole-proprietor": {
+    "toolSlug": "freelance-tax",
+    "title": "Texas Sole Proprietorship & 1099 Freelance Tax Calculator",
+    "description": "Estimate your net income after federal, state, and self-employment taxes as an independent contractor or sole proprietor in Texas.",
+    "presetParams": {
+      "regime": "US",
+      "state": "Texas"
+    },
+    "releaseDate": "2026-06-30T00:00:00.000Z"
+  },
+  "new-york-sole-proprietor": {
+    "toolSlug": "freelance-tax",
+    "title": "New York Sole Proprietorship & 1099 Freelance Tax Calculator",
+    "description": "Estimate your net income after federal, state, and self-employment taxes as an independent contractor or sole proprietor in New York.",
+    "presetParams": {
+      "regime": "US",
+      "state": "New York"
+    },
+    "releaseDate": "2026-06-30T00:00:00.000Z"
+  },
+  "florida-sole-proprietor": {
+    "toolSlug": "freelance-tax",
+    "title": "Florida Sole Proprietorship & 1099 Freelance Tax Calculator",
+    "description": "Estimate your net income after federal, state, and self-employment taxes as an independent contractor or sole proprietor in Florida.",
+    "presetParams": {
+      "regime": "US",
+      "state": "Florida"
+    },
+    "releaseDate": "2026-07-01T00:00:00.000Z"
+  },
+  "illinois-sole-proprietor": {
+    "toolSlug": "freelance-tax",
+    "title": "Illinois Sole Proprietorship & 1099 Freelance Tax Calculator",
+    "description": "Estimate your net income after federal, state, and self-employment taxes as an independent contractor or sole proprietor in Illinois.",
+    "presetParams": {
+      "regime": "US",
+      "state": "Illinois"
+    },
+    "releaseDate": "2026-07-01T00:00:00.000Z"
+  },
+  "pennsylvania-sole-proprietor": {
+    "toolSlug": "freelance-tax",
+    "title": "Pennsylvania Sole Proprietorship & 1099 Freelance Tax Calculator",
+    "description": "Estimate your net income after federal, state, and self-employment taxes as an independent contractor or sole proprietor in Pennsylvania.",
+    "presetParams": {
+      "regime": "US",
+      "state": "Pennsylvania"
+    },
+    "releaseDate": "2026-07-01T00:00:00.000Z"
+  },
+  "ohio-sole-proprietor": {
+    "toolSlug": "freelance-tax",
+    "title": "Ohio Sole Proprietorship & 1099 Freelance Tax Calculator",
+    "description": "Estimate your net income after federal, state, and self-employment taxes as an independent contractor or sole proprietor in Ohio.",
+    "presetParams": {
+      "regime": "US",
+      "state": "Ohio"
+    },
+    "releaseDate": "2026-07-01T00:00:00.000Z"
+  },
+  "georgia-sole-proprietor": {
+    "toolSlug": "freelance-tax",
+    "title": "Georgia Sole Proprietorship & 1099 Freelance Tax Calculator",
+    "description": "Estimate your net income after federal, state, and self-employment taxes as an independent contractor or sole proprietor in Georgia.",
+    "presetParams": {
+      "regime": "US",
+      "state": "Georgia"
+    },
+    "releaseDate": "2026-07-01T00:00:00.000Z"
+  },
+  "north-carolina-sole-proprietor": {
+    "toolSlug": "freelance-tax",
+    "title": "North Carolina Sole Proprietorship & 1099 Freelance Tax Calculator",
+    "description": "Estimate your net income after federal, state, and self-employment taxes as an independent contractor or sole proprietor in North Carolina.",
+    "presetParams": {
+      "regime": "US",
+      "state": "North Carolina"
+    },
+    "releaseDate": "2026-07-02T00:00:00.000Z"
+  },
+  "michigan-sole-proprietor": {
+    "toolSlug": "freelance-tax",
+    "title": "Michigan Sole Proprietorship & 1099 Freelance Tax Calculator",
+    "description": "Estimate your net income after federal, state, and self-employment taxes as an independent contractor or sole proprietor in Michigan.",
+    "presetParams": {
+      "regime": "US",
+      "state": "Michigan"
+    },
+    "releaseDate": "2026-07-02T00:00:00.000Z"
+  },
+  "new-jersey-sole-proprietor": {
+    "toolSlug": "freelance-tax",
+    "title": "New Jersey Sole Proprietorship & 1099 Freelance Tax Calculator",
+    "description": "Estimate your net income after federal, state, and self-employment taxes as an independent contractor or sole proprietor in New Jersey.",
+    "presetParams": {
+      "regime": "US",
+      "state": "New Jersey"
+    },
+    "releaseDate": "2026-07-02T00:00:00.000Z"
+  },
+  "virginia-sole-proprietor": {
+    "toolSlug": "freelance-tax",
+    "title": "Virginia Sole Proprietorship & 1099 Freelance Tax Calculator",
+    "description": "Estimate your net income after federal, state, and self-employment taxes as an independent contractor or sole proprietor in Virginia.",
+    "presetParams": {
+      "regime": "US",
+      "state": "Virginia"
+    },
+    "releaseDate": "2026-07-02T00:00:00.000Z"
+  },
+  "washington-sole-proprietor": {
+    "toolSlug": "freelance-tax",
+    "title": "Washington Sole Proprietorship & 1099 Freelance Tax Calculator",
+    "description": "Estimate your net income after federal, state, and self-employment taxes as an independent contractor or sole proprietor in Washington.",
+    "presetParams": {
+      "regime": "US",
+      "state": "Washington"
+    },
+    "releaseDate": "2026-07-02T00:00:00.000Z"
+  },
+  "arizona-sole-proprietor": {
+    "toolSlug": "freelance-tax",
+    "title": "Arizona Sole Proprietorship & 1099 Freelance Tax Calculator",
+    "description": "Estimate your net income after federal, state, and self-employment taxes as an independent contractor or sole proprietor in Arizona.",
+    "presetParams": {
+      "regime": "US",
+      "state": "Arizona"
+    },
+    "releaseDate": "2026-07-03T00:00:00.000Z"
+  },
+  "massachusetts-sole-proprietor": {
+    "toolSlug": "freelance-tax",
+    "title": "Massachusetts Sole Proprietorship & 1099 Freelance Tax Calculator",
+    "description": "Estimate your net income after federal, state, and self-employment taxes as an independent contractor or sole proprietor in Massachusetts.",
+    "presetParams": {
+      "regime": "US",
+      "state": "Massachusetts"
+    },
+    "releaseDate": "2026-07-03T00:00:00.000Z"
+  }
+}

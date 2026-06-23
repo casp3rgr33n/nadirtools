@@ -14,9 +14,10 @@ import CopyButton from "./CopyButton";
 interface ToolWrapperProps {
   toolSlug: string;
   toolConfig: any;
+  prefillParams?: Record<string, string>;
 }
 
-export default function ToolWrapper({ toolSlug, toolConfig }: ToolWrapperProps) {
+export default function ToolWrapper({ toolSlug, toolConfig, prefillParams = {} }: ToolWrapperProps) {
   // Global Privacy Status Badge
   const privacyBadge = (
     <div
@@ -69,11 +70,11 @@ export default function ToolWrapper({ toolSlug, toolConfig }: ToolWrapperProps) 
       </p>
 
       {/* Render the specific tool interface */}
-      {toolSlug === "subnet-calculator" && <SubnetCalculator />}
-      {toolSlug === "firewall-validator" && <FirewallValidator />}
-      {toolSlug === "freelance-tax" && <FreelanceTax calculatorConfig={toolConfig.math} />}
-      {toolSlug === "cron-visualizer" && <CronVisualizer />}
-      {toolSlug === "coc-yield" && <CashOnCashYield />}
+      {toolSlug === "subnet-calculator" && <SubnetCalculator prefillParams={prefillParams} />}
+      {toolSlug === "firewall-validator" && <FirewallValidator prefillParams={prefillParams} />}
+      {toolSlug === "freelance-tax" && <FreelanceTax calculatorConfig={toolConfig.math} prefillParams={prefillParams} />}
+      {toolSlug === "cron-visualizer" && <CronVisualizer prefillParams={prefillParams} />}
+      {toolSlug === "coc-yield" && <CashOnCashYield prefillParams={prefillParams} />}
 
       <LegalDisclaimer category={toolConfig.category} />
     </div>
@@ -83,7 +84,7 @@ export default function ToolWrapper({ toolSlug, toolConfig }: ToolWrapperProps) 
 /* ==========================================================================
    1. Visual Subnet & CIDR Partition Engine
    ========================================================================== */
-function SubnetCalculator() {
+function SubnetCalculator({ prefillParams = {} }: { prefillParams?: Record<string, string> }) {
   const [ip, setIp] = useState("192.168.1.0");
   const [cidr, setCidr] = useState(24);
   const [splitCidr, setSplitCidr] = useState(26);
@@ -92,9 +93,9 @@ function SubnetCalculator() {
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    if (params.has('ip')) setIp(params.get('ip')!);
-    if (params.has('cidr')) setCidr(Number(params.get('cidr')));
-    if (params.has('splitCidr')) setSplitCidr(Number(params.get('splitCidr')));
+    if (prefillParams.ip || params.has('ip')) setIp(prefillParams.ip || params.get('ip')!);
+    if (prefillParams.cidr || params.has('cidr')) setCidr(Number(prefillParams.cidr || params.get('cidr')));
+    if (prefillParams.splitCidr || params.has('splitCidr')) setSplitCidr(Number(prefillParams.splitCidr || params.get('splitCidr')));
   }, []);
 
   useEffect(() => {
@@ -190,7 +191,7 @@ function SubnetCalculator() {
 /* ==========================================================================
    2. OPNsense & Cisco Firewall Rule Validator
    ========================================================================== */
-function FirewallValidator() {
+function FirewallValidator({ prefillParams = {} }: { prefillParams?: Record<string, string> }) {
   const defaultRules = `# Sample OPNsense Rules
 pass in quick on em0 proto tcp from any to any port 80
 block in on em0 proto tcp from 192.168.1.50 to any port 80
@@ -201,6 +202,10 @@ access-list 101 deny tcp 192.168.1.0 0.0.0.255 any eq 80`;
 
   const [rulesText, setRulesText] = useState(defaultRules);
   const [reports, setReports] = useState<any[]>([]);
+
+  useEffect(() => {
+    if (prefillParams.rules) setRulesText(prefillParams.rules);
+  }, []);
 
   useEffect(() => {
     const logs = parseAndValidateFirewall(rulesText);
@@ -291,7 +296,7 @@ access-list 101 deny tcp 192.168.1.0 0.0.0.255 any eq 80`;
 /* ==========================================================================
    3. Multi-Regime Tech Freelance Tax & GST Matrix
    ========================================================================== */
-function FreelanceTax({ calculatorConfig }: { calculatorConfig: any }) {
+function FreelanceTax({ calculatorConfig, prefillParams = {} }: { calculatorConfig: any, prefillParams?: Record<string, string> }) {
   const regimes = calculatorConfig.regimes || {};
   const [regime, setRegime] = useState("US");
   const [gross, setGross] = useState(120000);
@@ -301,6 +306,11 @@ function FreelanceTax({ calculatorConfig }: { calculatorConfig: any }) {
   const [socialTax, setSocialTax] = useState(0);
   const [indirectTax, setIndirectTax] = useState(0);
   const [takeHome, setTakeHome] = useState(0);
+
+  useEffect(() => {
+    if (prefillParams.regime) setRegime(prefillParams.regime);
+    if (prefillParams.gross) setGross(Number(prefillParams.gross));
+  }, []);
 
   useEffect(() => {
     const results = calculateFreelanceTaxes(regime, gross, expenses, regimes);
@@ -478,7 +488,7 @@ function FreelanceTax({ calculatorConfig }: { calculatorConfig: any }) {
 /* ==========================================================================
    4. Advanced Cron Expression Visualizer & Simulator
    ========================================================================== */
-function CronVisualizer() {
+function CronVisualizer({ prefillParams = {} }: { prefillParams?: Record<string, string> }) {
   const [expression, setExpression] = useState("*/15 0-5 * * 1-5");
   const [description, setDescription] = useState("");
   const [nextRuns, setNextRuns] = useState<string[]>([]);
@@ -486,7 +496,7 @@ function CronVisualizer() {
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    if (params.has('cron')) setExpression(params.get('cron')!);
+    if (prefillParams.q || params.has('cron')) setExpression(prefillParams.q || params.get('cron')!);
   }, []);
 
   useEffect(() => {
@@ -550,7 +560,7 @@ function CronVisualizer() {
 /* ==========================================================================
    5. Commercial Real Estate Cash-on-Cash Yield Simulator
    ========================================================================== */
-function CashOnCashYield() {
+function CashOnCashYield({ prefillParams = {} }: { prefillParams?: Record<string, string> }) {
   const [purchasePrice, setPurchasePrice] = useState(1200000);
   const [downPaymentPct, setDownPaymentPct] = useState(25);
   const [interestRate, setInterestRate] = useState(6.5);
@@ -565,6 +575,11 @@ function CashOnCashYield() {
   const [noi, setNoi] = useState(0);
   const [debtService, setDebtService] = useState(0);
   const [totalInvested, setTotalInvested] = useState(0);
+
+  useEffect(() => {
+    if (prefillParams.price) setPurchasePrice(Number(prefillParams.price));
+    if (prefillParams.rent) setGrossRent(Number(prefillParams.rent));
+  }, []);
 
   useEffect(() => {
     const results = calculateRealEstateYields(
