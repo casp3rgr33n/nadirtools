@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://nadirtools.com">
-    <img src="apps/web/public/logo.png" alt="NadirTools Logo" width="400" />
+    <img src="apps/web/public/logo.jpg" alt="NadirTools Logo" width="400" />
   </a>
   
   <h1>NadirTools</h1>
