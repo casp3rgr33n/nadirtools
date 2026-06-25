@@ -7,7 +7,8 @@ import {
   parseAndValidateFirewall,
   calculateFreelanceTaxes,
   parseCronExpression,
-  calculateRealEstateYields
+  calculateRealEstateYields,
+  calculateNNN
 } from "../utils/calculations";
 import CopyButton from "./CopyButton";
 
@@ -76,6 +77,7 @@ export default function ToolWrapper({ toolSlug, toolConfig, prefillParams = {} }
       {toolSlug === "freelance-tax" && <FreelanceTax calculatorConfig={toolConfig.math} prefillParams={prefillParams} />}
       {toolSlug === "cron-visualizer" && <CronVisualizer prefillParams={prefillParams} />}
       {toolSlug === "coc-yield" && <CashOnCashYield prefillParams={prefillParams} />}
+      {toolSlug === "nnn-calculator" && <NNNCalculator prefillParams={prefillParams} />}
 
       <LegalDisclaimer category={toolConfig.category} />
     </div>
@@ -984,3 +986,160 @@ const tableColStyle: React.CSSProperties = {
   padding: "0.75rem 1rem",
   color: "#d4d4d4"
 };
+
+/* ==========================================================================
+   11. Triple Net (NNN) Lease Calculator
+   ========================================================================== */
+function NNNCalculator({ prefillParams = {} }: { prefillParams?: Record<string, string> }) {
+  const [baseRent, setBaseRent] = useState(parseFloat(prefillParams.baseRent || "25"));
+  const [rentType, setRentType] = useState<"annual_psf" | "annual_total" | "monthly_total">(
+    (prefillParams.rentType as any) || "annual_psf"
+  );
+  const [sqft, setSqft] = useState(parseFloat(prefillParams.sqft || "5000"));
+  const [taxes, setTaxes] = useState(parseFloat(prefillParams.taxes || "12000"));
+  const [insurance, setInsurance] = useState(parseFloat(prefillParams.insurance || "3500"));
+  const [cam, setCam] = useState(parseFloat(prefillParams.cam || "8500"));
+
+  const results = calculateNNN(baseRent, rentType, sqft, taxes, insurance, cam);
+
+  // Auto-update URL params without reloading
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    params.set("baseRent", baseRent.toString());
+    params.set("rentType", rentType);
+    params.set("sqft", sqft.toString());
+    params.set("taxes", taxes.toString());
+    params.set("insurance", insurance.toString());
+    params.set("cam", cam.toString());
+    const newUrl = `${window.location.pathname}?${params.toString()}`;
+    window.history.replaceState({}, "", newUrl);
+  }, [baseRent, rentType, sqft, taxes, insurance, cam]);
+
+  const formatter = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
+  const psfFormatter = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 2 });
+
+  return (
+    <div style={toolSplitterStyle}>
+      <div style={toolLeftColStyle}>
+        <h3 style={sectionHeadingStyle}>Lease Parameters</h3>
+
+        <div style={{ display: "flex", gap: "1rem", marginBottom: "1.5rem" }}>
+          <div style={{ flex: 1 }}>
+            <label style={labelStyle}>Base Rent Amount</label>
+            <input
+              type="number"
+              style={inputStyle}
+              value={baseRent}
+              onChange={(e) => setBaseRent(parseFloat(e.target.value) || 0)}
+              min="0"
+            />
+          </div>
+          <div style={{ flex: 1 }}>
+            <label style={labelStyle}>Rent Type</label>
+            <select
+              style={inputStyle}
+              value={rentType}
+              onChange={(e) => setRentType(e.target.value as any)}
+            >
+              <option value="annual_psf">Annual Per Sq. Ft.</option>
+              <option value="annual_total">Annual Total</option>
+              <option value="monthly_total">Monthly Total</option>
+            </select>
+          </div>
+        </div>
+
+        <div style={formFieldStyle}>
+          <label style={labelStyle}>Total Square Footage</label>
+          <input
+            type="number"
+            style={inputStyle}
+            value={sqft}
+            onChange={(e) => setSqft(parseFloat(e.target.value) || 0)}
+            min="0"
+          />
+        </div>
+
+        <h3 style={{ ...sectionHeadingStyle, marginTop: "2rem" }}>Triple Net (NNN) Expenses</h3>
+        <p style={{ color: "#a3a3a3", fontSize: "0.85rem", marginBottom: "1rem" }}>Enter your estimated or actual annual operating expenses for the property.</p>
+
+        <div style={formFieldStyle}>
+          <label style={labelStyle}>Annual Property Taxes (N1)</label>
+          <input
+            type="number"
+            style={inputStyle}
+            value={taxes}
+            onChange={(e) => setTaxes(parseFloat(e.target.value) || 0)}
+            min="0"
+          />
+        </div>
+
+        <div style={formFieldStyle}>
+          <label style={labelStyle}>Annual Building Insurance (N2)</label>
+          <input
+            type="number"
+            style={inputStyle}
+            value={insurance}
+            onChange={(e) => setInsurance(parseFloat(e.target.value) || 0)}
+            min="0"
+          />
+        </div>
+
+        <div style={formFieldStyle}>
+          <label style={labelStyle}>Annual CAM / Maintenance (N3)</label>
+          <input
+            type="number"
+            style={inputStyle}
+            value={cam}
+            onChange={(e) => setCam(parseFloat(e.target.value) || 0)}
+            min="0"
+          />
+        </div>
+      </div>
+
+      <div style={toolRightColStyle}>
+        <h3 style={sectionHeadingStyle}>Lease Cost Breakdown</h3>
+        
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem", marginBottom: "1.5rem" }}>
+          <div style={metricBoxStyle}>
+            <div style={metricLabelStyle}>Total Monthly Payment</div>
+            <div style={{ ...metricValueStyle, color: "#dfba6b" }}>{formatter.format(results.monthlyTotal)}</div>
+            <div style={{ fontSize: "0.8rem", color: "#a3a3a3", marginTop: "0.25rem" }}>Base + NNN</div>
+          </div>
+          <div style={metricBoxStyle}>
+            <div style={metricLabelStyle}>Total Annual Payment</div>
+            <div style={{ ...metricValueStyle, color: "#22c55e" }}>{formatter.format(results.annualTotal)}</div>
+          </div>
+        </div>
+
+        <div style={{ background: "rgba(255,255,255,0.02)", padding: "1.5rem", borderRadius: "12px", border: "1px solid rgba(255,255,255,0.05)", marginBottom: "1.5rem" }}>
+          <h4 style={{ fontSize: "1rem", fontWeight: 600, color: "#e5e5e5", marginBottom: "1rem" }}>Cost Per Square Foot</h4>
+          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "0.5rem" }}>
+            <span style={{ color: "#a3a3a3" }}>Annual Base Rent:</span>
+            <span style={{ color: "#f5f5f5", fontWeight: 500 }}>{psfFormatter.format(results.annualBase / (sqft || 1))} / SF</span>
+          </div>
+          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "0.5rem" }}>
+            <span style={{ color: "#a3a3a3" }}>Annual NNN Fees:</span>
+            <span style={{ color: "#f5f5f5", fontWeight: 500 }}>{psfFormatter.format(results.annualNnnPsf)} / SF</span>
+          </div>
+          <div style={{ height: "1px", background: "rgba(255,255,255,0.1)", margin: "0.75rem 0" }} />
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <span style={{ color: "#dfba6b", fontWeight: 600 }}>Total Annual Cost:</span>
+            <span style={{ color: "#dfba6b", fontWeight: 600 }}>{psfFormatter.format(results.annualTotalPsf)} / SF</span>
+          </div>
+        </div>
+
+        <div style={{ background: "rgba(255,255,255,0.02)", padding: "1.5rem", borderRadius: "12px", border: "1px solid rgba(255,255,255,0.05)" }}>
+          <h4 style={{ fontSize: "1rem", fontWeight: 600, color: "#e5e5e5", marginBottom: "1rem" }}>Monthly Payment Breakdown</h4>
+          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "0.5rem" }}>
+            <span style={{ color: "#a3a3a3" }}>Monthly Base Rent:</span>
+            <span style={{ color: "#f5f5f5", fontWeight: 500 }}>{formatter.format(results.monthlyBase)}</span>
+          </div>
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <span style={{ color: "#a3a3a3" }}>Monthly NNN Fees:</span>
+            <span style={{ color: "#f5f5f5", fontWeight: 500 }}>{formatter.format(results.monthlyTripleNet)}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

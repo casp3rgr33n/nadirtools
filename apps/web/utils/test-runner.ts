@@ -3,7 +3,8 @@ import {
   parseAndValidateFirewall,
   calculateFreelanceTaxes,
   parseCronExpression,
-  calculateRealEstateYields
+  calculateRealEstateYields,
+  calculateNNN
 } from "./calculations";
 
 // Basic assertion helpers
@@ -152,6 +153,26 @@ function runCashOnCashTests() {
   assertNear(result.dscr, 1.43, 0.01, "Debt Service Coverage Ratio (DSCR) calculation is correct");
 }
 
+function runNNNTests() {
+  console.log("Running NNN Lease Calculator Tests...");
+  const result = calculateNNN(20, "annual_psf", 5000, 10000, 2500, 5000);
+
+  // Base rent = 20 * 5000 = 100,000
+  assertNear(result.annualBase, 100000, 0.01, "Annual Base Rent (PSF) calculation is correct");
+
+  // Triple Net Fees = 10000 + 2500 + 5000 = 17500
+  assertNear(result.annualTripleNetFees, 17500, 0.01, "Annual Triple Net Fees calculation is correct");
+
+  // Annual Total = 117,500
+  assertNear(result.annualTotal, 117500, 0.01, "Annual Total calculation is correct");
+
+  // Monthly Total = 117500 / 12 = 9791.67
+  assertNear(result.monthlyTotal, 9791.66, 0.02, "Monthly Total calculation is correct");
+
+  // Annual NNN PSF = 17500 / 5000 = 3.5
+  assertNear(result.annualNnnPsf, 3.5, 0.01, "Annual NNN PSF calculation is correct");
+}
+
 // --------------------------------------------------------------------------
 // Main runner execution
 // --------------------------------------------------------------------------
@@ -161,6 +182,7 @@ try {
   runTaxTests();
   runCronTests();
   runCashOnCashTests();
+  runNNNTests();
 
   console.log("\n----------------------------------------");
   if (testsFailed > 0) {

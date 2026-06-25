@@ -481,5 +481,355 @@
       "state": "Massachusetts"
     },
     "releaseDate": "2026-07-03T00:00:00.000Z"
+  },
+  "commercial-lease-nnn-calculator": {
+    "toolSlug": "nnn-calculator",
+    "title": "Commercial Lease NNN Calculator",
+    "description": "Calculate your base rent, property taxes, building insurance, and Common Area Maintenance (CAM) for a Triple Net (NNN) lease.",
+    "presetParams": {},
+    "releaseDate": "2026-07-04T00:00:00.000Z"
+  },
+  "retail-space-cam-estimator": {
+    "toolSlug": "nnn-calculator",
+    "title": "Retail Space CAM & NNN Estimator",
+    "description": "Calculate your base rent, property taxes, building insurance, and Common Area Maintenance (CAM) for a Triple Net (NNN) lease.",
+    "presetParams": {},
+    "releaseDate": "2026-07-04T00:00:00.000Z"
+  },
+  "warehouse-triple-net-lease": {
+    "toolSlug": "nnn-calculator",
+    "title": "Warehouse Triple Net Lease Calculator",
+    "description": "Calculate your base rent, property taxes, building insurance, and Common Area Maintenance (CAM) for a Triple Net (NNN) lease.",
+    "presetParams": {},
+    "releaseDate": "2026-07-04T00:00:00.000Z"
+  },
+  "office-space-nnn-calculator": {
+    "toolSlug": "nnn-calculator",
+    "title": "Office Space NNN Cost Estimator",
+    "description": "Calculate your base rent, property taxes, building insurance, and Common Area Maintenance (CAM) for a Triple Net (NNN) lease.",
+    "presetParams": {},
+    "releaseDate": "2026-07-04T00:00:00.000Z"
+  },
+  "restaurant-lease-cam-calculator": {
+    "toolSlug": "nnn-calculator",
+    "title": "Restaurant Lease CAM Calculator",
+    "description": "Calculate your base rent, property taxes, building insurance, and Common Area Maintenance (CAM) for a Triple Net (NNN) lease.",
+    "presetParams": {},
+    "releaseDate": "2026-07-04T00:00:00.000Z"
+  },
+  "duplex-cash-on-cash-yield": {
+    "toolSlug": "coc-yield",
+    "title": "Duplex Cash-on-Cash Yield",
+    "description": "Calculate the Cash-on-Cash return, Net Operating Income (NOI), and Debt Service Coverage Ratio (DSCR) for a duplex cash-on-cash yield investment.",
+    "presetParams": {},
+    "releaseDate": "2026-07-05T00:00:00.000Z"
+  },
+  "triplex-roi-calculator": {
+    "toolSlug": "coc-yield",
+    "title": "Triplex ROI Calculator",
+    "description": "Calculate the Cash-on-Cash return, Net Operating Income (NOI), and Debt Service Coverage Ratio (DSCR) for a triplex roi calculator investment.",
+    "presetParams": {},
+    "releaseDate": "2026-07-05T00:00:00.000Z"
+  },
+  "fourplex-cash-flow": {
+    "toolSlug": "coc-yield",
+    "title": "Fourplex Cash Flow",
+    "description": "Calculate the Cash-on-Cash return, Net Operating Income (NOI), and Debt Service Coverage Ratio (DSCR) for a fourplex cash flow investment.",
+    "presetParams": {},
+    "releaseDate": "2026-07-05T00:00:00.000Z"
+  },
+  "multifamily-dscr": {
+    "toolSlug": "coc-yield",
+    "title": "Multifamily DSCR",
+    "description": "Calculate the Cash-on-Cash return, Net Operating Income (NOI), and Debt Service Coverage Ratio (DSCR) for a multifamily dscr investment.",
+    "presetParams": {},
+    "releaseDate": "2026-07-05T00:00:00.000Z"
+  },
+  "commercial-real-estate-roi": {
+    "toolSlug": "coc-yield",
+    "title": "Commercial Real Estate ROI",
+    "description": "Calculate the Cash-on-Cash return, Net Operating Income (NOI), and Debt Service Coverage Ratio (DSCR) for a commercial real estate roi investment.",
+    "presetParams": {},
+    "releaseDate": "2026-07-05T00:00:00.000Z"
+  },
+  "airbnb-cash-on-cash": {
+    "toolSlug": "coc-yield",
+    "title": "Airbnb Cash-on-Cash",
+    "description": "Calculate the Cash-on-Cash return, Net Operating Income (NOI), and Debt Service Coverage Ratio (DSCR) for a airbnb cash-on-cash investment.",
+    "presetParams": {},
+    "releaseDate": "2026-07-06T00:00:00.000Z"
+  },
+  "short-term-rental-yield": {
+    "toolSlug": "coc-yield",
+    "title": "Short-Term Rental Yield",
+    "description": "Calculate the Cash-on-Cash return, Net Operating Income (NOI), and Debt Service Coverage Ratio (DSCR) for a short-term rental yield investment.",
+    "presetParams": {},
+    "releaseDate": "2026-07-06T00:00:00.000Z"
+  },
+  "self-storage-roi-calculator": {
+    "toolSlug": "coc-yield",
+    "title": "Self Storage ROI Calculator",
+    "description": "Calculate the Cash-on-Cash return, Net Operating Income (NOI), and Debt Service Coverage Ratio (DSCR) for a self storage roi calculator investment.",
+    "presetParams": {},
+    "releaseDate": "2026-07-06T00:00:00.000Z"
+  },
+  "mobile-home-park-yield": {
+    "toolSlug": "coc-yield",
+    "title": "Mobile Home Park Yield",
+    "description": "Calculate the Cash-on-Cash return, Net Operating Income (NOI), and Debt Service Coverage Ratio (DSCR) for a mobile home park yield investment.",
+    "presetParams": {},
+    "releaseDate": "2026-07-06T00:00:00.000Z"
+  },
+  "industrial-warehouse-roi": {
+    "toolSlug": "coc-yield",
+    "title": "Industrial Warehouse ROI",
+    "description": "Calculate the Cash-on-Cash return, Net Operating Income (NOI), and Debt Service Coverage Ratio (DSCR) for a industrial warehouse roi investment.",
+    "presetParams": {},
+    "releaseDate": "2026-07-06T00:00:00.000Z"
+  },
+  "strip-mall-cash-on-cash": {
+    "toolSlug": "coc-yield",
+    "title": "Strip Mall Cash-on-Cash",
+    "description": "Calculate the Cash-on-Cash return, Net Operating Income (NOI), and Debt Service Coverage Ratio (DSCR) for a strip mall cash-on-cash investment.",
+    "presetParams": {},
+    "releaseDate": "2026-07-07T00:00:00.000Z"
+  },
+  "mixed-use-property-roi": {
+    "toolSlug": "coc-yield",
+    "title": "Mixed-Use Property ROI",
+    "description": "Calculate the Cash-on-Cash return, Net Operating Income (NOI), and Debt Service Coverage Ratio (DSCR) for a mixed-use property roi investment.",
+    "presetParams": {},
+    "releaseDate": "2026-07-07T00:00:00.000Z"
+  },
+  "student-housing-cash-flow": {
+    "toolSlug": "coc-yield",
+    "title": "Student Housing Cash Flow",
+    "description": "Calculate the Cash-on-Cash return, Net Operating Income (NOI), and Debt Service Coverage Ratio (DSCR) for a student housing cash flow investment.",
+    "presetParams": {},
+    "releaseDate": "2026-07-07T00:00:00.000Z"
+  },
+  "single-family-rental-yield": {
+    "toolSlug": "coc-yield",
+    "title": "Single-Family Rental Yield",
+    "description": "Calculate the Cash-on-Cash return, Net Operating Income (NOI), and Debt Service Coverage Ratio (DSCR) for a single-family rental yield investment.",
+    "presetParams": {},
+    "releaseDate": "2026-07-07T00:00:00.000Z"
+  },
+  "rv-park-roi": {
+    "toolSlug": "coc-yield",
+    "title": "RV Park ROI",
+    "description": "Calculate the Cash-on-Cash return, Net Operating Income (NOI), and Debt Service Coverage Ratio (DSCR) for a rv park roi investment.",
+    "presetParams": {},
+    "releaseDate": "2026-07-07T00:00:00.000Z"
+  },
+  "validate-openapi-json": {
+    "toolSlug": "json-parser",
+    "title": "Validate OpenAPI JSON",
+    "description": "A fast, client-side utility to validate openapi json with strict syntax validation, minification, and pretty-print formatting.",
+    "presetParams": {},
+    "releaseDate": "2026-07-08T00:00:00.000Z"
+  },
+  "format-package-json": {
+    "toolSlug": "json-parser",
+    "title": "Format package.json",
+    "description": "A fast, client-side utility to format package.json with strict syntax validation, minification, and pretty-print formatting.",
+    "presetParams": {},
+    "releaseDate": "2026-07-08T00:00:00.000Z"
+  },
+  "beautify-tsconfig": {
+    "toolSlug": "json-parser",
+    "title": "Beautify tsconfig",
+    "description": "A fast, client-side utility to beautify tsconfig with strict syntax validation, minification, and pretty-print formatting.",
+    "presetParams": {},
+    "releaseDate": "2026-07-08T00:00:00.000Z"
+  },
+  "minify-json-payload": {
+    "toolSlug": "json-parser",
+    "title": "Minify JSON Payload",
+    "description": "A fast, client-side utility to minify json payload with strict syntax validation, minification, and pretty-print formatting.",
+    "presetParams": {},
+    "releaseDate": "2026-07-08T00:00:00.000Z"
+  },
+  "validate-jwt-header-json": {
+    "toolSlug": "json-parser",
+    "title": "Validate JWT Header JSON",
+    "description": "A fast, client-side utility to validate jwt header json with strict syntax validation, minification, and pretty-print formatting.",
+    "presetParams": {},
+    "releaseDate": "2026-07-08T00:00:00.000Z"
+  },
+  "format-aws-iam-policy": {
+    "toolSlug": "json-parser",
+    "title": "Format AWS IAM Policy",
+    "description": "A fast, client-side utility to format aws iam policy with strict syntax validation, minification, and pretty-print formatting.",
+    "presetParams": {},
+    "releaseDate": "2026-07-09T00:00:00.000Z"
+  },
+  "beautify-gcp-service-account": {
+    "toolSlug": "json-parser",
+    "title": "Beautify GCP Service Account",
+    "description": "A fast, client-side utility to beautify gcp service account with strict syntax validation, minification, and pretty-print formatting.",
+    "presetParams": {},
+    "releaseDate": "2026-07-09T00:00:00.000Z"
+  },
+  "validate-kubernetes-json": {
+    "toolSlug": "json-parser",
+    "title": "Validate Kubernetes JSON",
+    "description": "A fast, client-side utility to validate kubernetes json with strict syntax validation, minification, and pretty-print formatting.",
+    "presetParams": {},
+    "releaseDate": "2026-07-09T00:00:00.000Z"
+  },
+  "minify-webpack-config": {
+    "toolSlug": "json-parser",
+    "title": "Minify Webpack Config",
+    "description": "A fast, client-side utility to minify webpack config with strict syntax validation, minification, and pretty-print formatting.",
+    "presetParams": {},
+    "releaseDate": "2026-07-09T00:00:00.000Z"
+  },
+  "format-prettierrc": {
+    "toolSlug": "json-parser",
+    "title": "Format Prettierrc",
+    "description": "A fast, client-side utility to format prettierrc with strict syntax validation, minification, and pretty-print formatting.",
+    "presetParams": {},
+    "releaseDate": "2026-07-09T00:00:00.000Z"
+  },
+  "validate-eslintrc": {
+    "toolSlug": "json-parser",
+    "title": "Validate ESLintrc",
+    "description": "A fast, client-side utility to validate eslintrc with strict syntax validation, minification, and pretty-print formatting.",
+    "presetParams": {},
+    "releaseDate": "2026-07-10T00:00:00.000Z"
+  },
+  "beautify-vscode-settings": {
+    "toolSlug": "json-parser",
+    "title": "Beautify VSCode Settings",
+    "description": "A fast, client-side utility to beautify vscode settings with strict syntax validation, minification, and pretty-print formatting.",
+    "presetParams": {},
+    "releaseDate": "2026-07-10T00:00:00.000Z"
+  },
+  "format-manifest-json": {
+    "toolSlug": "json-parser",
+    "title": "Format manifest.json",
+    "description": "A fast, client-side utility to format manifest.json with strict syntax validation, minification, and pretty-print formatting.",
+    "presetParams": {},
+    "releaseDate": "2026-07-10T00:00:00.000Z"
+  },
+  "validate-firebase-json": {
+    "toolSlug": "json-parser",
+    "title": "Validate Firebase JSON",
+    "description": "A fast, client-side utility to validate firebase json with strict syntax validation, minification, and pretty-print formatting.",
+    "presetParams": {},
+    "releaseDate": "2026-07-10T00:00:00.000Z"
+  },
+  "beautify-docker-daemon-json": {
+    "toolSlug": "json-parser",
+    "title": "Beautify docker daemon.json",
+    "description": "A fast, client-side utility to beautify docker daemon.json with strict syntax validation, minification, and pretty-print formatting.",
+    "presetParams": {},
+    "releaseDate": "2026-07-10T00:00:00.000Z"
+  },
+  "cisco-asa-acl-validator": {
+    "toolSlug": "firewall-validator",
+    "title": "Cisco ASA ACL Validator",
+    "description": "Detect shadowed rules, overlaps, and logic errors directly in your browser with our Cisco ASA ACL Validator.",
+    "presetParams": {},
+    "releaseDate": "2026-07-11T00:00:00.000Z"
+  },
+  "opnsense-rule-auditor": {
+    "toolSlug": "firewall-validator",
+    "title": "OPNsense Rule Auditor",
+    "description": "Detect shadowed rules, overlaps, and logic errors directly in your browser with our OPNsense Rule Auditor.",
+    "presetParams": {},
+    "releaseDate": "2026-07-11T00:00:00.000Z"
+  },
+  "pfsense-firewall-tester": {
+    "toolSlug": "firewall-validator",
+    "title": "pfSense Firewall Tester",
+    "description": "Detect shadowed rules, overlaps, and logic errors directly in your browser with our pfSense Firewall Tester.",
+    "presetParams": {},
+    "releaseDate": "2026-07-11T00:00:00.000Z"
+  },
+  "fortigate-policy-validator": {
+    "toolSlug": "firewall-validator",
+    "title": "FortiGate Policy Validator",
+    "description": "Detect shadowed rules, overlaps, and logic errors directly in your browser with our FortiGate Policy Validator.",
+    "presetParams": {},
+    "releaseDate": "2026-07-11T00:00:00.000Z"
+  },
+  "palo-alto-security-policy": {
+    "toolSlug": "firewall-validator",
+    "title": "Palo Alto Security Policy",
+    "description": "Detect shadowed rules, overlaps, and logic errors directly in your browser with our Palo Alto Security Policy.",
+    "presetParams": {},
+    "releaseDate": "2026-07-11T00:00:00.000Z"
+  },
+  "juniper-srx-rule-tester": {
+    "toolSlug": "firewall-validator",
+    "title": "Juniper SRX Rule Tester",
+    "description": "Detect shadowed rules, overlaps, and logic errors directly in your browser with our Juniper SRX Rule Tester.",
+    "presetParams": {},
+    "releaseDate": "2026-07-12T00:00:00.000Z"
+  },
+  "aws-security-group-auditor": {
+    "toolSlug": "firewall-validator",
+    "title": "AWS Security Group Auditor",
+    "description": "Detect shadowed rules, overlaps, and logic errors directly in your browser with our AWS Security Group Auditor.",
+    "presetParams": {},
+    "releaseDate": "2026-07-12T00:00:00.000Z"
+  },
+  "azure-nsg-validator": {
+    "toolSlug": "firewall-validator",
+    "title": "Azure NSG Validator",
+    "description": "Detect shadowed rules, overlaps, and logic errors directly in your browser with our Azure NSG Validator.",
+    "presetParams": {},
+    "releaseDate": "2026-07-12T00:00:00.000Z"
+  },
+  "gcp-firewall-rule-tester": {
+    "toolSlug": "firewall-validator",
+    "title": "GCP Firewall Rule Tester",
+    "description": "Detect shadowed rules, overlaps, and logic errors directly in your browser with our GCP Firewall Rule Tester.",
+    "presetParams": {},
+    "releaseDate": "2026-07-12T00:00:00.000Z"
+  },
+  "iptables-rule-auditor": {
+    "toolSlug": "firewall-validator",
+    "title": "iptables Rule Auditor",
+    "description": "Detect shadowed rules, overlaps, and logic errors directly in your browser with our iptables Rule Auditor.",
+    "presetParams": {},
+    "releaseDate": "2026-07-12T00:00:00.000Z"
+  },
+  "ufw-firewall-tester": {
+    "toolSlug": "firewall-validator",
+    "title": "UFW Firewall Tester",
+    "description": "Detect shadowed rules, overlaps, and logic errors directly in your browser with our UFW Firewall Tester.",
+    "presetParams": {},
+    "releaseDate": "2026-07-13T00:00:00.000Z"
+  },
+  "windows-firewall-validator": {
+    "toolSlug": "firewall-validator",
+    "title": "Windows Firewall Validator",
+    "description": "Detect shadowed rules, overlaps, and logic errors directly in your browser with our Windows Firewall Validator.",
+    "presetParams": {},
+    "releaseDate": "2026-07-13T00:00:00.000Z"
+  },
+  "sophos-xg-rule-tester": {
+    "toolSlug": "firewall-validator",
+    "title": "Sophos XG Rule Tester",
+    "description": "Detect shadowed rules, overlaps, and logic errors directly in your browser with our Sophos XG Rule Tester.",
+    "presetParams": {},
+    "releaseDate": "2026-07-13T00:00:00.000Z"
+  },
+  "sonicwall-policy-validator": {
+    "toolSlug": "firewall-validator",
+    "title": "SonicWall Policy Validator",
+    "description": "Detect shadowed rules, overlaps, and logic errors directly in your browser with our SonicWall Policy Validator.",
+    "presetParams": {},
+    "releaseDate": "2026-07-13T00:00:00.000Z"
+  },
+  "watchguard-firewall-auditor": {
+    "toolSlug": "firewall-validator",
+    "title": "WatchGuard Firewall Auditor",
+    "description": "Detect shadowed rules, overlaps, and logic errors directly in your browser with our WatchGuard Firewall Auditor.",
+    "presetParams": {},
+    "releaseDate": "2026-07-13T00:00:00.000Z"
   }
 }

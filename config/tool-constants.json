@@ -474,6 +474,49 @@
           ]
         }
       }
+    },
+    "nnn-calculator": {
+      "publishedAt": "2026-06-25T12:00:00Z",
+      "name": "Triple Net (NNN) Lease Calculator",
+      "category": "finance",
+      "slug": "nnn-calculator",
+      "description": "Calculate commercial real estate NNN lease costs including base rent, property taxes, building insurance, and common area maintenance (CAM).",
+      "disclaimer": "This calculator provides estimates based on your inputs. It does not replace professional commercial real estate financial analysis. Verify all lease terms and CAM fees directly with your landlord or broker.",
+      "math": {},
+      "guides": {
+        "nnn-vs-gross-lease": {
+          "publishedAt": "2026-06-25T11:30:00Z",
+          "title": "Triple Net (NNN) vs Gross Lease: Key Differences",
+          "summary": "Understand how commercial lease structures affect your monthly rent and hidden costs.",
+          "content": [
+            "### The Triple Net (NNN) Structure",
+            "In a Triple Net lease, the tenant pays a lower Base Rent but assumes responsibility for the 'three nets':",
+            "1. **N1**: Property Taxes",
+            "2. **N2**: Building Insurance",
+            "3. **N3**: Common Area Maintenance (CAM)",
+            "This structure heavily favors landlords by passing fluctuating operating expenses directly to the tenant.",
+            "### Gross Leases (Full Service)",
+            "A Gross Lease bundles all operating expenses into one fixed rent payment. While the nominal rent appears higher, the tenant is shielded from unexpected spikes in property taxes or roof repairs. Landlords take on the risk of fluctuating costs."
+          ]
+        },
+        "understanding-cam-charges": {
+          "publishedAt": "2026-06-25T11:00:00Z",
+          "title": "Understanding Common Area Maintenance (CAM)",
+          "summary": "Break down what CAM fees actually cover and how to negotiate them in your commercial lease.",
+          "content": [
+            "### What are CAM Fees?",
+            "Common Area Maintenance (CAM) charges cover the cost of maintaining shared spaces in a commercial property. These fees are usually distributed proportionally based on the square footage each tenant occupies (pro-rata share).",
+            "### Typical CAM Inclusions",
+            "- Parking lot maintenance, sweeping, and snow removal.",
+            "- Landscaping and exterior lighting.",
+            "- Security patrols and shared alarm systems.",
+            "- Janitorial services for common lobbies and bathrooms.",
+            "- HVAC maintenance for shared areas.",
+            "### Negotiating CAM Caps",
+            "Tenants should always attempt to negotiate a 'CAM Cap', which places a strict limit on how much CAM fees can increase year-over-year. Without a cap, a major parking lot repaving could severely spike your monthly overhead."
+          ]
+        }
+      }
     }
   }
 }

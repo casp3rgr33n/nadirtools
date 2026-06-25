@@ -75,33 +75,134 @@ usStates.forEach(state => {
 });
 
 // ==========================================
-// Process & Stagger Release Dates
+// 4. Triple Net (NNN) Calculator Spokes (NEW)
 // ==========================================
-const spokesDb: Record<string, SpokeOutput> = {};
-
-allSpokes.forEach((spoke, index) => {
-  const { spokeSlug, ...rest } = spoke;
-  
-  const daysOffset = Math.floor(index / PAGES_PER_DAY);
-  const releaseDate = new Date();
-  
-  // To allow testing right away, let's make the very first batch (index 0-4) immediately live by giving them a date of yesterday.
-  if (daysOffset === 0) {
-    releaseDate.setDate(releaseDate.getDate() - 1);
-  } else {
-    releaseDate.setDate(releaseDate.getDate() + daysOffset);
-    releaseDate.setUTCHours(0, 0, 0, 0); // Normalize to midnight UTC
-  }
-
-  spokesDb[spokeSlug] = {
-    ...rest,
-    releaseDate: releaseDate.toISOString(),
-  };
+const nnnTargets = [
+  { slug: "commercial-lease-nnn-calculator", title: "Commercial Lease NNN Calculator" },
+  { slug: "retail-space-cam-estimator", title: "Retail Space CAM & NNN Estimator" },
+  { slug: "warehouse-triple-net-lease", title: "Warehouse Triple Net Lease Calculator" },
+  { slug: "office-space-nnn-calculator", title: "Office Space NNN Cost Estimator" },
+  { slug: "restaurant-lease-cam-calculator", title: "Restaurant Lease CAM Calculator" }
+];
+nnnTargets.forEach(target => {
+  allSpokes.push({
+    spokeSlug: target.slug,
+    toolSlug: "nnn-calculator",
+    title: target.title,
+    description: `Calculate your base rent, property taxes, building insurance, and Common Area Maintenance (CAM) for a Triple Net (NNN) lease.`,
+    presetParams: {}
+  });
 });
 
-const outputPath = path.resolve(__dirname, "../config/spokes.json");
-fs.writeFileSync(outputPath, JSON.stringify(spokesDb, null, 2), "utf-8");
+// ==========================================
+// 5. Cash-on-Cash Yield Spokes (NEW)
+// ==========================================
+const cocTargets = [
+  "Duplex Cash-on-Cash Yield", "Triplex ROI Calculator", "Fourplex Cash Flow",
+  "Multifamily DSCR", "Commercial Real Estate ROI", "Airbnb Cash-on-Cash",
+  "Short-Term Rental Yield", "Self Storage ROI Calculator", "Mobile Home Park Yield",
+  "Industrial Warehouse ROI", "Strip Mall Cash-on-Cash", "Mixed-Use Property ROI",
+  "Student Housing Cash Flow", "Single-Family Rental Yield", "RV Park ROI"
+];
+cocTargets.forEach(target => {
+  allSpokes.push({
+    spokeSlug: target.toLowerCase().replace(/\s+/g, "-"),
+    toolSlug: "coc-yield",
+    title: target,
+    description: `Calculate the Cash-on-Cash return, Net Operating Income (NOI), and Debt Service Coverage Ratio (DSCR) for a ${target.toLowerCase()} investment.`,
+    presetParams: {}
+  });
+});
 
-console.log(`Successfully generated ${allSpokes.length} programmatic spoke permutations.`);
+// ==========================================
+// 6. JSON Parser Spokes (NEW)
+// ==========================================
+const jsonTargets = [
+  "Validate OpenAPI JSON", "Format package.json", "Beautify tsconfig",
+  "Minify JSON Payload", "Validate JWT Header JSON", "Format AWS IAM Policy",
+  "Beautify GCP Service Account", "Validate Kubernetes JSON", "Minify Webpack Config",
+  "Format Prettierrc", "Validate ESLintrc", "Beautify VSCode Settings",
+  "Format manifest.json", "Validate Firebase JSON", "Beautify docker daemon.json"
+];
+jsonTargets.forEach(target => {
+  allSpokes.push({
+    spokeSlug: target.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, ''),
+    toolSlug: "json-parser",
+    title: target,
+    description: `A fast, client-side utility to ${target.toLowerCase()} with strict syntax validation, minification, and pretty-print formatting.`,
+    presetParams: {}
+  });
+});
+
+// ==========================================
+// 7. Firewall Validator Spokes (NEW)
+// ==========================================
+const firewallTargets = [
+  "Cisco ASA ACL Validator", "OPNsense Rule Auditor", "pfSense Firewall Tester",
+  "FortiGate Policy Validator", "Palo Alto Security Policy", "Juniper SRX Rule Tester",
+  "AWS Security Group Auditor", "Azure NSG Validator", "GCP Firewall Rule Tester",
+  "iptables Rule Auditor", "UFW Firewall Tester", "Windows Firewall Validator",
+  "Sophos XG Rule Tester", "SonicWall Policy Validator", "WatchGuard Firewall Auditor"
+];
+firewallTargets.forEach(target => {
+  allSpokes.push({
+    spokeSlug: target.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, ''),
+    toolSlug: "firewall-validator",
+    title: target,
+    description: `Detect shadowed rules, overlaps, and logic errors directly in your browser with our ${target}.`,
+    presetParams: {}
+  });
+});
+
+// ==========================================
+// Process & Stagger Release Dates Safely
+// ==========================================
+const outputPath = path.resolve(__dirname, "../config/spokes.json");
+let existingDb: Record<string, SpokeOutput> = {};
+
+if (fs.existsSync(outputPath)) {
+  existingDb = JSON.parse(fs.readFileSync(outputPath, "utf-8"));
+}
+
+// Find the latest release date currently in the database
+let maxDate = new Date();
+maxDate.setDate(maxDate.getDate() - 1); // fallback to yesterday if empty
+
+Object.values(existingDb).forEach(spoke => {
+  const d = new Date(spoke.releaseDate);
+  if (d > maxDate) {
+    maxDate = d;
+  }
+});
+
+// Start adding new spokes AFTER the maxDate
+let newSpokesAdded = 0;
+
+allSpokes.forEach(spoke => {
+  const { spokeSlug, ...rest } = spoke;
+  
+  // If spoke already exists, PRESERVE its date.
+  if (existingDb[spokeSlug]) {
+    // Keep existing
+  } else {
+    // Brand new spoke! Assign a date.
+    const daysOffset = Math.floor(newSpokesAdded / PAGES_PER_DAY);
+    const releaseDate = new Date(maxDate);
+    // Add offset (we start adding on the NEXT day after maxDate if maxDate is full?
+    // Actually, to make it simple: maxDate + 1 day for the first batch.
+    releaseDate.setDate(maxDate.getDate() + 1 + daysOffset);
+    releaseDate.setUTCHours(0, 0, 0, 0);
+    
+    existingDb[spokeSlug] = {
+      ...rest,
+      releaseDate: releaseDate.toISOString(),
+    };
+    newSpokesAdded++;
+  }
+});
+
+fs.writeFileSync(outputPath, JSON.stringify(existingDb, null, 2), "utf-8");
+
+console.log(`Successfully processed ${allSpokes.length} total programmatic spoke permutations.`);
+console.log(`Added ${newSpokesAdded} NEW spokes to the database.`);
 console.log(`Saved to: ${outputPath}`);
-console.log(`Schedule: ${PAGES_PER_DAY} pages per day across ${Math.ceil(allSpokes.length / PAGES_PER_DAY)} days.`);

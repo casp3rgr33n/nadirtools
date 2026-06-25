@@ -356,3 +356,41 @@ export function calculateRealEstateYields(
     dscr: dscrVal
   };
 }
+
+// 6. Triple Net (NNN) Lease Calculator
+export function calculateNNN(
+  baseRent: number,
+  rentType: "annual_psf" | "annual_total" | "monthly_total",
+  sqft: number,
+  taxes: number,
+  insurance: number,
+  cam: number
+) {
+  let annualBase = 0;
+  if (rentType === "annual_psf") {
+    annualBase = baseRent * sqft;
+  } else if (rentType === "annual_total") {
+    annualBase = baseRent;
+  } else if (rentType === "monthly_total") {
+    annualBase = baseRent * 12;
+  }
+
+  const annualTripleNetFees = taxes + insurance + cam;
+  const annualTotal = annualBase + annualTripleNetFees;
+  const monthlyTotal = annualTotal / 12;
+  const monthlyBase = annualBase / 12;
+  const monthlyTripleNet = annualTripleNetFees / 12;
+  const annualTotalPsf = sqft > 0 ? annualTotal / sqft : 0;
+  const annualNnnPsf = sqft > 0 ? annualTripleNetFees / sqft : 0;
+
+  return {
+    annualBase,
+    annualTripleNetFees,
+    annualTotal,
+    monthlyBase,
+    monthlyTripleNet,
+    monthlyTotal,
+    annualTotalPsf,
+    annualNnnPsf
+  };
+}
