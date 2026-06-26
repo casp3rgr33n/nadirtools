@@ -939,11 +939,11 @@ const metricCardStyle: React.CSSProperties = {
 };
 
 const metricTitleStyle: React.CSSProperties = {
-  fontSize: "0.8rem",
+  fontSize: "0.85rem",
   fontWeight: 600,
-  color: "#737373",
-  textTransform: "uppercase",
-  letterSpacing: "0.5px",
+  color: "#a3a3a3",
+  textTransform: "capitalize",
+  letterSpacing: "0.2px",
   marginBottom: "0.5rem"
 };
 
