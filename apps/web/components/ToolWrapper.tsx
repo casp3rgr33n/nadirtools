@@ -1100,13 +1100,13 @@ function NNNCalculator({ prefillParams = {} }: { prefillParams?: Record<string, 
         <h3 style={sectionHeadingStyle}>Lease Cost Breakdown</h3>
         
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem", marginBottom: "1.5rem" }}>
-          <div style={metricBoxStyle}>
-            <div style={metricLabelStyle}>Total Monthly Payment</div>
+          <div style={metricCardStyle}>
+            <div style={metricTitleStyle}>Total Monthly Payment</div>
             <div style={{ ...metricValueStyle, color: "#dfba6b" }}>{formatter.format(results.monthlyTotal)}</div>
             <div style={{ fontSize: "0.8rem", color: "#a3a3a3", marginTop: "0.25rem" }}>Base + NNN</div>
           </div>
-          <div style={metricBoxStyle}>
-            <div style={metricLabelStyle}>Total Annual Payment</div>
+          <div style={metricCardStyle}>
+            <div style={metricTitleStyle}>Total Annual Payment</div>
             <div style={{ ...metricValueStyle, color: "#22c55e" }}>{formatter.format(results.annualTotal)}</div>
           </div>
         </div>
