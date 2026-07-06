@@ -6,6 +6,7 @@ import HeaderNav from "../components/HeaderNav";
 import { Suspense } from "react";
 
 export const metadata = {
+  metadataBase: new URL("https://nadirtools.com"),
   title: "NadirTools | Solitude Dark Labs Product Suite",
   description: "High-performance, client-side developer, sysadmin, and business utility engines optimized for speed and absolute privacy."
 };
