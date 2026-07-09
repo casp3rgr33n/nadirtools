@@ -1,11 +1,11 @@
 import React from "react";
 import { Metadata } from "next";
-import toolConstants from "../../../../../config/tool-constants.json";
-import spokesDbRaw from "../../../../../config/spokes.json";
-import ToolWrapper from "../../../components/ToolWrapper";
-import SchemaRenderer from "../../../components/SchemaRenderer";
-import CopyButton from "../../../components/CopyButton";
-import AdUnit from "../../../components/AdUnit";
+import toolConstants from "../../../../../../config/tool-constants.json";
+import spokesDbRaw from "../../../../../../config/spokes.json";
+import ToolWrapper from "../../../../components/ToolWrapper";
+import SchemaRenderer from "../../../../components/SchemaRenderer";
+import CopyButton from "../../../../components/CopyButton";
+import AdUnit from "../../../../components/AdUnit";
 
 const spokesDb = spokesDbRaw as Record<string, any>;
 
@@ -414,6 +414,20 @@ export default async function ToolCatchAllPage({ params }: PageProps) {
           <AdUnit adSlot="3456789012" />
         </div>
 
+        {/* Embed Widget Snippet */}
+        <div style={embedSectionStyle}>
+          <h4 style={embedHeaderStyle}>🔗 Embed this tool on your site</h4>
+          <p style={embedDescStyle}>Copy the code below to add this interactive {tool.name.toLowerCase()} to your own blog or application. It's 100% free.</p>
+          <div style={{ position: "relative" }}>
+            <CopyButton text={`<iframe src="https://nadirtools.com/embed/${toolSlug}" width="100%" height="600" style="border:1px solid rgba(223, 186, 107, 0.2); border-radius:8px; background:#050705;" allowfullscreen></iframe>\n<div style="text-align:right; font-size:12px; margin-top:4px; font-family:sans-serif; color:#64748b;">Powered by <a href="https://nadirtools.com/tools/${toolSlug}" style="color:#dfba6b; text-decoration:none;">NadirTools</a></div>`} style={{ position: "absolute", top: "0.5rem", right: "0.5rem", background: "rgba(255,255,255,0.1)", border: "none", color: "#f8fafc" }} />
+            <textarea 
+              readOnly 
+              value={`<iframe src="https://nadirtools.com/embed/${toolSlug}" width="100%" height="600" style="border:1px solid rgba(223, 186, 107, 0.2); border-radius:8px; background:#050705;" allowfullscreen></iframe>\n<div style="text-align:right; font-size:12px; margin-top:4px; font-family:sans-serif; color:#64748b;">Powered by <a href="https://nadirtools.com/tools/${toolSlug}" style="color:#dfba6b; text-decoration:none;">NadirTools</a></div>`}
+              style={embedTextareaStyle}
+            />
+          </div>
+        </div>
+
         {/* Guides Grid */}
         {tool.guides && Object.keys(tool.guides).length > 0 && (
           <div style={guidesTopSectionStyle}>
@@ -696,4 +710,40 @@ const guideCardTopStyle: React.CSSProperties = {
   textDecoration: "none",
   transition: "all 0.2s ease",
   alignItems: "flex-start",
+};
+
+const embedSectionStyle: React.CSSProperties = {
+  marginBottom: "3rem",
+  background: "rgba(10, 20, 12, 0.3)",
+  border: "1px solid rgba(223, 186, 107, 0.1)",
+  borderRadius: "16px",
+  padding: "1.5rem",
+};
+
+const embedHeaderStyle: React.CSSProperties = {
+  fontSize: "1.1rem",
+  fontWeight: 700,
+  color: "#f8fafc",
+  marginBottom: "0.5rem",
+  marginTop: 0,
+};
+
+const embedDescStyle: React.CSSProperties = {
+  fontSize: "0.9rem",
+  color: "#94a3b8",
+  marginBottom: "1rem",
+};
+
+const embedTextareaStyle: React.CSSProperties = {
+  width: "100%",
+  height: "100px",
+  background: "#0f172a",
+  border: "1px solid rgba(255, 255, 255, 0.05)",
+  borderRadius: "8px",
+  padding: "1rem 1.25rem",
+  color: "#93c5fd",
+  fontSize: "0.85rem",
+  fontFamily: "'JetBrains Mono', monospace",
+  resize: "none",
+  outline: "none",
 };
