@@ -5,12 +5,18 @@ interface FAQ {
   answer: string;
 }
 
+interface Breadcrumb {
+  name: string;
+  item: string; // The URL
+}
+
 interface SchemaRendererProps {
   toolName: string;
   description: string;
   category: string;
   url: string;
   faqs?: FAQ[];
+  breadcrumbs?: Breadcrumb[];
 }
 
 export default function SchemaRenderer({
@@ -18,7 +24,8 @@ export default function SchemaRenderer({
   description,
   category,
   url,
-  faqs = []
+  faqs = [],
+  breadcrumbs = []
 }: SchemaRendererProps) {
   // SoftwareApplication Schema
   const softwareSchema = {
@@ -51,6 +58,18 @@ export default function SchemaRenderer({
     }))
   } : null;
 
+  // BreadcrumbList Schema
+  const breadcrumbSchema = breadcrumbs.length > 0 ? {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": breadcrumbs.map((crumb, idx) => ({
+      "@type": "ListItem",
+      "position": idx + 1,
+      "name": crumb.name,
+      "item": crumb.item
+    }))
+  } : null;
+
   return (
     <>
       <script
@@ -61,6 +80,12 @@ export default function SchemaRenderer({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
+      {breadcrumbSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
         />
       )}
     </>

@@ -5,6 +5,7 @@ import spokesDbRaw from "../../../../../config/spokes.json";
 import ToolWrapper from "../../../components/ToolWrapper";
 import SchemaRenderer from "../../../components/SchemaRenderer";
 import CopyButton from "../../../components/CopyButton";
+import AdUnit from "../../../components/AdUnit";
 
 const spokesDb = spokesDbRaw as Record<string, any>;
 
@@ -69,6 +70,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   const isGuidePage = slug.length > 1;
+  const categoryStr = encodeURIComponent(tool.category || "Developer Tools");
 
   if (isGuidePage) {
     const guideSlug = slug[1];
@@ -77,6 +79,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     if (spokesDb[guideSlug] && spokesDb[guideSlug].toolSlug === toolSlug) {
       const spoke = spokesDb[guideSlug];
       const pageUrl = `${baseUrl}/tools/${toolSlug}/${guideSlug}`;
+      const ogImageUrl = `${baseUrl}/api/og?title=${encodeURIComponent(spoke.title)}&category=${categoryStr}`;
       return {
         title: `${spoke.title} - NadirTools`,
         description: spoke.description,
@@ -89,7 +92,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
           url: pageUrl,
           type: "website",
           siteName: "NadirTools",
+          images: [{ url: ogImageUrl, width: 1200, height: 630, alt: spoke.title }],
         },
+        twitter: {
+          card: "summary_large_image",
+          title: spoke.title,
+          description: spoke.description,
+          images: [ogImageUrl],
+        }
       };
     }
 
@@ -103,6 +113,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     }
 
     const pageUrl = `${baseUrl}/tools/${toolSlug}/${guideSlug}`;
+    const ogImageUrl = `${baseUrl}/api/og?title=${encodeURIComponent(guide.title)}&category=${categoryStr}`;
     return {
       title: `${guide.title} | ${tool.name} Guide - NadirTools`,
       description: guide.summary,
@@ -115,11 +126,19 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         url: pageUrl,
         type: "article",
         siteName: "NadirTools",
+        images: [{ url: ogImageUrl, width: 1200, height: 630, alt: guide.title }],
       },
+      twitter: {
+        card: "summary_large_image",
+        title: `${guide.title} | Technical Reference`,
+        description: guide.summary,
+        images: [ogImageUrl],
+      }
     };
   }
 
   const pageUrl = `${baseUrl}/tools/${toolSlug}`;
+  const ogImageUrl = `${baseUrl}/api/og?title=${encodeURIComponent(tool.name)}&category=${categoryStr}`;
   return {
     title: `${tool.name} - NadirTools`,
     description: tool.description,
@@ -132,7 +151,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       url: pageUrl,
       type: "website",
       siteName: "NadirTools",
+      images: [{ url: ogImageUrl, width: 1200, height: 630, alt: tool.name }],
     },
+    twitter: {
+      card: "summary_large_image",
+      title: `${tool.name} | Interactive Developer Tools`,
+      description: tool.description,
+      images: [ogImageUrl],
+    }
   };
 }
 
@@ -181,6 +207,11 @@ export default async function ToolCatchAllPage({ params }: PageProps) {
             description={spoke.description}
             category={tool.category}
             url={`/tools/${toolSlug}/${guideSlug}`}
+            breadcrumbs={[
+              { name: "Home", item: "https://nadirtools.com/" },
+              { name: tool.name, item: `https://nadirtools.com/tools/${toolSlug}` },
+              { name: spoke.title, item: `https://nadirtools.com/tools/${toolSlug}/${guideSlug}` }
+            ]}
           />
 
           <nav id="breadcrumbs" style={breadcrumbStyle}>
@@ -195,6 +226,7 @@ export default async function ToolCatchAllPage({ params }: PageProps) {
           <div className="tools-container">
             <div id="main-tool-container" style={{ width: "100%", minWidth: 0, marginBottom: "2rem" }}>
               <ToolWrapper toolSlug={toolSlug} toolConfig={tool} prefillParams={spoke.presetParams} />
+              <AdUnit adSlot="1234567890" />
             </div>
           </div>
         </div>
@@ -232,6 +264,11 @@ export default async function ToolCatchAllPage({ params }: PageProps) {
           category={tool.category}
           url={`/tools/${toolSlug}/${guideSlug}`}
           faqs={faqs}
+          breadcrumbs={[
+            { name: "Home", item: "https://nadirtools.com/" },
+            { name: tool.name, item: `https://nadirtools.com/tools/${toolSlug}` },
+            { name: guide.title, item: `https://nadirtools.com/tools/${toolSlug}/${guideSlug}` }
+          ]}
         />
 
         {/* Breadcrumbs */}
@@ -310,6 +347,8 @@ export default async function ToolCatchAllPage({ params }: PageProps) {
                 </div>
               </div>
             )}
+            
+            <AdUnit adSlot="2345678901" />
 
             <div style={{ marginTop: "3rem", borderTop: "1px solid rgba(255,255,255,0.05)", paddingTop: "1.5rem" }}>
               <a href={`/tools/${toolSlug}`} style={backToToolBtnStyle}>
@@ -358,6 +397,10 @@ export default async function ToolCatchAllPage({ params }: PageProps) {
         description={tool.description}
         category={tool.category}
         url={`/tools/${toolSlug}`}
+        breadcrumbs={[
+          { name: "Home", item: "https://nadirtools.com/" },
+          { name: tool.name, item: `https://nadirtools.com/tools/${toolSlug}` }
+        ]}
       />
 
       <nav id="breadcrumbs" style={breadcrumbStyle}>
@@ -368,6 +411,7 @@ export default async function ToolCatchAllPage({ params }: PageProps) {
         {/* Main Interactive Tool */}
         <div id="main-tool-container" style={{ width: "100%", minWidth: 0, marginBottom: "2rem" }}>
           <ToolWrapper toolSlug={toolSlug} toolConfig={tool} />
+          <AdUnit adSlot="3456789012" />
         </div>
 
         {/* Guides Grid */}
