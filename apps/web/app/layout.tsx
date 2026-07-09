@@ -33,6 +33,18 @@ export default function RootLayout({
       </head>
       <body>
         {children}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "NadirTools",
+              "url": "https://nadirtools.com",
+              "description": "High-performance, client-side developer, sysadmin, and business utility engines optimized for speed and absolute privacy."
+            })
+          }}
+        />
       </body>
     </html>
   );

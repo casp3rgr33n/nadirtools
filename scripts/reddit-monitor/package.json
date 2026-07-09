@@ -1,0 +1,14 @@
+{
+  "name": "nadirtools-reddit-monitor",
+  "version": "1.0.0",
+  "description": "Reddit keyword monitor bot to push alerts to Discord.",
+  "main": "monitor.js",
+  "type": "module",
+  "scripts": {
+    "start": "node monitor.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "snoowrap": "^1.23.0"
+  }
+}

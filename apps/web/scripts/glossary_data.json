@@ -1,0 +1,72 @@
+[
+  {
+    "slug": "what-is-cidr",
+    "title": "What is CIDR? (Classless Inter-Domain Routing)",
+    "definition": "CIDR is a method for allocating IP addresses and routing Internet Protocol packets, replacing the older classful network architecture.",
+    "category": "Networking",
+    "markdown": "## Understanding CIDR\n\nClassless Inter-Domain Routing (CIDR) was introduced by the IETF in 1993 to slow the exhaustion of IPv4 addresses and reduce the size of routing tables. Instead of rigid Class A, B, and C networks, CIDR uses a **subnet mask** to flexibly divide networks.\n\n### The CIDR Notation\nCIDR notation consists of an IP address followed by a slash (`/`) and a decimal number indicating the routing prefix (number of network bits).\n\n*   **Example:** `192.168.1.0/24`\n*   Here, the first 24 bits represent the network, leaving 8 bits for host addresses (yielding 256 addresses, or 254 usable).\n\n### Why use CIDR?\n1.  **Efficient IP Allocation:** Prevents wasting thousands of IPs by assigning blocks tailored to the organization's exact size.\n2.  **Route Aggregation (Supernetting):** Combines multiple contiguous networks into a single routing entry, reducing backbone router overhead.\n\n[Launch the NadirTools CIDR Calculator](/tools/subnet-calculator) to instantly visualize subnets, broadcast addresses, and usable host ranges."
+  },
+  {
+    "slug": "what-is-a-subnet-mask",
+    "title": "What is a Subnet Mask?",
+    "definition": "A subnet mask is a 32-bit number that masks an IP address, separating the network address from the host address.",
+    "category": "Networking",
+    "markdown": "## How Subnet Masks Work\n\nA subnet mask essentially tells devices which part of an IP address refers to the network (subnet) and which part refers to the specific device (host). It consists of a sequence of continuous `1`s followed by continuous `0`s in binary.\n\n### Example\nA common subnet mask is `255.255.255.0`.\n*   In binary, this is `11111111.11111111.11111111.00000000`.\n*   The `1`s represent the network portion.\n*   The `0`s represent the host portion.\n\nWhen combined with an IP address (like `192.168.1.50`) via a logical AND operation, the mask reveals the network address (`192.168.1.0`).\n\n[Use the Subnet Calculator](/tools/subnet-calculator) to quickly convert between dotted-decimal masks and CIDR notation."
+  },
+  {
+    "slug": "what-is-json",
+    "title": "What is JSON? (JavaScript Object Notation)",
+    "definition": "JSON is a lightweight data-interchange format that is easy for humans to read and write, and easy for machines to parse and generate.",
+    "category": "Developer",
+    "markdown": "## JSON Basics\n\nJSON (JavaScript Object Notation) has become the de facto standard for transmitting structured data over the web (e.g., in RESTful APIs). While derived from JavaScript, it is completely language-independent.\n\n### JSON Structure\nJSON is built on two universal data structures:\n1.  **A collection of name/value pairs:** Often realized as an object, record, struct, dictionary, or hash table.\n2.  **An ordered list of values:** Realized as an array, vector, list, or sequence.\n\n```json\n{\n  \"firstName\": \"John\",\n  \"lastName\": \"Smith\",\n  \"isAlive\": true,\n  \"age\": 27,\n  \"skills\": [\"networking\", \"cloud\"]\n}\n```\n\n### Common JSON Errors\n*   Missing double quotes around keys.\n*   Trailing commas at the end of objects or arrays.\n*   Unescaped control characters inside strings.\n\n[Use the JSON Parser & Formatter](/tools/json-parser) to validate, minify, or pretty-print your JSON payloads."
+  },
+  {
+    "slug": "cron-expression-syntax",
+    "title": "Cron Expression Syntax Explained",
+    "definition": "A cron expression is a string of five or six fields separated by spaces that represents a set of execution times.",
+    "category": "Sysadmin",
+    "markdown": "## Understanding Cron Syntax\n\nCron is a time-based job scheduler in Unix-like operating systems. It allows you to run commands or scripts at specific times, dates, or intervals.\n\n### The Standard 5-Field Format\n```text\n* * * * * command to execute\n│ │ │ │ │\n│ │ │ │ └─── Day of week (0 - 6) (Sunday to Saturday)\n│ │ │ └────── Month (1 - 12)\n│ │ └──────── Day of month (1 - 31)\n│ └────────── Hour (0 - 23)\n└──────────── Minute (0 - 59)\n```\n\n### Special Characters\n*   `*` (Asterisk): Matches all values for that field.\n*   `,` (Comma): Specifies a list of values (e.g., `1,15,30`).\n*   `-` (Hyphen): Specifies a range of values (e.g., `1-5`).\n*   `/` (Slash): Specifies step values (e.g., `*/10` means every 10 units).\n\n[Use the Advanced Cron Visualizer](/tools/cron-visualizer) to simulate upcoming triggers and validate your schedule."
+  },
+  {
+    "slug": "what-is-nnn-lease",
+    "title": "What is a Triple Net (NNN) Lease?",
+    "definition": "A Triple Net (NNN) lease is a commercial lease agreement where the tenant is responsible for paying all operating expenses associated with the property.",
+    "category": "Finance",
+    "markdown": "## Breaking Down the NNN Lease\n\nIn commercial real estate, a Triple Net (NNN) lease shifts the majority of property expenses from the landlord to the tenant. The tenant pays a lower base rent, but assumes the risk of fluctuating operating costs.\n\n### The \"Three Nets\"\n1.  **Net Real Estate Taxes:** Property taxes levied by the municipality.\n2.  **Net Building Insurance:** Insurance protecting the physical structure.\n3.  **Net Common Area Maintenance (CAM):** Costs for maintaining shared spaces (parking lots, landscaping, snow removal, HVAC maintenance).\n\n### Why landlords prefer NNN\nIt provides a predictable, steady income stream with minimal management overhead, making NNN properties popular among passive investors and Real Estate Investment Trusts (REITs).\n\n[Use the NNN Lease Calculator](/tools/nnn-calculator) to estimate total monthly and annual costs, factoring in base rent and estimated operating expenses."
+  },
+  {
+    "slug": "cash-on-cash-yield",
+    "title": "Understanding Cash-on-Cash Yield in Real Estate",
+    "definition": "Cash-on-cash yield is a rate of return that calculates the cash income earned on the cash invested in a property.",
+    "category": "Finance",
+    "markdown": "## What is Cash-on-Cash Return?\n\nCash-on-cash return (often called cash yield) is a critical metric used in commercial and residential real estate investing. It measures the annual pre-tax cash flow against the total cash actually invested, giving you a clear picture of immediate liquidity and performance.\n\n### The Formula\n`Cash-on-Cash Return = (Annual Pre-Tax Cash Flow) / (Total Cash Invested)`\n\n*   **Total Cash Invested:** Includes down payment, closing costs, and immediate rehab/repair costs.\n*   **Annual Cash Flow:** Net Operating Income (NOI) minus debt service (mortgage payments).\n\n### Why it matters\nUnlike the capitalization rate (Cap Rate), which assumes the property is bought with 100% cash, the cash-on-cash return accounts for leverage (financing). It tells you exactly how hard your invested dollars are working.\n\n[Use the Commercial Property Simulator](/tools/coc-yield) to model your cash-on-cash return and debt service coverage ratio (DSCR)."
+  },
+  {
+    "slug": "what-is-a-firewall-acl",
+    "title": "What is a Firewall Access Control List (ACL)?",
+    "definition": "An ACL is a set of rules defined in a firewall or router that permits or denies network traffic based on specified criteria.",
+    "category": "Security",
+    "markdown": "## Inside Firewall ACLs\n\nAccess Control Lists (ACLs) are the core filtering mechanisms of network firewalls. They operate primarily at Layer 3 (Network) and Layer 4 (Transport) of the OSI model.\n\n### How Rules are Evaluated\nFirewalls process ACL rules sequentially, from top to bottom. The moment a packet matches a rule, the firewall takes the specified action (Permit or Deny) and stops evaluating further rules.\n\n### Common Rule Criteria\n*   **Source IP / Subnet**\n*   **Destination IP / Subnet**\n*   **Protocol:** (TCP, UDP, ICMP)\n*   **Port Numbers:** (e.g., 80 for HTTP, 443 for HTTPS)\n\n### The Implicit Deny\nMost modern firewalls (like Cisco ASAs, OPNsense, pfSense) have an \"implicit deny any any\" rule at the very bottom of the ACL. If traffic doesn't match any of your explicitly defined rules, it is automatically dropped.\n\n[Use the Firewall Rule Validator](/tools/firewall-validator) to detect syntax errors and shadowed rules in your configurations."
+  },
+  {
+    "slug": "what-is-rule-shadowing",
+    "title": "Firewall Rule Shadowing Explained",
+    "definition": "Rule shadowing occurs when a broad firewall rule is placed above a more specific rule, rendering the specific rule completely useless.",
+    "category": "Security",
+    "markdown": "## The Danger of Shadowed Rules\n\nBecause firewalls process Access Control Lists (ACLs) top-down and stop at the first match, the order of rules is critical. A \"shadowed\" rule is a rule that will never be hit, regardless of the traffic, because a broader rule preceding it already intercepted the packet.\n\n### An Example\n1.  **Rule 1:** `Allow TCP from 192.168.1.0/24 to ANY`\n2.  **Rule 2:** `Deny TCP from 192.168.1.50 to 8.8.8.8`\n\nIn this scenario, Rule 2 is shadowed. The IP `192.168.1.50` is part of the `/24` subnet defined in Rule 1. Since Rule 1 allows the traffic, the firewall stops processing and allows it through, completely ignoring the block attempt in Rule 2.\n\n### The Solution\nAlways place specific, restrictive rules *above* broader, permissive rules.\n\n[Use the Firewall Rule Validator](/tools/firewall-validator) to automatically detect and flag shadowed rules in your config."
+  },
+  {
+    "slug": "freelance-tech-tax-liability",
+    "title": "Tech Freelance Tax Liability & GST/VAT",
+    "definition": "Tech freelancers operating globally must account for local income tax, self-employment tax, and indirect consumption taxes like GST or VAT.",
+    "category": "Finance",
+    "markdown": "## Managing Freelance Taxes\n\nAs a sole proprietor or independent contractor in the tech sector, your gross income is rarely what you keep. You are responsible for both sides of the tax equation.\n\n### Income vs. Self-Employment Tax\nIn jurisdictions like the US, traditional employees split payroll taxes (FICA) with their employers. Freelancers must pay the full 15.3% self-employment tax (covering Social Security and Medicare) on top of their standard federal and state income tax brackets.\n\n### GST / VAT\nIf you export software development or consulting services, you must navigate indirect taxes. Value Added Tax (VAT) or Goods and Services Tax (GST) may apply depending on your client's location and the nature of the digital service.\n\n*   **B2B:** Often falls under \"reverse charge\" mechanisms.\n*   **B2C:** May require you to register and collect VAT in the consumer's country.\n\n[Use the Multi-Regime Tax Matrix](/tools/freelance-tax) to estimate your net take-home pay and liability."
+  },
+  {
+    "slug": "what-is-a-dscr",
+    "title": "Debt Service Coverage Ratio (DSCR)",
+    "definition": "DSCR is a financial ratio used by lenders to determine if a property generates enough cash flow to cover its mortgage payments.",
+    "category": "Finance",
+    "markdown": "## Understanding DSCR\n\nThe Debt Service Coverage Ratio (DSCR) is arguably the most important metric commercial real estate lenders look at when underwriting a loan. It proves the property can sustain itself.\n\n### The Formula\n`DSCR = Net Operating Income (NOI) / Total Debt Service`\n\n### Interpreting the Ratio\n*   **DSCR = 1.0:** The property generates exactly enough income to pay the mortgage. There is zero profit.\n*   **DSCR < 1.0:** The property has negative cash flow. (e.g., 0.95 means income only covers 95% of the debt).\n*   **DSCR > 1.0:** The property has positive cash flow.\n\nMost commercial lenders require a minimum DSCR between **1.20 and 1.25** to provide a buffer against vacancies or unexpected expenses.\n\n[Model your DSCR securely on your device](/tools/coc-yield) using the Commercial Property Simulator."
+  }
+]

@@ -9,6 +9,7 @@ generator client {
 
 datasource db {
   provider = "sqlite"
+  url      = env("DATABASE_URL")
 }
 
 model Brand {
@@ -48,4 +49,18 @@ model ErrorCode {
   updatedAt       DateTime @updatedAt
 
   @@index([hardwareModelId])
+}
+
+model GlossaryTerm {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String
+  definition  String
+  markdown    String
+  category    String
+  publishAt   DateTime
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  @@index([publishAt])
 }
