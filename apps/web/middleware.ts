@@ -26,10 +26,15 @@ export function middleware(request: NextRequest) {
   headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
   headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
   
-  // CSP allows inline scripts for React/Next.js but restricts other domains
   headers.set(
     'Content-Security-Policy',
-    "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://pagead2.googlesyndication.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://pagead2.googlesyndication.com;"
+    "default-src 'self'; " +
+    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://pagead2.googlesyndication.com https://static.cloudflareinsights.com https://challenges.cloudflare.com https://partner.googleadservices.com https://tpc.googlesyndication.com; " +
+    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
+    "font-src 'self' https://fonts.gstatic.com; " +
+    "img-src 'self' data: https:; " +
+    "connect-src 'self' https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google; " +
+    "frame-src 'self' https://googleads.g.doubleclick.net https://challenges.cloudflare.com https://tpc.googlesyndication.com;"
   );
 
   return response;
