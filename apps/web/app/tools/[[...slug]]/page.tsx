@@ -213,8 +213,8 @@ export default async function ToolCatchAllPage({ params }: PageProps) {
     }
 
 
-    // FAQs for schema (drawn from headings or math definitions)
-    const faqs = [
+    // FAQs for schema (drawn from the guide's explicit faqs array if available)
+    const faqs = guide.faqs || [
       {
         question: `What is the core formula in ${guide.title}?`,
         answer: guide.summary
@@ -295,6 +295,21 @@ export default async function ToolCatchAllPage({ params }: PageProps) {
                 );
               })}
             </div>
+
+            {/* Visual FAQ Section */}
+            {faqs && faqs.length > 0 && faqs[0].answer !== guide.summary && (
+              <div style={{ marginTop: "3rem", background: "rgba(0,0,0,0.2)", padding: "2rem", borderRadius: "12px", border: "1px solid rgba(255,255,255,0.05)" }}>
+                <h3 style={{ fontSize: "1.5rem", fontWeight: 700, color: "#f8fafc", marginBottom: "1.5rem" }}>Frequently Asked Questions</h3>
+                <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+                  {faqs.map((faq: { question: string, answer: string }, idx: number) => (
+                    <div key={idx}>
+                      <h4 style={{ fontSize: "1.1rem", fontWeight: 600, color: "#cbd5e1", marginBottom: "0.5rem" }}>Q: {faq.question}</h4>
+                      <p style={{ color: "#94a3b8", lineHeight: "1.6" }}>{faq.answer}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
 
             <div style={{ marginTop: "3rem", borderTop: "1px solid rgba(255,255,255,0.05)", paddingTop: "1.5rem" }}>
               <a href={`/tools/${toolSlug}`} style={backToToolBtnStyle}>
