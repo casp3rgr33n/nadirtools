@@ -45,6 +45,23 @@ export default function HeaderNav() {
             {cat}
           </button>
         ))}
+        <a 
+          href="/glossary"
+          style={{
+            background: "transparent",
+            border: "1px solid rgba(0, 255, 179, 0.2)",
+            color: "#00ffb3",
+            fontSize: "0.8rem",
+            fontWeight: 600,
+            padding: "0.4rem 0.8rem",
+            borderRadius: "9999px",
+            cursor: "pointer",
+            textDecoration: "none",
+            transition: "all 0.2s ease"
+          }}
+        >
+          Glossary
+        </a>
         {search && (
           <button onClick={() => setCategory("")} style={{
             background: "rgba(255,255,255,0.05)",

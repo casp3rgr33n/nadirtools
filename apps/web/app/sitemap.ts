@@ -1,8 +1,9 @@
 import { MetadataRoute } from "next";
 import toolConstants from "../../../config/tool-constants.json";
 import spokesDbRaw from "../../../config/spokes.json";
+import { prisma } from "../lib/prisma";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://nadirtools.com";
   const tools = (toolConstants as any).tools;
   const spokesDb = spokesDbRaw as Record<string, any>;
@@ -14,6 +15,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "daily",
       priority: 1.0,
     },
+    {
+      url: `${baseUrl}/glossary`,
+      lastModified: new Date(),
+      changeFrequency: "daily",
+      priority: 0.9,
+    }
   ];
 
   Object.keys(tools).forEach((toolKey) => {
@@ -53,6 +60,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
       });
     }
   });
+
+  try {
+    // Dynamic Glossary Terms
+    const glossaryTerms = await prisma.glossaryTerm.findMany({
+      where: {
+        publishAt: { lte: now },
+      },
+      select: {
+        slug: true,
+        publishAt: true,
+      },
+    });
+
+    glossaryTerms.forEach((term) => {
+      sitemapEntries.push({
+        url: `${baseUrl}/glossary/${term.slug}`,
+        lastModified: new Date(term.publishAt),
+        changeFrequency: "monthly",
+        priority: 0.6,
+      });
+    });
+  } catch (error) {
+    console.error("Failed to fetch glossary terms for sitemap:", error);
+  }
 
   return sitemapEntries;
 }
