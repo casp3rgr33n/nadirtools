@@ -33,7 +33,7 @@ export function middleware(request: NextRequest) {
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
     "font-src 'self' https://fonts.gstatic.com; " +
     "img-src 'self' data: https:; " +
-    "connect-src 'self' https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google; " +
+    "connect-src 'self' https://api.nadirtools.com https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google; " +
     "frame-src 'self' https://googleads.g.doubleclick.net https://challenges.cloudflare.com https://tpc.googlesyndication.com;"
   );
 
