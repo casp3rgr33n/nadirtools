@@ -48,10 +48,44 @@ async function main() {
     process.exit(0); // Exit successfully without modifying the file
   }
 
+  // ── Schema guard (fail closed) ──
+  // The calculator reads regimes[r].brackets[].limit/.rate plus currency, self_employment_rate and
+  // se_deduction_factor. Refuse to write a shape that does not match: a mismatched write silently
+  // breaks the tax math (this happened — see the closed PR #1, 2026-10-01).
+  function assertCompatible(regime: string, incoming: any): void {
+    const problems: string[] = [];
+    if (!incoming || typeof incoming !== "object") {
+      problems.push("not an object");
+    } else {
+      if (!Array.isArray(incoming.brackets)) {
+        problems.push("missing brackets[] — the calculator reads brackets[].limit and .rate");
+      } else {
+        incoming.brackets.forEach((b: any, i: number) => {
+          if (typeof b.limit !== "number") problems.push(`brackets[${i}].limit is not a number`);
+          if (typeof b.rate !== "number") problems.push(`brackets[${i}].rate is not a number`);
+        });
+      }
+      for (const key of ["currency", "self_employment_rate", "se_deduction_factor"]) {
+        if (!(key in incoming)) problems.push(`missing ${key}`);
+      }
+    }
+    if (problems.length) {
+      console.error(`Refusing to write ${regime}: upstream data is not compatible with the calculator schema.`);
+      problems.forEach(p => console.error(`  - ${p}`));
+      console.error("No file was modified.");
+      process.exit(1);
+    }
+  }
+
+  Object.keys(newTaxData).forEach(regime => assertCompatible(regime, (newTaxData as any)[regime]));
+
   console.log("Changes detected! Updating tool-constants.json with new structural tax logic.");
   config.tools["freelance-tax"].math.regimes = newTaxData;
 
-  fs.writeFileSync(configPath, JSON.stringify(config, null, 2), "utf-8");
+  // Re-escape non-ASCII so the diff shows real data changes instead of escape churn.
+  const serialised = JSON.stringify(config, null, 2)
+    .replace(/[^\x00-\x7F]/g, ch => "\\u" + ch.charCodeAt(0).toString(16).padStart(4, "0"));
+  fs.writeFileSync(configPath, serialised, "utf-8");
   console.log("Successfully updated tax regimes. Ready for Auto-PR commit.");
 }
 
