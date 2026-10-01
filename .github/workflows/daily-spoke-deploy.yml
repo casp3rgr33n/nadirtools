@@ -6,15 +6,50 @@ on:
     - cron: '0 0 * * *'
   workflow_dispatch: # Allows manual trigger from the GitHub UI
 
+# The job commits the regenerated spoke database, so it needs write access to the repo.
+permissions:
+  contents: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Trigger Cloudflare Pages Build Hook
+      - name: Checkout Code Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      # The drip feed only advances when the generator runs. Before this step existed the job
+      # pinged the deploy hook and reported success while releasing nothing new.
+      - name: Generate spoke schedule (drip feed)
+        run: npx --yes tsx scripts/generate-spokes.ts
+
+      - name: Commit the updated spoke database
         run: |
-          if [ -z "${{ secrets.CLOUDFLARE_DEPLOY_HOOK }}" ]; then
-            echo "Error: CLOUDFLARE_DEPLOY_HOOK secret is not set."
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- config/spokes.json; then
+            echo "No change to config/spokes.json today."
+          else
+            git add config/spokes.json
+            git commit -m "chore(spokes): drip feed $(date -u +%Y-%m-%d)"
+            git push
+          fi
+
+      - name: Trigger Cloudflare build hook
+        env:
+          HOOK: ${{ secrets.CLOUDFLARE_DEPLOY_HOOK }}
+        run: |
+          set -euo pipefail
+          if [ -z "$HOOK" ]; then
+            echo "::error::CLOUDFLARE_DEPLOY_HOOK secret is not set."
             exit 1
           fi
-          echo "Triggering Cloudflare Deploy Hook to unlock today's SEO Spokes..."
-          curl -X POST "${{ secrets.CLOUDFLARE_DEPLOY_HOOK }}"
+          echo "Triggering Cloudflare deploy hook to publish today's spokes..."
+          # -f so an HTTP 4xx/5xx fails the job instead of reporting success.
+          curl -fsS --retry 3 --retry-delay 5 -X POST "$HOOK"
+          echo "Deploy hook accepted."

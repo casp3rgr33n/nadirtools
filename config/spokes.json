@@ -831,5 +831,905 @@
     "description": "Detect shadowed rules, overlaps, and logic errors directly in your browser with our WatchGuard Firewall Auditor.",
     "presetParams": {},
     "releaseDate": "2026-07-13T00:00:00.000Z"
+  },
+  "every-1-minute": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every minute (* * * * *)",
+    "description": "Generate, validate, and parse the exact cron expression for every minute. Use our visualizer to test the syntax * * * * *.",
+    "presetParams": {
+      "q": "* * * * *"
+    },
+    "releaseDate": "2026-10-01T00:00:00.000Z"
+  },
+  "every-2-minutes": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every 2 minutes (*/2 * * * *)",
+    "description": "Generate, validate, and parse the exact cron expression for every 2 minutes. Use our visualizer to test the syntax */2 * * * *.",
+    "presetParams": {
+      "q": "*/2 * * * *"
+    },
+    "releaseDate": "2026-10-01T00:00:00.000Z"
+  },
+  "every-3-minutes": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every 3 minutes (*/3 * * * *)",
+    "description": "Generate, validate, and parse the exact cron expression for every 3 minutes. Use our visualizer to test the syntax */3 * * * *.",
+    "presetParams": {
+      "q": "*/3 * * * *"
+    },
+    "releaseDate": "2026-10-01T00:00:00.000Z"
+  },
+  "every-4-minutes": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every 4 minutes (*/4 * * * *)",
+    "description": "Generate, validate, and parse the exact cron expression for every 4 minutes. Use our visualizer to test the syntax */4 * * * *.",
+    "presetParams": {
+      "q": "*/4 * * * *"
+    },
+    "releaseDate": "2026-10-01T00:00:00.000Z"
+  },
+  "every-6-minutes": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every 6 minutes (*/6 * * * *)",
+    "description": "Generate, validate, and parse the exact cron expression for every 6 minutes. Use our visualizer to test the syntax */6 * * * *.",
+    "presetParams": {
+      "q": "*/6 * * * *"
+    },
+    "releaseDate": "2026-10-01T00:00:00.000Z"
+  },
+  "every-12-minutes": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every 12 minutes (*/12 * * * *)",
+    "description": "Generate, validate, and parse the exact cron expression for every 12 minutes. Use our visualizer to test the syntax */12 * * * *.",
+    "presetParams": {
+      "q": "*/12 * * * *"
+    },
+    "releaseDate": "2026-10-02T00:00:00.000Z"
+  },
+  "every-20-minutes": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every 20 minutes (*/20 * * * *)",
+    "description": "Generate, validate, and parse the exact cron expression for every 20 minutes. Use our visualizer to test the syntax */20 * * * *.",
+    "presetParams": {
+      "q": "*/20 * * * *"
+    },
+    "releaseDate": "2026-10-02T00:00:00.000Z"
+  },
+  "every-45-minutes": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every 45 minutes (*/45 * * * *)",
+    "description": "Generate, validate, and parse the exact cron expression for every 45 minutes. Use our visualizer to test the syntax */45 * * * *.",
+    "presetParams": {
+      "q": "*/45 * * * *"
+    },
+    "releaseDate": "2026-10-02T00:00:00.000Z"
+  },
+  "every-3-hours": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every 3 hours (0 */3 * * *)",
+    "description": "Generate, validate, and parse the exact cron expression for every 3 hours. Use our visualizer to test the syntax 0 */3 * * *.",
+    "presetParams": {
+      "q": "0 */3 * * *"
+    },
+    "releaseDate": "2026-10-02T00:00:00.000Z"
+  },
+  "every-4-hours": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every 4 hours (0 */4 * * *)",
+    "description": "Generate, validate, and parse the exact cron expression for every 4 hours. Use our visualizer to test the syntax 0 */4 * * *.",
+    "presetParams": {
+      "q": "0 */4 * * *"
+    },
+    "releaseDate": "2026-10-02T00:00:00.000Z"
+  },
+  "every-6-hours": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every 6 hours (0 */6 * * *)",
+    "description": "Generate, validate, and parse the exact cron expression for every 6 hours. Use our visualizer to test the syntax 0 */6 * * *.",
+    "presetParams": {
+      "q": "0 */6 * * *"
+    },
+    "releaseDate": "2026-10-03T00:00:00.000Z"
+  },
+  "every-8-hours": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every 8 hours (0 */8 * * *)",
+    "description": "Generate, validate, and parse the exact cron expression for every 8 hours. Use our visualizer to test the syntax 0 */8 * * *.",
+    "presetParams": {
+      "q": "0 */8 * * *"
+    },
+    "releaseDate": "2026-10-03T00:00:00.000Z"
+  },
+  "every-12-hours": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every 12 hours (0 */12 * * *)",
+    "description": "Generate, validate, and parse the exact cron expression for every 12 hours. Use our visualizer to test the syntax 0 */12 * * *.",
+    "presetParams": {
+      "q": "0 */12 * * *"
+    },
+    "releaseDate": "2026-10-03T00:00:00.000Z"
+  },
+  "every-15-minutes-on-weekdays": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every 15 minutes on weekdays (*/15 * * * 1-5)",
+    "description": "Generate, validate, and parse the exact cron expression for every 15 minutes on weekdays. Use our visualizer to test the syntax */15 * * * 1-5.",
+    "presetParams": {
+      "q": "*/15 * * * 1-5"
+    },
+    "releaseDate": "2026-10-03T00:00:00.000Z"
+  },
+  "every-hour-on-weekdays": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every hour on weekdays (0 * * * 1-5)",
+    "description": "Generate, validate, and parse the exact cron expression for every hour on weekdays. Use our visualizer to test the syntax 0 * * * 1-5.",
+    "presetParams": {
+      "q": "0 * * * 1-5"
+    },
+    "releaseDate": "2026-10-03T00:00:00.000Z"
+  },
+  "every-first-of-quarter": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: First day of every quarter (0 0 1 1,4,7,10 *)",
+    "description": "Generate, validate, and parse the exact cron expression for first day of every quarter. Use our visualizer to test the syntax 0 0 1 1,4,7,10 *.",
+    "presetParams": {
+      "q": "0 0 1 1,4,7,10 *"
+    },
+    "releaseDate": "2026-10-04T00:00:00.000Z"
+  },
+  "every-january-first": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every January 1st at midnight (0 0 1 1 *)",
+    "description": "Generate, validate, and parse the exact cron expression for every january 1st at midnight. Use our visualizer to test the syntax 0 0 1 1 *.",
+    "presetParams": {
+      "q": "0 0 1 1 *"
+    },
+    "releaseDate": "2026-10-04T00:00:00.000Z"
+  },
+  "at-3am-every-day": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every day at 3:00 AM (0 3 * * *)",
+    "description": "Build, validate, and preview the cron schedule that runs every day at 3:00 AM. The visualizer shows the next run times for 0 3 * * *.",
+    "presetParams": {
+      "q": "0 3 * * *"
+    },
+    "releaseDate": "2026-10-04T00:00:00.000Z"
+  },
+  "at-4am-every-day": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every day at 4:00 AM (0 4 * * *)",
+    "description": "Build, validate, and preview the cron schedule that runs every day at 4:00 AM. The visualizer shows the next run times for 0 4 * * *.",
+    "presetParams": {
+      "q": "0 4 * * *"
+    },
+    "releaseDate": "2026-10-04T00:00:00.000Z"
+  },
+  "at-5am-every-day": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every day at 5:00 AM (0 5 * * *)",
+    "description": "Build, validate, and preview the cron schedule that runs every day at 5:00 AM. The visualizer shows the next run times for 0 5 * * *.",
+    "presetParams": {
+      "q": "0 5 * * *"
+    },
+    "releaseDate": "2026-10-04T00:00:00.000Z"
+  },
+  "at-6am-every-day": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every day at 6:00 AM (0 6 * * *)",
+    "description": "Build, validate, and preview the cron schedule that runs every day at 6:00 AM. The visualizer shows the next run times for 0 6 * * *.",
+    "presetParams": {
+      "q": "0 6 * * *"
+    },
+    "releaseDate": "2026-10-05T00:00:00.000Z"
+  },
+  "at-7am-every-day": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every day at 7:00 AM (0 7 * * *)",
+    "description": "Build, validate, and preview the cron schedule that runs every day at 7:00 AM. The visualizer shows the next run times for 0 7 * * *.",
+    "presetParams": {
+      "q": "0 7 * * *"
+    },
+    "releaseDate": "2026-10-05T00:00:00.000Z"
+  },
+  "at-8am-every-day": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every day at 8:00 AM (0 8 * * *)",
+    "description": "Build, validate, and preview the cron schedule that runs every day at 8:00 AM. The visualizer shows the next run times for 0 8 * * *.",
+    "presetParams": {
+      "q": "0 8 * * *"
+    },
+    "releaseDate": "2026-10-05T00:00:00.000Z"
+  },
+  "at-9am-every-day": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every day at 9:00 AM (0 9 * * *)",
+    "description": "Build, validate, and preview the cron schedule that runs every day at 9:00 AM. The visualizer shows the next run times for 0 9 * * *.",
+    "presetParams": {
+      "q": "0 9 * * *"
+    },
+    "releaseDate": "2026-10-05T00:00:00.000Z"
+  },
+  "at-10am-every-day": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every day at 10:00 AM (0 10 * * *)",
+    "description": "Build, validate, and preview the cron schedule that runs every day at 10:00 AM. The visualizer shows the next run times for 0 10 * * *.",
+    "presetParams": {
+      "q": "0 10 * * *"
+    },
+    "releaseDate": "2026-10-05T00:00:00.000Z"
+  },
+  "at-11am-every-day": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every day at 11:00 AM (0 11 * * *)",
+    "description": "Build, validate, and preview the cron schedule that runs every day at 11:00 AM. The visualizer shows the next run times for 0 11 * * *.",
+    "presetParams": {
+      "q": "0 11 * * *"
+    },
+    "releaseDate": "2026-10-06T00:00:00.000Z"
+  },
+  "at-12pm-every-day": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every day at 12:00 PM (0 12 * * *)",
+    "description": "Build, validate, and preview the cron schedule that runs every day at 12:00 PM. The visualizer shows the next run times for 0 12 * * *.",
+    "presetParams": {
+      "q": "0 12 * * *"
+    },
+    "releaseDate": "2026-10-06T00:00:00.000Z"
+  },
+  "at-1pm-every-day": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every day at 1:00 PM (0 13 * * *)",
+    "description": "Build, validate, and preview the cron schedule that runs every day at 1:00 PM. The visualizer shows the next run times for 0 13 * * *.",
+    "presetParams": {
+      "q": "0 13 * * *"
+    },
+    "releaseDate": "2026-10-06T00:00:00.000Z"
+  },
+  "at-2pm-every-day": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every day at 2:00 PM (0 14 * * *)",
+    "description": "Build, validate, and preview the cron schedule that runs every day at 2:00 PM. The visualizer shows the next run times for 0 14 * * *.",
+    "presetParams": {
+      "q": "0 14 * * *"
+    },
+    "releaseDate": "2026-10-06T00:00:00.000Z"
+  },
+  "at-3pm-every-day": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every day at 3:00 PM (0 15 * * *)",
+    "description": "Build, validate, and preview the cron schedule that runs every day at 3:00 PM. The visualizer shows the next run times for 0 15 * * *.",
+    "presetParams": {
+      "q": "0 15 * * *"
+    },
+    "releaseDate": "2026-10-06T00:00:00.000Z"
+  },
+  "at-4pm-every-day": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every day at 4:00 PM (0 16 * * *)",
+    "description": "Build, validate, and preview the cron schedule that runs every day at 4:00 PM. The visualizer shows the next run times for 0 16 * * *.",
+    "presetParams": {
+      "q": "0 16 * * *"
+    },
+    "releaseDate": "2026-10-07T00:00:00.000Z"
+  },
+  "at-5pm-every-day": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every day at 5:00 PM (0 17 * * *)",
+    "description": "Build, validate, and preview the cron schedule that runs every day at 5:00 PM. The visualizer shows the next run times for 0 17 * * *.",
+    "presetParams": {
+      "q": "0 17 * * *"
+    },
+    "releaseDate": "2026-10-07T00:00:00.000Z"
+  },
+  "at-6pm-every-day": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every day at 6:00 PM (0 18 * * *)",
+    "description": "Build, validate, and preview the cron schedule that runs every day at 6:00 PM. The visualizer shows the next run times for 0 18 * * *.",
+    "presetParams": {
+      "q": "0 18 * * *"
+    },
+    "releaseDate": "2026-10-07T00:00:00.000Z"
+  },
+  "at-7pm-every-day": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every day at 7:00 PM (0 19 * * *)",
+    "description": "Build, validate, and preview the cron schedule that runs every day at 7:00 PM. The visualizer shows the next run times for 0 19 * * *.",
+    "presetParams": {
+      "q": "0 19 * * *"
+    },
+    "releaseDate": "2026-10-07T00:00:00.000Z"
+  },
+  "at-8pm-every-day": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every day at 8:00 PM (0 20 * * *)",
+    "description": "Build, validate, and preview the cron schedule that runs every day at 8:00 PM. The visualizer shows the next run times for 0 20 * * *.",
+    "presetParams": {
+      "q": "0 20 * * *"
+    },
+    "releaseDate": "2026-10-07T00:00:00.000Z"
+  },
+  "at-9pm-every-day": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every day at 9:00 PM (0 21 * * *)",
+    "description": "Build, validate, and preview the cron schedule that runs every day at 9:00 PM. The visualizer shows the next run times for 0 21 * * *.",
+    "presetParams": {
+      "q": "0 21 * * *"
+    },
+    "releaseDate": "2026-10-08T00:00:00.000Z"
+  },
+  "at-10pm-every-day": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every day at 10:00 PM (0 22 * * *)",
+    "description": "Build, validate, and preview the cron schedule that runs every day at 10:00 PM. The visualizer shows the next run times for 0 22 * * *.",
+    "presetParams": {
+      "q": "0 22 * * *"
+    },
+    "releaseDate": "2026-10-08T00:00:00.000Z"
+  },
+  "at-11pm-every-day": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every day at 11:00 PM (0 23 * * *)",
+    "description": "Build, validate, and preview the cron schedule that runs every day at 11:00 PM. The visualizer shows the next run times for 0 23 * * *.",
+    "presetParams": {
+      "q": "0 23 * * *"
+    },
+    "releaseDate": "2026-10-08T00:00:00.000Z"
+  },
+  "every-sunday-at-9am": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every Sunday at 9:00 AM (0 9 * * 0)",
+    "description": "Cron expression that runs once a week on Sunday at 9:00 AM. Validate the syntax and preview the upcoming run dates for 0 9 * * 0.",
+    "presetParams": {
+      "q": "0 9 * * 0"
+    },
+    "releaseDate": "2026-10-08T00:00:00.000Z"
+  },
+  "every-monday-at-9am": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every Monday at 9:00 AM (0 9 * * 1)",
+    "description": "Cron expression that runs once a week on Monday at 9:00 AM. Validate the syntax and preview the upcoming run dates for 0 9 * * 1.",
+    "presetParams": {
+      "q": "0 9 * * 1"
+    },
+    "releaseDate": "2026-10-08T00:00:00.000Z"
+  },
+  "every-tuesday-at-9am": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every Tuesday at 9:00 AM (0 9 * * 2)",
+    "description": "Cron expression that runs once a week on Tuesday at 9:00 AM. Validate the syntax and preview the upcoming run dates for 0 9 * * 2.",
+    "presetParams": {
+      "q": "0 9 * * 2"
+    },
+    "releaseDate": "2026-10-09T00:00:00.000Z"
+  },
+  "every-wednesday-at-9am": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every Wednesday at 9:00 AM (0 9 * * 3)",
+    "description": "Cron expression that runs once a week on Wednesday at 9:00 AM. Validate the syntax and preview the upcoming run dates for 0 9 * * 3.",
+    "presetParams": {
+      "q": "0 9 * * 3"
+    },
+    "releaseDate": "2026-10-09T00:00:00.000Z"
+  },
+  "every-thursday-at-9am": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every Thursday at 9:00 AM (0 9 * * 4)",
+    "description": "Cron expression that runs once a week on Thursday at 9:00 AM. Validate the syntax and preview the upcoming run dates for 0 9 * * 4.",
+    "presetParams": {
+      "q": "0 9 * * 4"
+    },
+    "releaseDate": "2026-10-09T00:00:00.000Z"
+  },
+  "every-friday-at-9am": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every Friday at 9:00 AM (0 9 * * 5)",
+    "description": "Cron expression that runs once a week on Friday at 9:00 AM. Validate the syntax and preview the upcoming run dates for 0 9 * * 5.",
+    "presetParams": {
+      "q": "0 9 * * 5"
+    },
+    "releaseDate": "2026-10-09T00:00:00.000Z"
+  },
+  "every-saturday-at-9am": {
+    "toolSlug": "cron-visualizer",
+    "title": "Cron Job For: Every Saturday at 9:00 AM (0 9 * * 6)",
+    "description": "Cron expression that runs once a week on Saturday at 9:00 AM. Validate the syntax and preview the upcoming run dates for 0 9 * * 6.",
+    "presetParams": {
+      "q": "0 9 * * 6"
+    },
+    "releaseDate": "2026-10-09T00:00:00.000Z"
+  },
+  "cold-storage-nnn-calculator": {
+    "toolSlug": "nnn-calculator",
+    "title": "Cold Storage NNN Lease Calculator",
+    "description": "Model base rent plus property taxes, insurance, and Common Area Maintenance (CAM) for a cold storage nnn lease — preloaded with realistic figures you can edit.",
+    "presetParams": {
+      "baseRent": "14.5",
+      "rentType": "annual_psf",
+      "sqft": "25000",
+      "taxes": "42000",
+      "insurance": "28000",
+      "cam": "31000"
+    },
+    "releaseDate": "2026-10-10T00:00:00.000Z"
+  },
+  "medical-office-nnn-calculator": {
+    "toolSlug": "nnn-calculator",
+    "title": "Medical Office NNN Cost Calculator",
+    "description": "Model base rent plus property taxes, insurance, and Common Area Maintenance (CAM) for a medical office nnn cost — preloaded with realistic figures you can edit.",
+    "presetParams": {
+      "baseRent": "38",
+      "rentType": "annual_psf",
+      "sqft": "4000",
+      "taxes": "22000",
+      "insurance": "9500",
+      "cam": "18000"
+    },
+    "releaseDate": "2026-10-10T00:00:00.000Z"
+  },
+  "data-center-nnn-lease-calculator": {
+    "toolSlug": "nnn-calculator",
+    "title": "Data Center NNN Lease Calculator",
+    "description": "Model base rent plus property taxes, insurance, and Common Area Maintenance (CAM) for a data center nnn lease — preloaded with realistic figures you can edit.",
+    "presetParams": {
+      "baseRent": "95",
+      "rentType": "annual_psf",
+      "sqft": "12000",
+      "taxes": "120000",
+      "insurance": "65000",
+      "cam": "88000"
+    },
+    "releaseDate": "2026-10-10T00:00:00.000Z"
+  },
+  "self-storage-nnn-calculator": {
+    "toolSlug": "nnn-calculator",
+    "title": "Self Storage NNN Cost Calculator",
+    "description": "Model base rent plus property taxes, insurance, and Common Area Maintenance (CAM) for a self storage nnn cost — preloaded with realistic figures you can edit.",
+    "presetParams": {
+      "baseRent": "11",
+      "rentType": "annual_psf",
+      "sqft": "30000",
+      "taxes": "38000",
+      "insurance": "21000",
+      "cam": "26000"
+    },
+    "releaseDate": "2026-10-10T00:00:00.000Z"
+  },
+  "qsr-drive-thru-nnn-calculator": {
+    "toolSlug": "nnn-calculator",
+    "title": "QSR Drive-Thru NNN Lease Calculator",
+    "description": "Model base rent plus property taxes, insurance, and Common Area Maintenance (CAM) for a qsr drive-thru nnn lease — preloaded with realistic figures you can edit.",
+    "presetParams": {
+      "baseRent": "52",
+      "rentType": "annual_psf",
+      "sqft": "2800",
+      "taxes": "19000",
+      "insurance": "12000",
+      "cam": "16000"
+    },
+    "releaseDate": "2026-10-10T00:00:00.000Z"
+  },
+  "grocery-anchored-retail-nnn-calculator": {
+    "toolSlug": "nnn-calculator",
+    "title": "Grocery-Anchored Retail NNN Calculator",
+    "description": "Model base rent plus property taxes, insurance, and Common Area Maintenance (CAM) for a grocery-anchored retail nnn — preloaded with realistic figures you can edit.",
+    "presetParams": {
+      "baseRent": "24",
+      "rentType": "annual_psf",
+      "sqft": "45000",
+      "taxes": "95000",
+      "insurance": "44000",
+      "cam": "120000"
+    },
+    "releaseDate": "2026-10-11T00:00:00.000Z"
+  },
+  "strip-mall-nnn-cost-calculator": {
+    "toolSlug": "nnn-calculator",
+    "title": "Strip Mall NNN Cost Calculator",
+    "description": "Model base rent plus property taxes, insurance, and Common Area Maintenance (CAM) for a strip mall nnn cost — preloaded with realistic figures you can edit.",
+    "presetParams": {
+      "baseRent": "26",
+      "rentType": "annual_psf",
+      "sqft": "18000",
+      "taxes": "46000",
+      "insurance": "19000",
+      "cam": "52000"
+    },
+    "releaseDate": "2026-10-11T00:00:00.000Z"
+  },
+  "flex-industrial-nnn-calculator": {
+    "toolSlug": "nnn-calculator",
+    "title": "Flex Industrial NNN Calculator",
+    "description": "Model base rent plus property taxes, insurance, and Common Area Maintenance (CAM) for a flex industrial nnn — preloaded with realistic figures you can edit.",
+    "presetParams": {
+      "baseRent": "15",
+      "rentType": "annual_psf",
+      "sqft": "22000",
+      "taxes": "34000",
+      "insurance": "17000",
+      "cam": "24000"
+    },
+    "releaseDate": "2026-10-11T00:00:00.000Z"
+  },
+  "parking-garage-nnn-calculator": {
+    "toolSlug": "nnn-calculator",
+    "title": "Parking Garage NNN Calculator",
+    "description": "Model base rent plus property taxes, insurance, and Common Area Maintenance (CAM) for a parking garage nnn — preloaded with realistic figures you can edit.",
+    "presetParams": {
+      "baseRent": "18",
+      "rentType": "annual_psf",
+      "sqft": "60000",
+      "taxes": "88000",
+      "insurance": "36000",
+      "cam": "72000"
+    },
+    "releaseDate": "2026-10-11T00:00:00.000Z"
+  },
+  "fitness-studio-nnn-calculator": {
+    "toolSlug": "nnn-calculator",
+    "title": "Fitness Studio NNN Calculator",
+    "description": "Model base rent plus property taxes, insurance, and Common Area Maintenance (CAM) for a fitness studio nnn — preloaded with realistic figures you can edit.",
+    "presetParams": {
+      "baseRent": "32",
+      "rentType": "annual_psf",
+      "sqft": "6500",
+      "taxes": "27000",
+      "insurance": "13000",
+      "cam": "22000"
+    },
+    "releaseDate": "2026-10-11T00:00:00.000Z"
+  },
+  "daycare-nnn-lease-calculator": {
+    "toolSlug": "nnn-calculator",
+    "title": "Daycare NNN Lease Calculator",
+    "description": "Model base rent plus property taxes, insurance, and Common Area Maintenance (CAM) for a daycare nnn lease — preloaded with realistic figures you can edit.",
+    "presetParams": {
+      "baseRent": "28",
+      "rentType": "annual_psf",
+      "sqft": "8000",
+      "taxes": "25000",
+      "insurance": "14000",
+      "cam": "19000"
+    },
+    "releaseDate": "2026-10-12T00:00:00.000Z"
+  },
+  "restaurant-with-patio-nnn-calculator": {
+    "toolSlug": "nnn-calculator",
+    "title": "Restaurant With Patio NNN Calculator",
+    "description": "Model base rent plus property taxes, insurance, and Common Area Maintenance (CAM) for a restaurant with patio nnn — preloaded with realistic figures you can edit.",
+    "presetParams": {
+      "baseRent": "40",
+      "rentType": "annual_psf",
+      "sqft": "5200",
+      "taxes": "29000",
+      "insurance": "16000",
+      "cam": "24000"
+    },
+    "releaseDate": "2026-10-12T00:00:00.000Z"
+  },
+  "single-family-rental-yield-calculator": {
+    "toolSlug": "coc-yield",
+    "title": "Single-Family Rental Yield Calculator",
+    "description": "Calculate Cash-on-Cash return, Net Operating Income (NOI), and DSCR for a single-family rental yield — preloaded with a sample acquisition you can edit.",
+    "presetParams": {
+      "price": "450000",
+      "rent": "42000"
+    },
+    "releaseDate": "2026-10-12T00:00:00.000Z"
+  },
+  "brrrr-cash-on-cash-calculator": {
+    "toolSlug": "coc-yield",
+    "title": "BRRRR Cash-on-Cash Calculator",
+    "description": "Calculate Cash-on-Cash return, Net Operating Income (NOI), and DSCR for a brrrr cash-on-cash — preloaded with a sample acquisition you can edit.",
+    "presetParams": {
+      "price": "320000",
+      "rent": "36000"
+    },
+    "releaseDate": "2026-10-12T00:00:00.000Z"
+  },
+  "house-hack-roi-calculator": {
+    "toolSlug": "coc-yield",
+    "title": "House Hack ROI Calculator",
+    "description": "Calculate Cash-on-Cash return, Net Operating Income (NOI), and DSCR for a house hack roi — preloaded with a sample acquisition you can edit.",
+    "presetParams": {
+      "price": "680000",
+      "rent": "54000"
+    },
+    "releaseDate": "2026-10-12T00:00:00.000Z"
+  },
+  "storage-facility-coc-calculator": {
+    "toolSlug": "coc-yield",
+    "title": "Storage Facility Cash-on-Cash Calculator",
+    "description": "Calculate Cash-on-Cash return, Net Operating Income (NOI), and DSCR for a storage facility cash-on-cash — preloaded with a sample acquisition you can edit.",
+    "presetParams": {
+      "price": "1500000",
+      "rent": "180000"
+    },
+    "releaseDate": "2026-10-13T00:00:00.000Z"
+  },
+  "mobile-home-park-coc-calculator": {
+    "toolSlug": "coc-yield",
+    "title": "Mobile Home Park Cash-on-Cash Calculator",
+    "description": "Calculate Cash-on-Cash return, Net Operating Income (NOI), and DSCR for a mobile home park cash-on-cash — preloaded with a sample acquisition you can edit.",
+    "presetParams": {
+      "price": "2200000",
+      "rent": "260000"
+    },
+    "releaseDate": "2026-10-13T00:00:00.000Z"
+  },
+  "office-building-coc-calculator": {
+    "toolSlug": "coc-yield",
+    "title": "Office Building Cash-on-Cash Calculator",
+    "description": "Calculate Cash-on-Cash return, Net Operating Income (NOI), and DSCR for a office building cash-on-cash — preloaded with a sample acquisition you can edit.",
+    "presetParams": {
+      "price": "3400000",
+      "rent": "420000"
+    },
+    "releaseDate": "2026-10-13T00:00:00.000Z"
+  },
+  "retail-center-coc-calculator": {
+    "toolSlug": "coc-yield",
+    "title": "Retail Center Cash-on-Cash Calculator",
+    "description": "Calculate Cash-on-Cash return, Net Operating Income (NOI), and DSCR for a retail center cash-on-cash — preloaded with a sample acquisition you can edit.",
+    "presetParams": {
+      "price": "4800000",
+      "rent": "560000"
+    },
+    "releaseDate": "2026-10-13T00:00:00.000Z"
+  },
+  "industrial-warehouse-coc-calculator": {
+    "toolSlug": "coc-yield",
+    "title": "Industrial Warehouse Cash-on-Cash Calculator",
+    "description": "Calculate Cash-on-Cash return, Net Operating Income (NOI), and DSCR for a industrial warehouse cash-on-cash — preloaded with a sample acquisition you can edit.",
+    "presetParams": {
+      "price": "2900000",
+      "rent": "330000"
+    },
+    "releaseDate": "2026-10-13T00:00:00.000Z"
+  },
+  "grocery-anchored-coc-calculator": {
+    "toolSlug": "coc-yield",
+    "title": "Grocery-Anchored Center Cash-on-Cash Calculator",
+    "description": "Calculate Cash-on-Cash return, Net Operating Income (NOI), and DSCR for a grocery-anchored center cash-on-cash — preloaded with a sample acquisition you can edit.",
+    "presetParams": {
+      "price": "8200000",
+      "rent": "940000"
+    },
+    "releaseDate": "2026-10-14T00:00:00.000Z"
+  },
+  "data-center-coc-calculator": {
+    "toolSlug": "coc-yield",
+    "title": "Data Center Cash-on-Cash Calculator",
+    "description": "Calculate Cash-on-Cash return, Net Operating Income (NOI), and DSCR for a data center cash-on-cash — preloaded with a sample acquisition you can edit.",
+    "presetParams": {
+      "price": "12000000",
+      "rent": "1500000"
+    },
+    "releaseDate": "2026-10-14T00:00:00.000Z"
+  },
+  "car-wash-coc-calculator": {
+    "toolSlug": "coc-yield",
+    "title": "Car Wash Cash-on-Cash Calculator",
+    "description": "Calculate Cash-on-Cash return, Net Operating Income (NOI), and DSCR for a car wash cash-on-cash — preloaded with a sample acquisition you can edit.",
+    "presetParams": {
+      "price": "1850000",
+      "rent": "340000"
+    },
+    "releaseDate": "2026-10-14T00:00:00.000Z"
+  },
+  "laundromat-coc-calculator": {
+    "toolSlug": "coc-yield",
+    "title": "Laundromat Cash-on-Cash Calculator",
+    "description": "Calculate Cash-on-Cash return, Net Operating Income (NOI), and DSCR for a laundromat cash-on-cash — preloaded with a sample acquisition you can edit.",
+    "presetParams": {
+      "price": "420000",
+      "rent": "96000"
+    },
+    "releaseDate": "2026-10-14T00:00:00.000Z"
+  },
+  "validate-kubernetes-deployment-json": {
+    "toolSlug": "json-parser",
+    "title": "Validate Kubernetes Deployment JSON",
+    "description": "A fast, client-side utility to validate kubernetes deployment json — preloaded with a real Kubernetes Deployment example you can edit, with strict syntax validation and pretty-print formatting.",
+    "presetParams": {
+      "json": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"name\":\"web\",\"labels\":{\"app\":\"web\"}},\"spec\":{\"replicas\":3,\"selector\":{\"matchLabels\":{\"app\":\"web\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"web\"}},\"spec\":{\"containers\":[{\"name\":\"web\",\"image\":\"nginx:1.27\",\"ports\":[{\"containerPort\":80}]}]}}}}"
+    },
+    "releaseDate": "2026-10-14T00:00:00.000Z"
+  },
+  "validate-docker-compose-json": {
+    "toolSlug": "json-parser",
+    "title": "Validate Docker Compose JSON",
+    "description": "A fast, client-side utility to validate docker compose json — preloaded with a real Docker Compose example you can edit, with strict syntax validation and pretty-print formatting.",
+    "presetParams": {
+      "json": "{\"version\":\"3.9\",\"services\":{\"api\":{\"image\":\"node:22-alpine\",\"ports\":[\"8080:8080\"],\"environment\":{\"NODE_ENV\":\"production\"}},\"db\":{\"image\":\"postgres:16\",\"volumes\":[\"pgdata:/var/lib/postgresql/data\"]}},\"volumes\":{\"pgdata\":{}}}"
+    },
+    "releaseDate": "2026-10-15T00:00:00.000Z"
+  },
+  "validate-aws-iam-policy-json": {
+    "toolSlug": "json-parser",
+    "title": "Validate AWS IAM Policy JSON",
+    "description": "A fast, client-side utility to validate aws iam policy json — preloaded with a real AWS IAM Policy example you can edit, with strict syntax validation and pretty-print formatting.",
+    "presetParams": {
+      "json": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Action\":[\"s3:GetObject\",\"s3:ListBucket\"],\"Resource\":[\"arn:aws:s3:::example-bucket\",\"arn:aws:s3:::example-bucket/*\"]}]}"
+    },
+    "releaseDate": "2026-10-15T00:00:00.000Z"
+  },
+  "validate-openapi-3-json": {
+    "toolSlug": "json-parser",
+    "title": "Validate OpenAPI 3.0 JSON",
+    "description": "A fast, client-side utility to validate openapi 3.0 json — preloaded with a real OpenAPI 3.0 example you can edit, with strict syntax validation and pretty-print formatting.",
+    "presetParams": {
+      "json": "{\"openapi\":\"3.0.3\",\"info\":{\"title\":\"Orders API\",\"version\":\"1.0.0\"},\"paths\":{\"/orders\":{\"get\":{\"summary\":\"List orders\",\"responses\":{\"200\":{\"description\":\"OK\"}}}}}}"
+    },
+    "releaseDate": "2026-10-15T00:00:00.000Z"
+  },
+  "validate-terraform-state-json": {
+    "toolSlug": "json-parser",
+    "title": "Validate Terraform State JSON",
+    "description": "A fast, client-side utility to validate terraform state json — preloaded with a real Terraform State example you can edit, with strict syntax validation and pretty-print formatting.",
+    "presetParams": {
+      "json": "{\"version\":4,\"terraform_version\":\"1.9.5\",\"serial\":12,\"lineage\":\"a1b2c3\",\"outputs\":{},\"resources\":[]}"
+    },
+    "releaseDate": "2026-10-15T00:00:00.000Z"
+  },
+  "validate-postman-collection-json": {
+    "toolSlug": "json-parser",
+    "title": "Validate Postman Collection JSON",
+    "description": "A fast, client-side utility to validate postman collection json — preloaded with a real Postman Collection example you can edit, with strict syntax validation and pretty-print formatting.",
+    "presetParams": {
+      "json": "{\"info\":{\"name\":\"NadirTools API\",\"schema\":\"https://schema.getpostman.com/json/collection/v2.1.0/collection.json\"},\"item\":[{\"name\":\"Health\",\"request\":{\"method\":\"GET\",\"url\":\"https://api.nadirtools.com/health\"}}]}"
+    },
+    "releaseDate": "2026-10-15T00:00:00.000Z"
+  },
+  "validate-geojson-feature-collection": {
+    "toolSlug": "json-parser",
+    "title": "Validate GeoJSON Feature Collection",
+    "description": "A fast, client-side utility to validate geojson feature collection — preloaded with a real GeoJSON Feature Collection example you can edit, with strict syntax validation and pretty-print formatting.",
+    "presetParams": {
+      "json": "{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"name\":\"Point A\"},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-117.16,32.71]}}]}"
+    },
+    "releaseDate": "2026-10-16T00:00:00.000Z"
+  },
+  "validate-cloudformation-template-json": {
+    "toolSlug": "json-parser",
+    "title": "Validate CloudFormation Template JSON",
+    "description": "A fast, client-side utility to validate cloudformation template json — preloaded with a real CloudFormation Template example you can edit, with strict syntax validation and pretty-print formatting.",
+    "presetParams": {
+      "json": "{\"AWSTemplateFormatVersion\":\"2010-09-09\",\"Resources\":{\"Bucket\":{\"Type\":\"AWS::S3::Bucket\",\"Properties\":{\"BucketName\":\"example-artifacts\"}}}}"
+    },
+    "releaseDate": "2026-10-16T00:00:00.000Z"
+  },
+  "validate-package-lock-json": {
+    "toolSlug": "json-parser",
+    "title": "Validate package-lock.json",
+    "description": "A fast, client-side utility to validate package-lock.json — preloaded with a real package-lock.json example you can edit, with strict syntax validation and pretty-print formatting.",
+    "presetParams": {
+      "json": "{\"name\":\"example-app\",\"version\":\"1.0.0\",\"lockfileVersion\":3,\"requires\":true,\"packages\":{\"\":{\"name\":\"example-app\",\"version\":\"1.0.0\"}}}"
+    },
+    "releaseDate": "2026-10-16T00:00:00.000Z"
+  },
+  "validate-jwt-payload-json": {
+    "toolSlug": "json-parser",
+    "title": "Validate JWT Payload JSON",
+    "description": "A fast, client-side utility to validate jwt payload json — preloaded with a real JWT Payload example you can edit, with strict syntax validation and pretty-print formatting.",
+    "presetParams": {
+      "json": "{\"sub\":\"1234567890\",\"name\":\"Alex Rango\",\"iat\":1770000000,\"exp\":1770003600,\"scope\":\"read:tools\"}"
+    },
+    "releaseDate": "2026-10-16T00:00:00.000Z"
+  },
+  "validate-eslint-flat-config-json": {
+    "toolSlug": "json-parser",
+    "title": "Validate ESLint Flat Config JSON",
+    "description": "A fast, client-side utility to validate eslint flat config json — preloaded with a real ESLint Flat Config example you can edit, with strict syntax validation and pretty-print formatting.",
+    "presetParams": {
+      "json": "[{\"rules\":{\"no-unused-vars\":\"warn\",\"no-console\":\"off\"}},{\"ignores\":[\"dist/**\",\"node_modules/**\"]}]"
+    },
+    "releaseDate": "2026-10-16T00:00:00.000Z"
+  },
+  "validate-json-schema-draft-json": {
+    "toolSlug": "json-parser",
+    "title": "Validate JSON Schema Draft JSON",
+    "description": "A fast, client-side utility to validate json schema draft json — preloaded with a real JSON Schema Draft example you can edit, with strict syntax validation and pretty-print formatting.",
+    "presetParams": {
+      "json": "{\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"type\":\"object\",\"properties\":{\"email\":{\"type\":\"string\",\"format\":\"email\"}},\"required\":[\"email\"]}"
+    },
+    "releaseDate": "2026-10-17T00:00:00.000Z"
+  },
+  "validate-netlify-config-json": {
+    "toolSlug": "json-parser",
+    "title": "Validate Netlify Config JSON",
+    "description": "A fast, client-side utility to validate netlify config json — preloaded with a real Netlify Config example you can edit, with strict syntax validation and pretty-print formatting.",
+    "presetParams": {
+      "json": "{\"build\":{\"command\":\"npm run build\",\"publish\":\"out\"},\"redirects\":[{\"from\":\"/old\",\"to\":\"/new\",\"status\":301}]}"
+    },
+    "releaseDate": "2026-10-17T00:00:00.000Z"
+  },
+  "validate-vercel-config-json": {
+    "toolSlug": "json-parser",
+    "title": "Validate Vercel Config JSON",
+    "description": "A fast, client-side utility to validate vercel config json — preloaded with a real Vercel Config example you can edit, with strict syntax validation and pretty-print formatting.",
+    "presetParams": {
+      "json": "{\"version\":2,\"builds\":[{\"src\":\"api/*.ts\",\"use\":\"@vercel/node\"}],\"routes\":[{\"src\":\"/api/(.*)\",\"dest\":\"/api/$1\"}]}"
+    },
+    "releaseDate": "2026-10-17T00:00:00.000Z"
+  },
+  "validate-google-cloud-build-json": {
+    "toolSlug": "json-parser",
+    "title": "Validate Google Cloud Build JSON",
+    "description": "A fast, client-side utility to validate google cloud build json — preloaded with a real Google Cloud Build example you can edit, with strict syntax validation and pretty-print formatting.",
+    "presetParams": {
+      "json": "{\"steps\":[{\"name\":\"gcr.io/cloud-builders/npm\",\"args\":[\"install\"]},{\"name\":\"gcr.io/cloud-builders/npm\",\"args\":[\"run\",\"build\"]}]}"
+    },
+    "releaseDate": "2026-10-17T00:00:00.000Z"
+  },
+  "cisco-ios-acl-auditor": {
+    "toolSlug": "firewall-validator",
+    "title": "Cisco IOS ACL Auditor",
+    "description": "Detect shadowed rules, overlaps, and logic errors directly in your browser with our Cisco IOS ACL Auditor — preloaded with a sample rule set you can edit.",
+    "presetParams": {
+      "rules": "access-list 100 permit tcp 10.0.0.0 0.0.0.255 any eq 22\naccess-list 100 deny tcp any any eq 22\naccess-list 100 permit tcp any any eq 443\naccess-list 100 deny ip any any"
+    },
+    "releaseDate": "2026-10-17T00:00:00.000Z"
+  },
+  "iptables-nftables-auditor": {
+    "toolSlug": "firewall-validator",
+    "title": "iptables & nftables Rule Auditor",
+    "description": "Detect shadowed rules, overlaps, and logic errors directly in your browser with our iptables & nftables Rule Auditor — preloaded with a sample rule set you can edit.",
+    "presetParams": {
+      "rules": "-A INPUT -p tcp --dport 22 -s 10.0.0.0/8 -j ACCEPT\n-A INPUT -p tcp --dport 22 -j DROP\n-A INPUT -p tcp --dport 443 -j ACCEPT\n-A INPUT -j DROP"
+    },
+    "releaseDate": "2026-10-18T00:00:00.000Z"
+  },
+  "mikrotik-routeros-firewall-auditor": {
+    "toolSlug": "firewall-validator",
+    "title": "MikroTik RouterOS Firewall Auditor",
+    "description": "Detect shadowed rules, overlaps, and logic errors directly in your browser with our MikroTik RouterOS Firewall Auditor — preloaded with a sample rule set you can edit.",
+    "presetParams": {
+      "rules": "/ip firewall filter add chain=input protocol=tcp dst-port=22 src-address=10.0.0.0/8 action=accept\n/ip firewall filter add chain=input protocol=tcp dst-port=22 action=drop\n/ip firewall filter add chain=input action=accept"
+    },
+    "releaseDate": "2026-10-18T00:00:00.000Z"
+  },
+  "aws-network-acl-auditor": {
+    "toolSlug": "firewall-validator",
+    "title": "AWS Network ACL Auditor",
+    "description": "Detect shadowed rules, overlaps, and logic errors directly in your browser with our AWS Network ACL Auditor — preloaded with a sample rule set you can edit.",
+    "presetParams": {
+      "rules": "100 allow tcp 0.0.0.0/0 443 0.0.0.0/0\n110 deny tcp 0.0.0.0/0 22 0.0.0.0/0\n120 allow tcp 10.0.0.0/8 22 0.0.0.0/0\n32767 deny all all 0.0.0.0/0"
+    },
+    "releaseDate": "2026-10-18T00:00:00.000Z"
+  },
+  "windows-defender-firewall-auditor": {
+    "toolSlug": "firewall-validator",
+    "title": "Windows Defender Firewall Auditor",
+    "description": "Detect shadowed rules, overlaps, and logic errors directly in your browser with our Windows Defender Firewall Auditor — preloaded with a sample rule set you can edit.",
+    "presetParams": {
+      "rules": "netsh advfirewall firewall add rule name=\"Allow HTTPS\" dir=in action=allow protocol=TCP localport=443\nnetsh advfirewall firewall add rule name=\"Block Telnet\" dir=in action=block protocol=TCP localport=23"
+    },
+    "releaseDate": "2026-10-18T00:00:00.000Z"
+  },
+  "meraki-mx-l3-firewall-auditor": {
+    "toolSlug": "firewall-validator",
+    "title": "Meraki MX L3 Firewall Auditor",
+    "description": "Detect shadowed rules, overlaps, and logic errors directly in your browser with our Meraki MX L3 Firewall Auditor — preloaded with a sample rule set you can edit.",
+    "presetParams": {
+      "rules": "Allow TCP any 10.0.0.0/8:443 Comment:internal-admin\nDeny TCP any any:22 Comment:block-external-ssh\nAllow Any any any:53"
+    },
+    "releaseDate": "2026-10-18T00:00:00.000Z"
+  },
+  "kubernetes-networkpolicy-auditor": {
+    "toolSlug": "firewall-validator",
+    "title": "Kubernetes NetworkPolicy Auditor",
+    "description": "Detect shadowed rules, overlaps, and logic errors directly in your browser with our Kubernetes NetworkPolicy Auditor — preloaded with a sample rule set you can edit.",
+    "presetParams": {
+      "rules": "{\"podSelector\":{\"matchLabels\":{\"app\":\"api\"}},\"policyTypes\":[\"Ingress\"],\"ingress\":[{\"from\":[{\"podSelector\":{\"matchLabels\":{\"app\":\"web\"}}}],\"ports\":[{\"protocol\":\"TCP\",\"port\":8080}]}]}"
+    },
+    "releaseDate": "2026-10-19T00:00:00.000Z"
+  },
+  "gcp-vpc-firewall-auditor": {
+    "toolSlug": "firewall-validator",
+    "title": "GCP VPC Firewall Auditor",
+    "description": "Detect shadowed rules, overlaps, and logic errors directly in your browser with our GCP VPC Firewall Auditor — preloaded with a sample rule set you can edit.",
+    "presetParams": {
+      "rules": "allow tcp:80,443 from 0.0.0.0/0\ndeny tcp:22 from 0.0.0.0/0\nallow tcp:22 from 10.128.0.0/9"
+    },
+    "releaseDate": "2026-10-19T00:00:00.000Z"
   }
 }
