@@ -6,6 +6,10 @@ on:
     - cron: '0 0 1 * *'
   workflow_dispatch: # Allows manual trigger for testing
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   sync-tax-data:
     runs-on: ubuntu-latest
