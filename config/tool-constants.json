@@ -306,7 +306,7 @@
             "Once a match is made, the firewall stops parsing the rest of the list. Any rules below the matching rule are completely ignored for that specific packet.",
             "### What is Rule Shadowing?",
             "Rule shadowing is a severe logical vulnerability that occurs when a broad rule is placed higher in the ACL than a narrower, more specific rule.",
-            "Because of [First-Match](/tools/firewall-validator/firewall-rule-order-proofs) parsing, the broad rule intercepts all traffic that the specific rule was meant to handle. The specific rule becomes 'shadowed'\u2014it is effectively dead code and will never be evaluated.",
+            "Because of [First-Match](/tools/firewall-validator/firewall-rule-order-proofs) parsing, the broad rule intercepts all traffic that the specific rule was meant to handle. The specific rule becomes 'shadowed'—it is effectively dead code and will never be evaluated.",
             "#### Example of Shadowing Vulnerability:",
             "- **Rule 1 (Top):** `Pass Protocol TCP Source Any Destination Any Port 80`",
             "- **Rule 2 (Bottom):** `Block Protocol TCP Source 192.168.1.50 Destination Any Port 80`",
@@ -455,10 +455,10 @@
     },
     "form-builder": {
       "publishedAt": "2026-07-31T00:00:00Z",
-      "name": "Form Builder Pro \u2014 Embeddable Forms",
+      "name": "Form Builder Pro — Embeddable Forms",
       "category": "developer",
       "slug": "form-builder",
-      "description": "Create custom forms with drag-and-drop fields. Get clean embed code \u2014 no iframes, no third-party branding. Free tier available.",
+      "description": "Create custom forms with drag-and-drop fields. Get clean embed code — no iframes, no third-party branding. Free tier available.",
       "disclaimer": "Form submissions are processed through our secure API. Never store sensitive data like passwords or credit card numbers in form fields.",
       "math": {},
       "guides": {
@@ -469,12 +469,12 @@
           "content": [
             "### Create Your First Form",
             "1. Click **+ New Form** and give it a title (e.g., \"Contact Form\")",
-            "2. Add fields by clicking **+ Field** \u2014 choose from text, email, number, textarea, select, checkbox, and date types",
+            "2. Add fields by clicking **+ Field** — choose from text, email, number, textarea, select, checkbox, and date types",
             "3. Set fields as required, add placeholders, or for select fields, define options",
             "4. Click **Embed** to get HTML code you can paste into any website",
             "",
             "### Embedding Your Form",
-            "The embed code is clean HTML \u2014 no iframes, no third-party JavaScript. It renders natively in your site's styles.",
+            "The embed code is clean HTML — no iframes, no third-party JavaScript. It renders natively in your site's styles.",
             "Paste the embed code into any HTML page and your form is live. Submissions are stored securely and available in your dashboard.",
             "",
             "### Free Tier",
@@ -509,89 +509,44 @@
       "math": {
         "regimes": {
           "US": {
-            "currency": "USD",
-            "brackets": [
+            "federalBrackets": [
               {
-                "limit": 11600,
+                "max": 12000,
                 "rate": 0.1
               },
               {
-                "limit": 47150,
+                "max": 48000,
                 "rate": 0.12
               },
               {
-                "limit": 100525,
+                "max": 105000,
                 "rate": 0.22
               },
               {
-                "limit": 191950,
+                "max": 195000,
                 "rate": 0.24
               },
               {
-                "limit": 243725,
+                "max": 250000,
                 "rate": 0.32
               },
               {
-                "limit": 609350,
+                "max": null,
                 "rate": 0.35
-              },
-              {
-                "limit": 99999999,
-                "rate": 0.37
               }
             ],
-            "self_employment_rate": 0.153,
-            "se_deduction_factor": 0.9235
+            "selfEmploymentTaxRate": 0.153,
+            "stateAverageRate": 0.05
           },
           "UK": {
-            "currency": "GBP",
-            "brackets": [
-              {
-                "limit": 12570,
-                "rate": 0
-              },
-              {
-                "limit": 50270,
-                "rate": 0.2
-              },
-              {
-                "limit": 125140,
-                "rate": 0.4
-              },
-              {
-                "limit": 99999999,
-                "rate": 0.45
-              }
-            ],
-            "vat_threshold": 90000,
-            "vat_rate": 0.2
+            "incomeTaxRate": 0.2,
+            "nationalInsuranceRate": 0.09,
+            "vatThreshold": 95000
           },
           "AU": {
-            "currency": "AUD",
-            "brackets": [
-              {
-                "limit": 18200,
-                "rate": 0
-              },
-              {
-                "limit": 45000,
-                "rate": 0.19
-              },
-              {
-                "limit": 135000,
-                "rate": 0.3
-              },
-              {
-                "limit": 190000,
-                "rate": 0.37
-              },
-              {
-                "limit": 99999999,
-                "rate": 0.45
-              }
-            ],
-            "gst_threshold": 75000,
-            "gst_rate": 0.1
+            "incomeTaxRate": 0.325,
+            "medicareLevy": 0.02,
+            "gstThreshold": 85000
           }
         }
       },
@@ -644,7 +599,7 @@
             "| Jurisdiction | Sales Tax Name | Registration Threshold | Standard Rate |",
             "|---|---|---|---|",
             "| **United States** | Sales Tax (State-level) | Varies wildly. Usually $100k in gross sales or 200 separate transactions into a specific state (Economic Nexus). | 0% - 10% |",
-            "| **United Kingdom** | Value Added Tax (VAT) | \u00a390,000 (rolling 12 months) | 20% |",
+            "| **United Kingdom** | Value Added Tax (VAT) | £90,000 (rolling 12 months) | 20% |",
             "| **Australia** | Goods and Services Tax (GST) | $75,000 AUD (annualized) | 10% |",
             "### Exporting Services & Zero-Rating",
             "For Australian and UK freelancers exporting software development services to overseas B2B clients (e.g., a UK developer contracting for a US-based corporation), the service is generally **zero-rated** (exempt from VAT/GST).",
@@ -710,7 +665,7 @@
           "content": [
             "### Sole Proprietorship (Default)",
             "A sole proprietorship is the default state of freelancing. It requires no formal paperwork. All business income and expenses are reported on Schedule C of your personal tax return.",
-            "The major downside: All net profits are subject to the full 15.3% self-employment tax, plus ordinary federal and state income tax. Furthermore, you have zero personal liability protection\u2014if a client sues you, your personal assets (house, car) are at risk.",
+            "The major downside: All net profits are subject to the full 15.3% self-employment tax, plus ordinary federal and state income tax. Furthermore, you have zero personal liability protection—if a client sues you, your personal assets (house, car) are at risk.",
             "### Single-Member LLC",
             "A single-member Limited Liability Company (LLC) establishes a legal wall between your personal assets and business liabilities. By default, the IRS treats a single-member LLC as a 'disregarded entity'. This means it is taxed exactly like a sole proprietorship.",
             "While it provides vital legal protection, forming a standard LLC provides absolutely no direct tax savings.",
